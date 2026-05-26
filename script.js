@@ -5,7 +5,7 @@ document.getElementById("pin").value;
 
 /* PREMIUM PIN */
 
-if(pin != "2007"){
+if(pin != "ZEUS1234"){
 
 document.getElementById("result")
 .innerHTML = `
