@@ -1,5 +1,32 @@
 function generate(){
 
+let pin =
+document.getElementById("pin").value;
+
+/* PREMIUM PIN */
+
+if(pin != "2007"){
+
+document.getElementById("result")
+.innerHTML = `
+
+<h2 style="color:red;">
+Invalid Premium PIN
+</h2>
+
+<p>
+Contact owner on WhatsApp
+to get access.
+</p>
+
+`;
+
+return;
+
+}
+
+/* DEVICE */
+
 let phone =
 document.getElementById("phone").value;
 
@@ -16,54 +43,35 @@ let scope4x = 60;
 let sniper = 45;
 let freeLook = 55;
 
-/* PHONE TYPE */
+/* PHONE BOOST */
 
-if(phone == "iphone11pro"
-|| phone == "iphone12"
-|| phone == "iphone13"
-|| phone == "iphone14"
-|| phone == "iphone15"){
+if(phone.includes("iphone")){
 
 general += 10;
 redDot += 10;
 scope2x += 10;
-scope4x += 10;
 
 }
 
-else if(phone == "samsungs21"
-|| phone == "samsungs22"
-|| phone == "samsungs23"){
+else if(phone.includes("samsung")){
 
-general += 8;
-redDot += 8;
-scope2x += 8;
+general += 7;
+redDot += 7;
 
 }
 
-else if(phone == "tecnospark5"
-|| phone == "infinixhot10"
-|| phone == "itelp38"){
+else if(phone.includes("tecno")){
 
 general -= 5;
-redDot -= 5;
 
 }
 
-/* RAM */
+/* RAM BOOST */
 
 if(ram >= 8){
 
 general += 5;
 redDot += 5;
-scope2x += 5;
-
-}
-
-else if(ram <= 3){
-
-general -= 5;
-redDot -= 5;
 
 }
 
@@ -80,11 +88,10 @@ freeLook += 5;
 else if(dpi == "low"){
 
 general -= 5;
-redDot -= 5;
 
 }
 
-/* RESULT */
+/* SHOW RESULT */
 
 document.getElementById("result")
 .innerHTML = `
