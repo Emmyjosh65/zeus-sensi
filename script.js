@@ -1,39 +1,95 @@
 function generate(){
 
+let phone =
+document.getElementById("phone").value;
+
 let ram =
 document.getElementById("ram").value;
 
-let general;
-let redDot;
-let scope2x;
-let scope4x;
-let sniper;
-let freeLook;
+let dpi =
+document.getElementById("dpi").value;
 
-if(ram >= 6){
+let general = 85;
+let redDot = 80;
+let scope2x = 70;
+let scope4x = 60;
+let sniper = 45;
+let freeLook = 55;
 
-general = 95;
-redDot = 90;
-scope2x = 82;
-scope4x = 70;
-sniper = 50;
-freeLook = 67;
+/* PHONE TYPE */
+
+if(phone == "iphone11pro"
+|| phone == "iphone12"
+|| phone == "iphone13"
+|| phone == "iphone14"
+|| phone == "iphone15"){
+
+general += 10;
+redDot += 10;
+scope2x += 10;
+scope4x += 10;
+
+}
+
+else if(phone == "samsungs21"
+|| phone == "samsungs22"
+|| phone == "samsungs23"){
+
+general += 8;
+redDot += 8;
+scope2x += 8;
 
 }
 
-else{
+else if(phone == "tecnospark5"
+|| phone == "infinixhot10"
+|| phone == "itelp38"){
 
-general = 80;
-redDot = 75;
-scope2x = 65;
-scope4x = 55;
-sniper = 40;
-freeLook = 50;
+general -= 5;
+redDot -= 5;
 
 }
+
+/* RAM */
+
+if(ram >= 8){
+
+general += 5;
+redDot += 5;
+scope2x += 5;
+
+}
+
+else if(ram <= 3){
+
+general -= 5;
+redDot -= 5;
+
+}
+
+/* DPI */
+
+if(dpi == "high"){
+
+general += 5;
+redDot += 5;
+freeLook += 5;
+
+}
+
+else if(dpi == "low"){
+
+general -= 5;
+redDot -= 5;
+
+}
+
+/* RESULT */
 
 document.getElementById("result")
 .innerHTML = `
+
+<h2>Recommended Sensitivity</h2>
 
 <div class="sensi">
 <span>General</span>
