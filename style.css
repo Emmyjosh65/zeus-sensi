@@ -22,3 +22,19 @@ button{
   background:red;
   color:white;
 }
+.whatsapp{
+
+display:inline-block;
+margin-top:20px;
+padding:12px 20px;
+
+background:#25D366;
+color:white;
+
+text-decoration:none;
+
+border-radius:10px;
+
+font-weight:bold;
+
+}
