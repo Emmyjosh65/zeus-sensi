@@ -1,3 +1,11 @@
+function randomSensi() {
+
+return Math.floor(Math.random() * 161) + 40;
+
+/* RANDOM NUMBER FROM 40 TO 200 */
+
+}
+
 function generate(){
 
 let pin =
@@ -5,13 +13,13 @@ document.getElementById("pin").value;
 
 /* PREMIUM PIN */
 
-if(pin != "RAMADAM"){
+if(pin != "2007"){
 
 document.getElementById("result")
 .innerHTML = `
 
 <h2 style="color:red;">
-Invalid Premium PIN
+INVALID PREMIUM PIN
 </h2>
 
 <p>
@@ -25,82 +33,34 @@ return;
 
 }
 
-/* DEVICE */
+/* RANDOM SENSITIVITY */
 
-let phone =
-document.getElementById("phone").value;
-
-let ram =
-document.getElementById("ram").value;
-
-let dpi =
-document.getElementById("dpi").value;
-
-let general = 85;
-let redDot = 80;
-let scope2x = 70;
-let scope4x = 60;
-let sniper = 45;
-let freeLook = 55;
-
-/* PHONE BOOST */
-
-if(phone.includes("iphone")){
-
-general += 10;
-redDot += 10;
-scope2x += 10;
-
-}
-
-else if(phone.includes("samsung")){
-
-general += 7;
-redDot += 7;
-
-}
-
-else if(phone.includes("tecno")){
-
-general -= 5;
-
-}
-
-/* RAM BOOST */
-
-if(ram >= 8){
-
-general += 5;
-redDot += 5;
-
-}
-
-/* DPI */
-
-if(dpi == "high"){
-
-general += 5;
-redDot += 5;
-freeLook += 5;
-
-}
-
-else if(dpi == "low"){
-
-general -= 5;
-
-}
-
-/* SHOW RESULT */
+let general = randomSensi();
+let redDot = randomSensi();
+let scope2x = randomSensi();
+let scope4x = randomSensi();
+let sniper = randomSensi();
+let freeLook = randomSensi();
+let buttonSize = randomSensi();
 
 document.getElementById("result")
 .innerHTML = `
 
-<h2>Recommended Sensitivity</h2>
+<h2>
+Recommended Sensitivity
+</h2>
+
+<div class="sensi-box">
 
 <div class="sensi">
 <span>General</span>
 <span>${general}</span>
+</div>
+
+<div class="bar">
+<div class="fill"
+style="width:${general / 2}%">
+</div>
 </div>
 
 <div class="sensi">
@@ -108,9 +68,21 @@ document.getElementById("result")
 <span>${redDot}</span>
 </div>
 
+<div class="bar">
+<div class="fill"
+style="width:${redDot / 2}%">
+</div>
+</div>
+
 <div class="sensi">
 <span>2X Scope</span>
 <span>${scope2x}</span>
+</div>
+
+<div class="bar">
+<div class="fill"
+style="width:${scope2x / 2}%">
+</div>
 </div>
 
 <div class="sensi">
@@ -118,14 +90,45 @@ document.getElementById("result")
 <span>${scope4x}</span>
 </div>
 
+<div class="bar">
+<div class="fill"
+style="width:${scope4x / 2}%">
+</div>
+</div>
+
 <div class="sensi">
 <span>Sniper Scope</span>
 <span>${sniper}</span>
 </div>
 
+<div class="bar">
+<div class="fill"
+style="width:${sniper / 2}%">
+</div>
+</div>
+
 <div class="sensi">
 <span>Free Look</span>
 <span>${freeLook}</span>
+</div>
+
+<div class="bar">
+<div class="fill"
+style="width:${freeLook / 2}%">
+</div>
+</div>
+
+<div class="sensi">
+<span>Button Size</span>
+<span>${buttonSize}</span>
+</div>
+
+<div class="bar">
+<div class="fill"
+style="width:${buttonSize / 2}%">
+</div>
+</div>
+
 </div>
 
 `;
