@@ -1,281 +1,380 @@
-<!DOCTYPE html>
-<html>
-
+<!doctype html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZEUS SENSI AI — AI Free Fire Sensitivity Generator</title>
 
-<title>ZEUS PREMIUM FREE FIRE SENSI</title>
-
-<link rel="stylesheet" href="style.css">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <!-- External style and script (no inline CSS/JS per requirements) -->
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 
-<body>
-
-<div class="container">
-
-<h1>
-ZEUS PREMIUM <br>
-FREE FIRE SENSI
-</h1>
-
-<p>
-Generate perfect sensitivity settings
-for smooth aim, zero recoil and headshots.
-</p>
-
-<!-- DEVICE CARD -->
-
-<div class="card">
-
-<h2>Your Device</h2>
-
-<!-- PHONE SELECT -->
-
-<select id="phone">
-
-<!-- IPHONES -->
-
-<option value="iphone6">iPhone 6</option>
-<option value="iphone6plus">iPhone 6 Plus</option>
-<option value="iphone6s">iPhone 6S</option>
-<option value="iphone6splus">iPhone 6S Plus</option>
-
-<option value="iphone7">iPhone 7</option>
-<option value="iphone7plus">iPhone 7 Plus</option>
-
-<option value="iphone8">iPhone 8</option>
-<option value="iphone8plus">iPhone 8 Plus</option>
-
-<option value="iphonex">iPhone X</option>
-<option value="iphonexr">iPhone XR</option>
-<option value="iphonexs">iPhone XS</option>
-<option value="iphonexsmax">iPhone XS Max</option>
-
-<option value="iphone11">iPhone 11</option>
-<option value="iphone11pro">iPhone 11 Pro</option>
-<option value="iphone11promax">iPhone 11 Pro Max</option>
-
-<option value="iphone12mini">iPhone 12 Mini</option>
-<option value="iphone12">iPhone 12</option>
-<option value="iphone12pro">iPhone 12 Pro</option>
-<option value="iphone12promax">iPhone 12 Pro Max</option>
-
-<option value="iphone13mini">iPhone 13 Mini</option>
-<option value="iphone13">iPhone 13</option>
-<option value="iphone13pro">iPhone 13 Pro</option>
-<option value="iphone13promax">iPhone 13 Pro Max</option>
-
-<option value="iphone14">iPhone 14</option>
-<option value="iphone14plus">iPhone 14 Plus</option>
-<option value="iphone14pro">iPhone 14 Pro</option>
-<option value="iphone14promax">iPhone 14 Pro Max</option>
-
-<option value="iphone15">iPhone 15</option>
-<option value="iphone15plus">iPhone 15 Plus</option>
-<option value="iphone15pro">iPhone 15 Pro</option>
-<option value="iphone15promax">iPhone 15 Pro Max</option>
-
-<option value="iphone16">iPhone 16</option>
-<option value="iphone16plus">iPhone 16 Plus</option>
-<option value="iphone16pro">iPhone 16 Pro</option>
-<option value="iphone16promax">iPhone 16 Pro Max</option>
-
-<option value="iphone17">iPhone 17</option>
-<option value="iphone17plus">iPhone 17 Plus</option>
-
-<option value="iphone18">iPhone 18</option>
-<option value="iphone18plus">iPhone 18 Plus</option>
-
-<!-- SAMSUNG -->
-
-<option value="samsunga03">Samsung A03</option>
-<option value="samsunga04">Samsung A04</option>
-<option value="samsunga05">Samsung A05</option>
-<option value="samsunga12">Samsung A12</option>
-<option value="samsunga13">Samsung A13</option>
-<option value="samsunga14">Samsung A14</option>
-<option value="samsunga15">Samsung A15</option>
-<option value="samsunga23">Samsung A23</option>
-<option value="samsunga24">Samsung A24</option>
-<option value="samsunga34">Samsung A34</option>
-<option value="samsunga54">Samsung A54</option>
-
-<option value="samsungs20">Samsung S20</option>
-<option value="samsungs21">Samsung S21</option>
-<option value="samsungs22">Samsung S22</option>
-<option value="samsungs23">Samsung S23</option>
-<option value="samsungs24">Samsung S24</option>
-
-<!-- TECNO -->
-
-<option value="tecnospark5">Tecno Spark 5</option>
-<option value="tecnospark6">Tecno Spark 6</option>
-<option value="tecnospark7">Tecno Spark 7</option>
-<option value="tecnospark8">Tecno Spark 8</option>
-<option value="tecnospark9">Tecno Spark 9</option>
-<option value="tecnospark10">Tecno Spark 10</option>
-
-<option value="tecnopova">Tecno Pova</option>
-<option value="tecnopova2">Tecno Pova 2</option>
-<option value="tecnopova5">Tecno Pova 5</option>
-
-<option value="tecnocamon17">Tecno Camon 17</option>
-<option value="tecnocamon18">Tecno Camon 18</option>
-<option value="tecnocamon19">Tecno Camon 19</option>
-<option value="tecnocamon20">Tecno Camon 20</option>
-
-<!-- INFINIX -->
-
-<option value="infinixhot10">Infinix Hot 10</option>
-<option value="infinixhot11">Infinix Hot 11</option>
-<option value="infinixhot12">Infinix Hot 12</option>
-<option value="infinixhot20">Infinix Hot 20</option>
-
-<option value="infinixnote10">Infinix Note 10</option>
-<option value="infinixnote11">Infinix Note 11</option>
-<option value="infinixnote12">Infinix Note 12</option>
-<option value="infinixnote30">Infinix Note 30</option>
-
-<!-- REDMI -->
-
-<option value="redmi9">Redmi 9</option>
-<option value="redmi10">Redmi 10</option>
-<option value="redmi11">Redmi 11</option>
-
-<option value="redminote10">Redmi Note 10</option>
-<option value="redminote11">Redmi Note 11</option>
-<option value="redminote12">Redmi Note 12</option>
-<option value="redminote13">Redmi Note 13</option>
-
-<!-- OPPO -->
-
-<option value="oppoa15">Oppo A15</option>
-<option value="oppoa16">Oppo A16</option>
-<option value="oppoa17">Oppo A17</option>
-<option value="oppoa57">Oppo A57</option>
-
-<option value="opporeno7">Oppo Reno 7</option>
-<option value="opporeno8">Oppo Reno 8</option>
-
-<!-- VIVO -->
-
-<option value="vivoy20">Vivo Y20</option>
-<option value="vivoy21">Vivo Y21</option>
-<option value="vivoy22">Vivo Y22</option>
-<option value="vivoy33">Vivo Y33</option>
-
-<option value="vivov25">Vivo V25</option>
-<option value="vivov27">Vivo V27</option>
-
-<!-- ITEL -->
-
-<option value="itelp36">Itel P36</option>
-<option value="itelp37">Itel P37</option>
-<option value="itelp38">Itel P38</option>
-<option value="itelp40">Itel P40</option>
-
-<!-- XIAOMI -->
-
-<option value="xiaomipocox3">Xiaomi Poco X3</option>
-<option value="xiaomipocox5">Xiaomi Poco X5</option>
-
-<!-- REALME -->
-
-<option value="realmec11">Realme C11</option>
-<option value="realmec25">Realme C25</option>
-
-</select>
-
-<br><br>
-
-<!-- RAM -->
-
-<select id="ram">
-
-<option value="2">2GB RAM</option>
-<option value="3">3GB RAM</option>
-<option value="4">4GB RAM</option>
-<option value="6">6GB RAM</option>
-<option value="8">8GB RAM</option>
-<option value="12">12GB RAM</option>
-<option value="16">16GB RAM</option>
-
-</select>
-
-<br><br>
-
-<!-- DPI -->
-
-<select id="dpi">
-
-<option value="low">Lower DPI</option>
-<option value="medium">Medium DPI</option>
-<option value="high">Higher DPI</option>
-
-</select>
-
-<br><br>
-
-<!-- PREMIUM PIN -->
-
-<input
-type="password"
-id="pin"
-placeholder="ENTER PREMIUM PIN">
-
-<br><br>
-
-<!-- BUTTON -->
-
-<button onclick="generate()">
-
-GENERATE SENSITIVITY
-
-</button>
-
-</div>
-
-<!-- RESULT -->
-
-<div class="card">
-
-<div id="result"></div>
-
-</div>
-
-<!-- WHATSAPP -->
-
-<a
-class="whatsapp"
-href="https://wa.me/2349066760078"
-target="_blank">
-
-Contact Owner on WhatsApp
-
-</a>
-
-<!-- APK DOWNLOAD -->
-
-<div class="apk-box">
-
-<a href="https://www.mediafire.com/file/t81spcy4clbkf6f/ZEUS-sensi+.apk/file" target="_blank">
-
-<button class="apk-btn">
-
-📲 DOWNLOAD ZEUS SENSI APK
-
-</button>
-
-</a>
-
-</div>
-
-</div>
-
-<script src="script.js"></script>
-
+<!-- Include required access key in data attribute for script.js to enforce on the generator page -->
+<body id="site-body" class="site" data-required-access-key="2007">
+  <!-- Premium Navigation Bar -->
+  <header id="main-header" class="header" role="banner">
+    <div class="container header__inner">
+      <div class="brand" id="brand">
+        <a href="index.html" id="logo-link" class="brand__link" aria-label="ZEUS SENSI AI Home">
+          <img id="logo" class="brand__logo" src="logo.svg" alt="ZEUS SENSI AI logo">
+          <span class="brand__name">ZEUS SENSI AI</span>
+        </a>
+      </div>
+
+      <nav id="main-nav" class="nav" role="navigation" aria-label="Primary navigation">
+        <ul class="nav__list" id="nav-list">
+          <li class="nav__item"><a class="nav__link" href="index.html">Home</a></li>
+          <li class="nav__item"><a class="nav__link" href="#features">Features</a></li>
+          <li class="nav__item"><a class="nav__link" href="#faq">FAQ</a></li>
+          <li class="nav__item"><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav__cta">
+          <a id="start-now-nav" class="btn btn--glow" href="FF_SENSITIVITY.html" aria-label="Start Now — Navigate to Generator">Start Now</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="main" role="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1 id="hero-title" class="hero__title">AI Free Fire Sensitivity Generator</h1>
+          <p id="hero-subtitle" class="hero__subtitle">
+            Generate the perfect Free Fire sensitivity for your phone using ZEUS AI technology.
+          </p>
+
+          <div class="hero__actions" id="hero-actions">
+            <a id="hero-start" class="btn btn--primary" href="FF_SENSITIVITY.html" role="button" aria-label="Start Now">
+              🚀 Start Now
+            </a>
+
+            <a id="hero-channel" class="btn btn--secondary" href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" rel="noopener" aria-label="Join Official Channel on WhatsApp">
+              📱 Join Official Channel
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__visual" id="hero-visual" aria-hidden="true">
+          <!-- Placeholder for illustration/graphic; styled via style.css -->
+          <figure class="hero__art" id="hero-art">
+            <img src="hero-illustration.svg" alt="" aria-hidden="true">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics / Counters -->
+    <section id="statistics" class="stats" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 id="stats-title" class="section__title">Trusted by Gamers Worldwide</h2>
+
+        <ul class="stats__list" id="stats-list" role="list">
+          <li class="stat" id="stat-users">
+            <strong class="stat__number" data-target="500000">500,000+</strong>
+            <span class="stat__label">Users</span>
+          </li>
+
+          <li class="stat" id="stat-generated">
+            <strong class="stat__number" data-target="2000000">2,000,000+</strong>
+            <span class="stat__label">Sensitivities Generated</span>
+          </li>
+
+          <li class="stat" id="stat-satisfaction">
+            <strong class="stat__number" data-target="99.9">99.9%</strong>
+            <span class="stat__label">Satisfaction</span>
+          </li>
+
+          <li class="stat" id="stat-devices">
+            <strong class="stat__number" data-target="150">150+</strong>
+            <span class="stat__label">Supported Phones</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title" class="section__title">Features</h2>
+
+        <div class="features__grid" id="features-grid" role="list">
+          <article class="feature-card" data-feature="ai-detection" role="listitem">
+            <h3 class="feature-card__title">AI Device Detection</h3>
+            <p class="feature-card__desc">Automatically detects your device capabilities for tailored sensitivity.</p>
+          </article>
+
+          <article class="feature-card" data-feature="smart-generator" role="listitem">
+            <h3 class="feature-card__title">Smart Sensitivity Generator</h3>
+            <p class="feature-card__desc">AI-driven presets optimized for accuracy and control.</p>
+          </article>
+
+          <article class="feature-card" data-feature="headshot-opt" role="listitem">
+            <h3 class="feature-card__title">Headshot Optimization</h3>
+            <p class="feature-card__desc">Settings tuned for consistent headshot alignment.</p>
+          </article>
+
+          <article class="feature-card" data-feature="performance-analysis" role="listitem">
+            <h3 class="feature-card__title">Device Performance Analysis</h3>
+            <p class="feature-card__desc">Assess RAM, CPU, and refresh rate to adapt sensitivities.</p>
+          </article>
+
+          <article class="feature-card" data-feature="hud-recommendation" role="listitem">
+            <h3 class="feature-card__title">HUD Recommendation</h3>
+            <p class="feature-card__desc">Suggested HUD layout to complement your sensitivity preset.</p>
+          </article>
+
+          <article class="feature-card" data-feature="dpi-optimization" role="listitem">
+            <h3 class="feature-card__title">DPI Optimization</h3>
+            <p class="feature-card__desc">Advice on ideal DPI for stability and precision.</p>
+          </article>
+
+          <article class="feature-card" data-feature="fast-generation" role="listitem">
+            <h3 class="feature-card__title">Fast Generation</h3>
+            <p class="feature-card__desc">Get personalized settings in seconds.</p>
+          </article>
+
+          <article class="feature-card" data-feature="free-updates" role="listitem">
+            <h3 class="feature-card__title">Free Updates</h3>
+            <p class="feature-card__desc">Ongoing improvements and fresh presets at no cost.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title" class="section__title">How It Works</h2>
+
+        <ol class="how__steps" id="how-steps">
+          <li class="how__step" data-step="1">
+            <strong class="how__step-number">1</strong>
+            <div class="how__step-body">
+              <h3 class="how__step-title">Join Official Channel</h3>
+              <p class="how__step-desc">Join our official WhatsApp channel to receive updates and access instructions.</p>
+            </div>
+          </li>
+
+          <li class="how__step" data-step="2">
+            <strong class="how__step-number">2</strong>
+            <div class="how__step-body">
+              <h3 class="how__step-title">Enter Access Key</h3>
+              <p class="how__step-desc">When prompted on the generator page, enter the access key provided.</p>
+            </div>
+          </li>
+
+          <li class="how__step" data-step="3">
+            <strong class="how__step-number">3</strong>
+            <div class="how__step-body">
+              <h3 class="how__step-title">Access Key</h3>
+              <p class="how__step-desc">Access Key is <strong id="access-key">2007</strong>.</p>
+            </div>
+          </li>
+
+          <li class="how__step" data-step="4">
+            <strong class="how__step-number">4</strong>
+            <div class="how__step-body">
+              <h3 class="how__step-title">Choose Phone Brand</h3>
+            </div>
+          </li>
+
+          <li class="how__step" data-step="5">
+            <strong class="how__step-number">5</strong>
+            <div class="how__step-body">
+              <h3 class="how__step-title">Select Phone Model</h3>
+            </div>
+          </li>
+
+          <li class="how__step" data-step="6">
+            <strong class="how__step-number">6</strong>
+            <div class="how__step-body">
+              <h3 class="how__step-title">Generate AI Sensitivity</h3>
+            </div>
+          </li>
+
+          <li class="how__step" data-step="7">
+            <strong class="how__step-number">7</strong>
+            <div class="how__step-body">
+              <h3 class="how__step-title">Copy Your Settings</h3>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Reviews / Testimonials -->
+    <section id="reviews" class="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <h2 id="reviews-title" class="section__title">What Players Say</h2>
+
+        <div class="reviews__grid" id="reviews-grid" role="list">
+          <article class="testimonial" data-id="t1" role="listitem">
+            <div class="testimonial__header">
+              <h3 class="testimonial__name">Alex</h3>
+              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+            <p class="testimonial__text">"Incredible presets — my headshot rate skyrocketed. ZEUS AI nails device tuning!"</p>
+          </article>
+
+          <article class="testimonial" data-id="t2" role="listitem">
+            <div class="testimonial__header">
+              <h3 class="testimonial__name">Maya</h3>
+              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+            <p class="testimonial__text">"Fast and reliable. The generator works seamlessly on my phone."</p>
+          </article>
+
+          <article class="testimonial" data-id="t3" role="listitem">
+            <div class="testimonial__header">
+              <h3 class="testimonial__name">Diego</h3>
+              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+            <p class="testimonial__text">"Love the headshot optimization — feels tuned just for me."</p>
+          </article>
+
+          <article class="testimonial" data-id="t4" role="listitem">
+            <div class="testimonial__header">
+              <h3 class="testimonial__name">Rina</h3>
+              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+            <p class="testimonial__text">"Great UX and very accurate results. Highly recommended."</p>
+          </article>
+
+          <article class="testimonial" data-id="t5" role="listitem">
+            <div class="testimonial__header">
+              <h3 class="testimonial__name">Jay</h3>
+              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+            <p class="testimonial__text">"Settings are easy to apply and noticeably improved my recoil control."</p>
+          </article>
+
+          <article class="testimonial" data-id="t6" role="listitem">
+            <div class="testimonial__header">
+              <h3 class="testimonial__name">Priya</h3>
+              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
+            </div>
+            <p class="testimonial__text">"A must-have tool for competitive players — simple and effective."</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supported Devices -->
+    <section id="supported-devices" class="devices" aria-labelledby="devices-title">
+      <div class="container">
+        <h2 id="devices-title" class="section__title">Supported Devices</h2>
+
+        <ul class="devices__grid" id="devices-grid" role="list">
+          <li class="device-card">Samsung</li>
+          <li class="device-card">Tecno</li>
+          <li class="device-card">Infinix</li>
+          <li class="device-card">Redmi</li>
+          <li class="device-card">Xiaomi</li>
+          <li class="device-card">Oppo</li>
+          <li class="device-card">Vivo</li>
+          <li class="device-card">Huawei</li>
+          <li class="device-card">iPhone</li>
+          <li class="device-card">OnePlus</li>
+          <li class="device-card">Google Pixel</li>
+          <li class="device-card">Motorola</li>
+          <li class="device-card">Realme</li>
+          <li class="device-card">Nokia</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title" class="section__title">Frequently Asked Questions</h2>
+
+        <div class="faq__list" id="faq-list">
+          <article class="faq__item" id="faq-1">
+            <h3 class="faq__question">Is ZEUS SENSI free?</h3>
+            <div class="faq__answer" aria-hidden="false">
+              <p>ZEUS SENSI AI provides free sensitivity generation and basic features. Premium offerings may be available for advanced services.</p>
+            </div>
+          </article>
+
+          <article class="faq__item" id="faq-2">
+            <h3 class="faq__question">How accurate is the AI?</h3>
+            <div class="faq__answer" aria-hidden="false">
+              <p>Our AI analyzes device specs and gameplay patterns to deliver highly accurate sensitivity presets. Results may vary based on playstyle.</p>
+            </div>
+          </article>
+
+          <article class="faq__item" id="faq-3">
+            <h3 class="faq__question">Why do I need the access key?</h3>
+            <div class="faq__answer" aria-hidden="false">
+              <p>The access key (2007) is required to unlock the generator and ensure access control for the official channel members.</p>
+            </div>
+          </article>
+
+          <article class="faq__item" id="faq-4">
+            <h3 class="faq__question">How often are sensitivities updated?</h3>
+            <div class="faq__answer" aria-hidden="false">
+              <p>We continuously update presets as device profiles and game mechanics evolve; users receive free updates.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact / Call-to-Action -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section__title">Contact & Support</h2>
+
+        <div class="contact__grid">
+          <div class="contact__info">
+            <p class="contact__text">Owner: <strong id="owner-name">ZEUS</strong></p>
+            <p class="contact__text">Owner Number: <a href="tel:09066760078" id="owner-number">09066760078</a></p>
+            <p class="contact__text">Channel: <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" rel="noopener" id="channel-link">KYLLVERSE on WhatsApp</a></p>
+          </div>
+
+          <div class="contact__actions" id="contact-actions">
+            <a class="btn btn--whatsapp" id="whatsapp-support" href="https://wa.me/09066760078" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+              WhatsApp Support
+            </a>
+
+            <a class="btn btn--telegram" id="telegram-link" href="#" aria-label="Telegram Support">
+              Telegram
+            </a>
+
+            <a class="btn btn--github" id="github-link" href="#" aria-label="GitHub">
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Premium Footer -->
+  <footer id="site-footer" class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand" id="footer-brand">
+        <span class="footer__name">ZEUS SENSI AI</span>
+        <span class="footer__tagline">Powered by ZEUS AI</span>
+      </div>
+
+      <div class="footer__links" id="footer-links">
+        <ul class="footer__social" id="footer-social">
+          <li><a id="footer-whatsapp" class="footer__social-link" href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" rel="noopener">WhatsApp Channel</a></li>
+          <li><a id="footer-telegram" class="footer__social-link" href="#">Telegram</a></li>
+          <li><a id="footer-github" class="footer__social-link" href="#">GitHub</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__meta">
+        <p class="footer__owner">Owner: Zeus</p>
+        <p class="footer__copyright">© 2026 ZEUS SENSI AI</p>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>
