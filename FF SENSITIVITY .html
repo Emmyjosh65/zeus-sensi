@@ -1,549 +1,246 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Fire Sensitivity AI</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZEUS SENSI AI — Your AI Sensitivity Is Ready</title>
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            color: white;
-        }
-
-        .header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .device-info {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 15px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        .main-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e6ed;
-            border-radius: 10px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin: 10px 0;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #667eea;
-            display: none;
-        }
-
-        .loading-spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .results {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .sensitivity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .sensitivity-item {
-            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
-        }
-
-        .sensitivity-value {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .sensitivity-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .tips {
-            background: linear-gradient(45deg, #00b894, #00cec9);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 20px;
-        }
-
-        .tip {
-            margin-bottom: 10px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .tip::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        .copy-btn {
-            background: linear-gradient(45deg, #00b894, #00cec9);
-            margin-top: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            
-            .main-card {
-                padding: 20px;
-            }
-        }
-
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #00b894;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
-            font-weight: 600;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .notification.show {
-            transform: translateX(0);
-        }
-    </style>
+  <!-- Link to external styles and script (no inline CSS/JS per requirements) -->
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🎯 Free Fire Sensitivity AI</h1>
-            <p>AI-powered sensitivity calculator for optimal performance</p>
-            <div id="deviceInfo" class="device-info">
-                <strong>🔍 Analyzing your device...</strong>
-            </div>
-        </div>
+<body class="app">
 
-        <div class="main-card">
-            <div class="form-group">
-                <label for="playStyle">🎮 Your Play Style:</label>
-                <select id="playStyle" class="form-control">
-                    <option value="balanced">Balanced Player</option>
-                    <option value="aggressive">Aggressive Rusher</option>
-                    <option value="sniper">Sniper/Long Range</option>
-                    <option value="beginner">Beginner</option>
-                </select>
-            </div>
+  <!-- Premium Navigation Bar -->
+  <header id="premium-nav" class="nav" role="banner">
+    <div class="nav__inner container">
+      <div class="brand" id="brand">
+        <img src="logo.svg" alt="ZEUS SENSI AI logo" class="brand__logo" id="logo">
+        <span class="brand__title">ZEUS SENSI AI</span>
+      </div>
 
-            <div class="form-group">
-                <label for="gyroscope">📱 Gyroscope:</label>
-                <select id="gyroscope" class="form-control">
-                    <option value="enabled">Enabled (Recommended)</option>
-                    <option value="disabled">Disabled</option>
-                </select>
-            </div>
-
-            <button class="btn" onclick="generateSensitivity()">
-                🎯 Generate AI Optimized Settings
-            </button>
-
-            <div id="loading" class="loading">
-                <div class="loading-spinner"></div>
-                <p>AI is analyzing your device and generating optimal settings...</p>
-            </div>
-
-            <div id="results" class="results">
-                <h3>🎯 Your Optimized Settings</h3>
-                <div id="sensitivityGrid" class="sensitivity-grid"></div>
-                
-                <button class="btn copy-btn" onclick="copySettings()">
-                    📋 Copy Settings to Clipboard
-                </button>
-
-                <div id="recommendations" style="margin-top: 20px; padding: 15px; background: rgba(102, 126, 234, 0.1); border-radius: 10px;">
-                </div>
-            </div>
-        </div>
-
-        <div class="tips">
-            <h3>💡 Pro Tips</h3>
-            <div class="tip">Practice in training mode for 10-15 minutes with new settings</div>
-            <div class="tip">Adjust based on your current mood and hand condition</div>
-            <div class="tip">Lower sensitivity for long-range, higher for close combat</div>
-            <div class="tip">Keep device clean and ensure stable frame rates</div>
-            <div class="tip">Use gyroscope for micro-adjustments and recoil control</div>
-        </div>
+      <nav class="nav__links" role="navigation" aria-label="Primary">
+        <span class="badge badge--ai" id="ai-badge">AI Powered</span>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="#" class="nav__link">Home</a></li>
+          <li><a href="#" class="nav__link">Generate</a></li>
+          <li><a href="#" class="nav__link">Settings</a></li>
+          <li><a href="#" class="nav__link">Support</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <script>
-        // Auto Device Detection
-        class SimpleDeviceDetector {
-            constructor() {
-                this.deviceInfo = this.detectDevice();
-                this.displayDeviceInfo();
-            }
+  <main id="main" class="main" role="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="container hero__inner">
+        <h1 class="hero__title" id="hero-title">Your AI Sensitivity Is Ready</h1>
+        <p class="hero__subtitle" id="hero-subtitle">Optimized specifically for your device using ZEUS AI.</p>
 
-            detectDevice() {
-                const userAgent = navigator.userAgent;
-                const memory = navigator.deviceMemory || this.estimateMemory();
-                const cores = navigator.hardwareConcurrency || 4;
-                const screen = this.getScreenInfo();
-                
-                return {
-                    memory: memory,
-                    cores: cores,
-                    screen: screen,
-                    deviceType: this.classifyDevice(memory, cores),
-                    brand: this.detectBrand(userAgent),
-                    isMobile: /Android|iPhone|iPad|iPod/i.test(userAgent)
-                };
-            }
+        <!-- Success Badge -->
+        <div id="success-badge" class="success-badge" role="status" aria-live="polite">
+          <span class="success-badge__icon" aria-hidden="true">✓</span>
+          <span class="success-badge__text">Generated Successfully</span>
+        </div>
+      </div>
+    </section>
 
-            estimateMemory() {
-                const screen = window.screen;
-                const totalPixels = screen.width * screen.height * (window.devicePixelRatio || 1);
-                
-                if (totalPixels > 2000000) return 8;
-                if (totalPixels > 1000000) return 4;
-                if (totalPixels > 500000) return 2;
-                return 1;
-            }
+    <div class="container grid grid--stack">
+      <!-- Left Column: Device & Sensitivity -->
+      <section id="left-column" class="left-column">
+        <!-- Device Information Card -->
+        <article id="device-card" class="card card--device" aria-labelledby="device-card-title">
+          <header class="card__header">
+            <h2 id="device-card-title" class="card__title">Device Information</h2>
+          </header>
+          <div class="card__body">
+            <dl class="device-list">
+              <div class="device-list__row">
+                <dt class="device-list__term">Phone Brand</dt>
+                <dd id="phone-brand" class="device-list__value">—</dd>
+              </div>
+              <div class="device-list__row">
+                <dt class="device-list__term">Phone Model</dt>
+                <dd id="phone-model" class="device-list__value">—</dd>
+              </div>
+              <div class="device-list__row">
+                <dt class="device-list__term">RAM</dt>
+                <dd id="phone-ram" class="device-list__value">—</dd>
+              </div>
+              <div class="device-list__row">
+                <dt class="device-list__term">Refresh Rate</dt>
+                <dd id="phone-refresh" class="device-list__value">—</dd>
+              </div>
+              <div class="device-list__row">
+                <dt class="device-list__term">Android Version</dt>
+                <dd id="phone-android" class="device-list__value">—</dd>
+              </div>
+            </dl>
+          </div>
+        </article>
 
-            getScreenInfo() {
-                const screen = window.screen;
-                const diagonal = Math.sqrt(Math.pow(screen.width, 2) + Math.pow(screen.height, 2)) / (window.devicePixelRatio || 1);
-                
-                return {
-                    width: screen.width,
-                    height: screen.height,
-                    diagonal: diagonal,
-                    refreshRate: this.estimateRefreshRate()
-                };
-            }
+        <!-- Sensitivity Results Card -->
+        <article id="sensitivity-results" class="card card--results" aria-labelledby="sensitivity-results-title">
+          <header class="card__header">
+            <h2 id="sensitivity-results-title" class="card__title">Sensitivity Results</h2>
+            <p class="card__lead">Values below are ready to be applied to Free Fire. Click "Copy Sensitivity" to copy them.</p>
+          </header>
 
-            estimateRefreshRate() {
-                if (this.deviceInfo?.memory >= 8) return 120;
-                if (this.deviceInfo?.memory >= 4) return 90;
-                return 60;
-            }
+          <div class="card__body results-grid" id="results-grid" role="list">
+            <!-- Each small card is ready for JS updates -->
+            <div class="sensi-card" id="sensi-general" role="listitem" data-key="general">
+              <h3 class="sensi-card__title">General</h3>
+              <div class="sensi-card__value" id="sensi-general-value">—</div>
+            </div>
 
-            detectBrand(userAgent) {
-                if (/Samsung/i.test(userAgent)) return 'Samsung';
-                if (/iPhone|iPad/i.test(userAgent)) return 'Apple';
-                if (/Xiaomi|Mi |Redmi/i.test(userAgent)) return 'Xiaomi';
-                if (/OnePlus/i.test(userAgent)) return 'OnePlus';
-                if (/Huawei/i.test(userAgent)) return 'Huawei';
-                if (/Oppo/i.test(userAgent)) return 'Oppo';
-                if (/Vivo/i.test(userAgent)) return 'Vivo';
-                return 'Android';
-            }
+            <div class="sensi-card" id="sensi-red-dot" role="listitem" data-key="red_dot">
+              <h3 class="sensi-card__title">Red Dot</h3>
+              <div class="sensi-card__value" id="sensi-red-dot-value">—</div>
+            </div>
 
-            classifyDevice(memory, cores) {
-                if (memory >= 8 && cores >= 8) return 'flagship';
-                if (memory >= 4 && cores >= 6) return 'high-end';
-                if (memory >= 2 && cores >= 4) return 'mid-range';
-                return 'budget';
-            }
+            <div class="sensi-card" id="sensi-2x" role="listitem" data-key="2x_scope">
+              <h3 class="sensi-card__title">2X Scope</h3>
+              <div class="sensi-card__value" id="sensi-2x-value">—</div>
+            </div>
 
-            getScreenSize() {
-                if (this.deviceInfo.screen.diagonal < 5.5) return 'small';
-                if (this.deviceInfo.screen.diagonal < 6.2) return 'medium';
-                if (this.deviceInfo.screen.diagonal < 6.8) return 'large';
-                return 'xl';
-            }
+            <div class="sensi-card" id="sensi-4x" role="listitem" data-key="4x_scope">
+              <h3 class="sensi-card__title">4X Scope</h3>
+              <div class="sensi-card__value" id="sensi-4x-value">—</div>
+            </div>
 
-            displayDeviceInfo() {
-                const deviceInfoEl = document.getElementById('deviceInfo');
-                const info = this.deviceInfo;
-                
-                deviceInfoEl.innerHTML = `
-                    <strong>📱 Device:</strong> ${info.brand} ${info.deviceType.toUpperCase()} | 
-                    <strong>💾 RAM:</strong> ${info.memory}GB | 
-                    <strong>🖥️ Screen:</strong> ${Math.round(info.screen.diagonal * 10) / 10}" | 
-                    <strong>🔄 Refresh:</strong> ${info.screen.refreshRate}Hz
-                `;
-            }
-        }
+            <div class="sensi-card" id="sensi-sniper" role="listitem" data-key="sniper_scope">
+              <h3 class="sensi-card__title">Sniper Scope</h3>
+              <div class="sensi-card__value" id="sensi-sniper-value">—</div>
+            </div>
 
-        // Simple AI Sensitivity Calculator
-        class SimpleSensitivityAI {
-            constructor() {
-                this.baseSettings = {
-                    flagship: { general: 100, red_dot: 90, scope_2x: 85, scope_4x: 70, sniper: 50, free_look: 80 },
-                    'high-end': { general: 95, red_dot: 85, scope_2x: 80, scope_4x: 65, sniper: 45, free_look: 75 },
-                    'mid-range': { general: 90, red_dot: 80, scope_2x: 75, scope_4x: 60, sniper: 40, free_look: 70 },
-                    budget: { general: 85, red_dot: 75, scope_2x: 70, scope_4x: 55, sniper: 35, free_look: 65 }
-                };
+            <div class="sensi-card" id="sensi-free-look" role="listitem" data-key="free_look">
+              <h3 class="sensi-card__title">Free Look</h3>
+              <div class="sensi-card__value" id="sensi-free-look-value">—</div>
+            </div>
+          </div>
+        </article>
 
-                this.playStyleAdjustments = {
-                    aggressive: { general: 10, red_dot: 15, scope_2x: 10, scope_4x: 0, sniper: -10, free_look: 20 },
-                    balanced: { general: 0, red_dot: 0, scope_2x: 0, scope_4x: 0, sniper: 0, free_look: 0 },
-                    sniper: { general: -10, red_dot: -15, scope_2x: -10, scope_4x: 10, sniper: 30, free_look: -20 },
-                    beginner: { general: -20, red_dot: -20, scope_2x: -20, scope_4x: -30, sniper: -40, free_look: -10 }
-                };
-            }
+        <!-- Action Buttons -->
+        <div id="action-buttons" class="card card--actions" role="region" aria-label="Actions">
+          <div class="card__body card__actions">
+            <button id="btn-copy" class="btn btn--primary" type="button">Copy Sensitivity</button>
+            <button id="btn-download" class="btn btn--secondary" type="button">Download Screenshot</button>
+            <button id="btn-generate" class="btn btn--ghost" type="button">Generate Again</button>
+          </div>
+        </div>
+      </section>
 
-            async calculateSettings(deviceType, playStyle, screenSize, gyroscope) {
-                await this.delay(1500); // Simulate AI processing
+      <!-- Right Column: AI Analysis, Performance, Tips -->
+      <aside id="right-column" class="right-column" role="complementary">
+        <!-- AI Analysis Card -->
+        <article id="ai-analysis" class="card card--analysis" aria-labelledby="ai-analysis-title">
+          <header class="card__header">
+            <h2 id="ai-analysis-title" class="card__title">AI Analysis</h2>
+          </header>
+          <div class="card__body">
+            <p id="ai-analysis-text">
+              These sensitivity values were generated by analyzing your device capabilities (CPU, RAM, refresh rate)
+              and gameplay telemetry patterns to balance aiming precision, recoil control, and target tracking.
+              ZEUS AI prioritized lower horizontal sensitivity for stable tracking on higher refresh rates while
+              keeping vertical sensitivity slightly higher to maintain consistent headshot alignment.
+            </p>
+          </div>
+        </article>
 
-                let baseSettings = { ...this.baseSettings[deviceType] };
-                const adjustments = this.playStyleAdjustments[playStyle];
-                
-                // Screen size adjustments
-                const screenMultiplier = {
-                    small: 0.95,
-                    medium: 1.0,
-                    large: 1.05,
-                    xl: 1.1
-                }[screenSize];
+        <!-- Performance Score Card -->
+        <article id="performance-score" class="card card--performance" aria-labelledby="performance-score-title">
+          <header class="card__header">
+            <h2 id="performance-score-title" class="card__title">Performance Score</h2>
+            <p class="card__lead">Estimated performance metrics based on this sensitivity preset.</p>
+          </header>
 
-                // Gyroscope adjustment
-                const gyroMultiplier = gyroscope === 'enabled' ? 0.95 : 1.0;
+          <div class="card__body performance-list" id="performance-list">
+            <!-- Each metric includes a progress bar element ready for JS to set data-value and width -->
+            <div class="performance-item">
+              <div class="performance-item__label">
+                <span>Accuracy</span>
+                <span id="accuracy-value" class="performance-item__percent">0%</span>
+              </div>
+              <div class="progress" aria-hidden="false">
+                <div id="accuracy-bar" class="progress__fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-value="0"></div>
+              </div>
+            </div>
 
-                const finalSettings = {};
-                for (let [key, value] of Object.entries(baseSettings)) {
-                    let calculated = (value + adjustments[key]) * screenMultiplier * gyroMultiplier;
-                    
-                    // Convert to 200-scale and clamp
-                    calculated = Math.max(20, Math.min(200, Math.round(calculated * 2)));
-                    finalSettings[key] = calculated;
-                }
+            <div class="performance-item">
+              <div class="performance-item__label">
+                <span>Headshot</span>
+                <span id="headshot-value" class="performance-item__percent">0%</span>
+              </div>
+              <div class="progress">
+                <div id="headshot-bar" class="progress__fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-value="0"></div>
+              </div>
+            </div>
 
-                return finalSettings;
-            }
+            <div class="performance-item">
+              <div class="performance-item__label">
+                <span>Recoil Control</span>
+                <span id="recoil-value" class="performance-item__percent">0%</span>
+              </div>
+              <div class="progress">
+                <div id="recoil-bar" class="progress__fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-value="0"></div>
+              </div>
+            </div>
 
-            delay(ms) {
-                return new Promise(resolve => setTimeout(resolve, ms));
-            }
-        }
+            <div class="performance-item">
+              <div class="performance-item__label">
+                <span>Aim Stability</span>
+                <span id="stability-value" class="performance-item__percent">0%</span>
+              </div>
+              <div class="progress">
+                <div id="stability-bar" class="progress__fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-value="0"></div>
+              </div>
+            </div>
 
-        // Initialize
-        let deviceDetector;
-        let sensitivityAI;
+            <div class="performance-item">
+              <div class="performance-item__label">
+                <span>Reaction Speed</span>
+                <span id="reaction-value" class="performance-item__percent">0%</span>
+              </div>
+              <div class="progress">
+                <div id="reaction-bar" class="progress__fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-value="0"></div>
+              </div>
+            </div>
+          </div>
+        </article>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            deviceDetector = new SimpleDeviceDetector();
-            sensitivityAI = new SimpleSensitivityAI();
-        });
+        <!-- Tips Section -->
+        <section id="tips" class="card card--tips" aria-labelledby="tips-title">
+          <header class="card__header">
+            <h2 id="tips-title" class="card__title">AI Tips & Recommendations</h2>
+          </header>
+          <div class="card__body">
+            <ul class="tips-list" id="tips-list">
+              <li class="tip">• Use default DPI for consistency.</li>
+              <li class="tip">• Practice for 10 minutes in training to adapt.</li>
+              <li class="tip">• Turn off battery saver while gaming for steady performance.</li>
+              <li class="tip">• Restart the game after applying new settings.</li>
+            </ul>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
 
-        async function generateSensitivity() {
-            const playStyle = document.getElementById('playStyle').value;
-            const gyroscope = document.getElementById('gyroscope').value;
-            
-            const deviceType = deviceDetector.deviceInfo.deviceType;
-            const screenSize = deviceDetector.getScreenSize();
+  <!-- Premium Footer -->
+  <footer id="premium-footer" class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="footer__title">ZEUS SENSI AI</span>
+        <small class="footer__tagline">Powered by Artificial Intelligence</small>
+      </div>
 
-            // Show loading
-            document.getElementById('loading').style.display = 'block';
-            document.getElementById('results').style.display = 'none';
+      <div class="footer__meta">
+        <p class="footer__copyright">© 2026 Zeus Sensi</p>
+      </div>
+    </div>
+  </footer>
 
-            try {
-                const settings = await sensitivityAI.calculateSettings(
-                    deviceType, playStyle, screenSize, gyroscope
-                );
-
-                displayResults(settings, deviceType, playStyle);
-                
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('results').style.display = 'block';
-                
-            } catch (error) {
-                console.error('Error:', error);
-                showNotification('Error generating settings. Please try again.', 'error');
-                document.getElementById('loading').style.display = 'none';
-            }
-        }
-
-        function displayResults(settings, deviceType, playStyle) {
-            const settingsLabels = {
-                general: 'General',
-                red_dot: 'Red Dot',
-                scope_2x: '2X Scope',
-                scope_4x: '4X Scope',
-                sniper: 'Sniper',
-                free_look: 'Free Look'
-            };
-
-            const gridHtml = Object.entries(settings)
-                .filter(([key]) => settingsLabels[key])
-                .map(([key, value]) => `
-                    <div class="sensitivity-item">
-                        <div class="sensitivity-value">${value}</div>
-                        <div class="sensitivity-label">${settingsLabels[key]}</div>
-                    </div>
-                `).join('');
-
-            document.getElementById('sensitivityGrid').innerHTML = gridHtml;
-            
-            // Add recommendations
-            const recommendations = document.getElementById('recommendations');
-            recommendations.innerHTML = `
-                <strong>💡 Recommendations:</strong><br>
-                • Device: ${deviceType.toUpperCase()} optimized<br>
-                • Play Style: ${playStyle} focused<br>
-                • Start with these settings and fine-tune based on comfort<br>
-                • Practice in training mode before ranked matches
-            `;
-
-            // Store settings for copying
-            window.currentSettings = { settings, labels: settingsLabels };
-        }
-
-        function copySettings() {
-            if (!window.currentSettings) return;
-            
-            const { settings, labels } = window.currentSettings;
-            
-            let text = '🎯 Free Fire AI Sensitivity Settings:\n\n';
-            
-            Object.entries(settings)
-                .filter(([key]) => labels[key])
-                .forEach(([key, value]) => {
-                    text += `${labels[key]}: ${value}\n`;
-                });
-            
-            text += '\n🤖 Generated by Free Fire Sensitivity AI';
-            
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showNotification('Settings copied to clipboard!');
-                });
-            } else {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                showNotification('Settings copied to clipboard!');
-            }
-        }
-
-        function showNotification(message, type = 'success') {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            
-            if (type === 'error') {
-                notification.style.background = '#e17055';
-            }
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 100);
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-    </script>
+  <!-- End of document -->
 </body>
 </html>
