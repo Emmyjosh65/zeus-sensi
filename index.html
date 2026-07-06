@@ -3,378 +3,216 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ZEUS SENSI AI — AI Free Fire Sensitivity Generator</title>
+  <title>ZEUS SENSI AI — Premium Auto-Headshot Dashboard</title>
 
-  <!-- External style and script (no inline CSS/JS per requirements) -->
+  <!-- External Styles and Scripts -->
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
+<body class="app">
 
-<!-- Include required access key in data attribute for script.js to enforce on the generator page -->
-<body id="site-body" class="site" data-required-access-key="2007">
-  <!-- Premium Navigation Bar -->
-  <header id="main-header" class="header" role="banner">
-    <div class="container header__inner">
-      <div class="brand" id="brand">
-        <a href="index.html" id="logo-link" class="brand__link" aria-label="ZEUS SENSI AI Home">
-          <img id="logo" class="brand__logo" src="logo.svg" alt="ZEUS SENSI AI logo">
-          <span class="brand__name">ZEUS SENSI AI</span>
-        </a>
+  <!-- ========================================== -->
+  <!-- GATEWAY 1: PRIVATE SECURITY KEY GATE      -->
+  <!-- ========================================== -->
+  <div id="key-gate" class="gate-container">
+    <div class="gate-card">
+      <div class="gate-badge">STEP 1 OF 2</div>
+      <h1 class="gate-title">ZEUS <span class="accent-text">SENSI XIT</span></h1>
+      <p class="gate-subtitle">Join the official channel to unlock your private access key.</p>
+      
+      <!-- Link your Telegram or YouTube channel here -->
+      <a href="https://t.me/your_telegram_channel" target="_blank" class="gate-btn gate-btn--telegram">
+        STEP 1: JOIN OFFICIAL CHANNEL 🚀
+      </a>
+
+      <div class="input-group">
+        <label for="access-key" class="input-label">STEP 2: ENTER ACCESS KEY</label>
+        <input type="password" id="access-key" placeholder="Type key here..." class="gate-input">
+        <a href="https://t.me/your_telegram_channel" target="_blank" class="key-hint">🔑 Get key from channel</a>
       </div>
 
-      <nav id="main-nav" class="nav" role="navigation" aria-label="Primary navigation">
-        <ul class="nav__list" id="nav-list">
-          <li class="nav__item"><a class="nav__link" href="index.html">Home</a></li>
-          <li class="nav__item"><a class="nav__link" href="#features">Features</a></li>
-          <li class="nav__item"><a class="nav__link" href="#faq">FAQ</a></li>
-          <li class="nav__item"><a class="nav__link" href="#contact">Contact</a></li>
-        </ul>
-
-        <div class="nav__cta">
-          <a id="start-now-nav" class="btn btn--glow" href="FF_SENSITIVITY.html" aria-label="Start Now — Navigate to Generator">Start Now</a>
-        </div>
-      </nav>
+      <button id="btn-verify-key" class="gate-btn gate-btn--primary">ACCESS HUB</button>
+      <div id="key-error" class="error-msg hidden">❌ Access Denied: Invalid Security Key!</div>
     </div>
-  </header>
+  </div>
 
-  <main id="main" class="main" role="main">
-    <!-- Hero Section -->
-    <section id="hero" class="hero" aria-labelledby="hero-title">
-      <div class="container hero__inner">
-        <div class="hero__content">
-          <h1 id="hero-title" class="hero__title">AI Free Fire Sensitivity Generator</h1>
-          <p id="hero-subtitle" class="hero__subtitle">
-            Generate the perfect Free Fire sensitivity for your phone using ZEUS AI technology.
-          </p>
-
-          <div class="hero__actions" id="hero-actions">
-            <a id="hero-start" class="btn btn--primary" href="FF_SENSITIVITY.html" role="button" aria-label="Start Now">
-              🚀 Start Now
-            </a>
-
-            <a id="hero-channel" class="btn btn--secondary" href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" rel="noopener" aria-label="Join Official Channel on WhatsApp">
-              📱 Join Official Channel
-            </a>
-          </div>
-        </div>
-
-        <div class="hero__visual" id="hero-visual" aria-hidden="true">
-          <!-- Placeholder for illustration/graphic; styled via style.css -->
-          <figure class="hero__art" id="hero-art">
-            <img src="hero-illustration.svg" alt="" aria-hidden="true">
-          </figure>
-        </div>
+  <!-- ========================================== -->
+  <!-- GATEWAY 2: VIRAL VERIFICATION LOCK        -->
+  <!-- ========================================== -->
+  <div id="share-gate" class="gate-container hidden">
+    <div class="gate-card">
+      <div class="live-counter">
+        <span class="pulse-dot"></span> 17,424 Free Fire configs initialized today
       </div>
-    </section>
+      <h1 class="gate-title">TARGET <span class="accent-text">SENSI</span></h1>
+      <p class="gate-subtitle">Premium Auto-Headshot Configuration Tool.</p>
 
-    <!-- Statistics / Counters -->
-    <section id="statistics" class="stats" aria-labelledby="stats-title">
-      <div class="container">
-        <h2 id="stats-title" class="section__title">Trusted by Gamers Worldwide</h2>
-
-        <ul class="stats__list" id="stats-list" role="list">
-          <li class="stat" id="stat-users">
-            <strong class="stat__number" data-target="500000">500,000+</strong>
-            <span class="stat__label">Users</span>
-          </li>
-
-          <li class="stat" id="stat-generated">
-            <strong class="stat__number" data-target="2000000">2,000,000+</strong>
-            <span class="stat__label">Sensitivities Generated</span>
-          </li>
-
-          <li class="stat" id="stat-satisfaction">
-            <strong class="stat__number" data-target="99.9">99.9%</strong>
-            <span class="stat__label">Satisfaction</span>
-          </li>
-
-          <li class="stat" id="stat-devices">
-            <strong class="stat__number" data-target="150">150+</strong>
-            <span class="stat__label">Supported Phones</span>
-          </li>
-        </ul>
+      <div class="input-group">
+        <label for="device-input" class="input-label">TARGET HARDWARE DEVICE</label>
+        <input type="text" id="device-input" placeholder="e.g., iPhone 14 Pro Max" class="gate-input">
       </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features" aria-labelledby="features-title">
-      <div class="container">
-        <h2 id="features-title" class="section__title">Features</h2>
+      <button id="btn-share-whatsapp" class="gate-btn gate-btn--share">
+        🚀 SHARE TO 5 WHATSAPP GROUPS TO UNLOCK
+      </button>
 
-        <div class="features__grid" id="features-grid" role="list">
-          <article class="feature-card" data-feature="ai-detection" role="listitem">
-            <h3 class="feature-card__title">AI Device Detection</h3>
-            <p class="feature-card__desc">Automatically detects your device capabilities for tailored sensitivity.</p>
-          </article>
-
-          <article class="feature-card" data-feature="smart-generator" role="listitem">
-            <h3 class="feature-card__title">Smart Sensitivity Generator</h3>
-            <p class="feature-card__desc">AI-driven presets optimized for accuracy and control.</p>
-          </article>
-
-          <article class="feature-card" data-feature="headshot-opt" role="listitem">
-            <h3 class="feature-card__title">Headshot Optimization</h3>
-            <p class="feature-card__desc">Settings tuned for consistent headshot alignment.</p>
-          </article>
-
-          <article class="feature-card" data-feature="performance-analysis" role="listitem">
-            <h3 class="feature-card__title">Device Performance Analysis</h3>
-            <p class="feature-card__desc">Assess RAM, CPU, and refresh rate to adapt sensitivities.</p>
-          </article>
-
-          <article class="feature-card" data-feature="hud-recommendation" role="listitem">
-            <h3 class="feature-card__title">HUD Recommendation</h3>
-            <p class="feature-card__desc">Suggested HUD layout to complement your sensitivity preset.</p>
-          </article>
-
-          <article class="feature-card" data-feature="dpi-optimization" role="listitem">
-            <h3 class="feature-card__title">DPI Optimization</h3>
-            <p class="feature-card__desc">Advice on ideal DPI for stability and precision.</p>
-          </article>
-
-          <article class="feature-card" data-feature="fast-generation" role="listitem">
-            <h3 class="feature-card__title">Fast Generation</h3>
-            <p class="feature-card__desc">Get personalized settings in seconds.</p>
-          </article>
-
-          <article class="feature-card" data-feature="free-updates" role="listitem">
-            <h3 class="feature-card__title">Free Updates</h3>
-            <p class="feature-card__desc">Ongoing improvements and fresh presets at no cost.</p>
-          </article>
+      <div class="progress-container">
+        <div class="progress-labels">
+          <span>Verification Status:</span>
+          <span id="share-count">0 / 5 Group Shares</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="share-progress-fill" class="progress-bar-fill"></div>
         </div>
       </div>
-    </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="how" aria-labelledby="how-title">
-      <div class="container">
-        <h2 id="how-title" class="section__title">How It Works</h2>
-
-        <ol class="how__steps" id="how-steps">
-          <li class="how__step" data-step="1">
-            <strong class="how__step-number">1</strong>
-            <div class="how__step-body">
-              <h3 class="how__step-title">Join Official Channel</h3>
-              <p class="how__step-desc">Join our official WhatsApp channel to receive updates and access instructions.</p>
-            </div>
-          </li>
-
-          <li class="how__step" data-step="2">
-            <strong class="how__step-number">2</strong>
-            <div class="how__step-body">
-              <h3 class="how__step-title">Enter Access Key</h3>
-              <p class="how__step-desc">When prompted on the generator page, enter the access key provided.</p>
-            </div>
-          </li>
-
-          <li class="how__step" data-step="3">
-            <strong class="how__step-number">3</strong>
-            <div class="how__step-body">
-              <h3 class="how__step-title">Access Key</h3>
-              <p class="how__step-desc">Access Key is <strong id="access-key">2007</strong>.</p>
-            </div>
-          </li>
-
-          <li class="how__step" data-step="4">
-            <strong class="how__step-number">4</strong>
-            <div class="how__step-body">
-              <h3 class="how__step-title">Choose Phone Brand</h3>
-            </div>
-          </li>
-
-          <li class="how__step" data-step="5">
-            <strong class="how__step-number">5</strong>
-            <div class="how__step-body">
-              <h3 class="how__step-title">Select Phone Model</h3>
-            </div>
-          </li>
-
-          <li class="how__step" data-step="6">
-            <strong class="how__step-number">6</strong>
-            <div class="how__step-body">
-              <h3 class="how__step-title">Generate AI Sensitivity</h3>
-            </div>
-          </li>
-
-          <li class="how__step" data-step="7">
-            <strong class="how__step-number">7</strong>
-            <div class="how__step-body">
-              <h3 class="how__step-title">Copy Your Settings</h3>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Reviews / Testimonials -->
-    <section id="reviews" class="reviews" aria-labelledby="reviews-title">
-      <div class="container">
-        <h2 id="reviews-title" class="section__title">What Players Say</h2>
-
-        <div class="reviews__grid" id="reviews-grid" role="list">
-          <article class="testimonial" data-id="t1" role="listitem">
-            <div class="testimonial__header">
-              <h3 class="testimonial__name">Alex</h3>
-              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-            <p class="testimonial__text">"Incredible presets — my headshot rate skyrocketed. ZEUS AI nails device tuning!"</p>
-          </article>
-
-          <article class="testimonial" data-id="t2" role="listitem">
-            <div class="testimonial__header">
-              <h3 class="testimonial__name">Maya</h3>
-              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-            <p class="testimonial__text">"Fast and reliable. The generator works seamlessly on my phone."</p>
-          </article>
-
-          <article class="testimonial" data-id="t3" role="listitem">
-            <div class="testimonial__header">
-              <h3 class="testimonial__name">Diego</h3>
-              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-            <p class="testimonial__text">"Love the headshot optimization — feels tuned just for me."</p>
-          </article>
-
-          <article class="testimonial" data-id="t4" role="listitem">
-            <div class="testimonial__header">
-              <h3 class="testimonial__name">Rina</h3>
-              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-            <p class="testimonial__text">"Great UX and very accurate results. Highly recommended."</p>
-          </article>
-
-          <article class="testimonial" data-id="t5" role="listitem">
-            <div class="testimonial__header">
-              <h3 class="testimonial__name">Jay</h3>
-              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-            <p class="testimonial__text">"Settings are easy to apply and noticeably improved my recoil control."</p>
-          </article>
-
-          <article class="testimonial" data-id="t6" role="listitem">
-            <div class="testimonial__header">
-              <h3 class="testimonial__name">Priya</h3>
-              <div class="testimonial__rating" aria-label="5 out of 5 stars">★★★★★</div>
-            </div>
-            <p class="testimonial__text">"A must-have tool for competitive players — simple and effective."</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Supported Devices -->
-    <section id="supported-devices" class="devices" aria-labelledby="devices-title">
-      <div class="container">
-        <h2 id="devices-title" class="section__title">Supported Devices</h2>
-
-        <ul class="devices__grid" id="devices-grid" role="list">
-          <li class="device-card">Samsung</li>
-          <li class="device-card">Tecno</li>
-          <li class="device-card">Infinix</li>
-          <li class="device-card">Redmi</li>
-          <li class="device-card">Xiaomi</li>
-          <li class="device-card">Oppo</li>
-          <li class="device-card">Vivo</li>
-          <li class="device-card">Huawei</li>
-          <li class="device-card">iPhone</li>
-          <li class="device-card">OnePlus</li>
-          <li class="device-card">Google Pixel</li>
-          <li class="device-card">Motorola</li>
-          <li class="device-card">Realme</li>
-          <li class="device-card">Nokia</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq" aria-labelledby="faq-title">
-      <div class="container">
-        <h2 id="faq-title" class="section__title">Frequently Asked Questions</h2>
-
-        <div class="faq__list" id="faq-list">
-          <article class="faq__item" id="faq-1">
-            <h3 class="faq__question">Is ZEUS SENSI free?</h3>
-            <div class="faq__answer" aria-hidden="false">
-              <p>ZEUS SENSI AI provides free sensitivity generation and basic features. Premium offerings may be available for advanced services.</p>
-            </div>
-          </article>
-
-          <article class="faq__item" id="faq-2">
-            <h3 class="faq__question">How accurate is the AI?</h3>
-            <div class="faq__answer" aria-hidden="false">
-              <p>Our AI analyzes device specs and gameplay patterns to deliver highly accurate sensitivity presets. Results may vary based on playstyle.</p>
-            </div>
-          </article>
-
-          <article class="faq__item" id="faq-3">
-            <h3 class="faq__question">Why do I need the access key?</h3>
-            <div class="faq__answer" aria-hidden="false">
-              <p>The access key (2007) is required to unlock the generator and ensure access control for the official channel members.</p>
-            </div>
-          </article>
-
-          <article class="faq__item" id="faq-4">
-            <h3 class="faq__question">How often are sensitivities updated?</h3>
-            <div class="faq__answer" aria-hidden="false">
-              <p>We continuously update presets as device profiles and game mechanics evolve; users receive free updates.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact / Call-to-Action -->
-    <section id="contact" class="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <h2 id="contact-title" class="section__title">Contact & Support</h2>
-
-        <div class="contact__grid">
-          <div class="contact__info">
-            <p class="contact__text">Owner: <strong id="owner-name">ZEUS</strong></p>
-            <p class="contact__text">Owner Number: <a href="tel:09066760078" id="owner-number">09066760078</a></p>
-            <p class="contact__text">Channel: <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" rel="noopener" id="channel-link">KYLLVERSE on WhatsApp</a></p>
-          </div>
-
-          <div class="contact__actions" id="contact-actions">
-            <a class="btn btn--whatsapp" id="whatsapp-support" href="https://wa.me/09066760078" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-              WhatsApp Support
-            </a>
-
-            <a class="btn btn--telegram" id="telegram-link" href="#" aria-label="Telegram Support">
-              Telegram
-            </a>
-
-            <a class="btn btn--github" id="github-link" href="#" aria-label="GitHub">
-              GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Premium Footer -->
-  <footer id="site-footer" class="footer" role="contentinfo">
-    <div class="container footer__inner">
-      <div class="footer__brand" id="footer-brand">
-        <span class="footer__name">ZEUS SENSI AI</span>
-        <span class="footer__tagline">Powered by ZEUS AI</span>
-      </div>
-
-      <div class="footer__links" id="footer-links">
-        <ul class="footer__social" id="footer-social">
-          <li><a id="footer-whatsapp" class="footer__social-link" href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" rel="noopener">WhatsApp Channel</a></li>
-          <li><a id="footer-telegram" class="footer__social-link" href="#">Telegram</a></li>
-          <li><a id="footer-github" class="footer__social-link" href="#">GitHub</a></li>
-        </ul>
-      </div>
-
-      <div class="footer__meta">
-        <p class="footer__owner">Owner: Zeus</p>
-        <p class="footer__copyright">© 2026 ZEUS SENSI AI</p>
+      <div class="support-links">
+        <a href="https://t.me/your_telegram_channel" target="_blank" class="support-btn btn-link-box">📢 Join Official Fearless Xit Channel</a>
+        <br>
+        <a href="https://t.me/your_telegram_channel" target="_blank" class="support-btn text-grey">💬 Contact Direct Mod Support</a>
       </div>
     </div>
-  </footer>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- THE ACTUAL PREMIUM DASHBOARD (LOCKED BY DEFAULT) -->
+  <!-- ========================================== -->
+  <div id="app-dashboard" class="hidden">
+    <!-- Premium Navigation Bar -->
+    <header id="premium-nav" class="nav" role="banner">
+      <div class="nav__inner container">
+        <div class="brand" id="brand">
+          <span class="brand__title">ZEUS <span class="accent-text">SENSI AI</span></span>
+        </div>
+        <nav class="nav__links" role="navigation" aria-label="Primary">
+          <span class="badge badge--ai" id="ai-badge">VVIP UNLOCKED</span>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="main" role="main">
+      <!-- Hero Section -->
+      <section id="hero" class="hero">
+        <div class="container hero__inner">
+          <h1 class="hero__title" id="hero-title">Your AI Sensitivity Is Ready</h1>
+          <p class="hero__subtitle" id="hero-subtitle">Optimized specifically for your device hardware using ZEUS Macro V4.</p>
+
+          <!-- Success Badge -->
+          <div id="success-badge" class="success-badge" role="status" aria-live="polite">
+            <span class="success-badge__icon" aria-hidden="true">✓</span>
+            <span class="success-badge__text">Generated Successfully</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="container grid grid--stack">
+        <!-- Left Column: Device & Sensitivity -->
+        <section id="left-column" class="left-column">
+          <!-- Device Information Card -->
+          <article id="device-card" class="card card--device" aria-labelledby="device-card-title">
+            <header class="card__header">
+              <h2 id="device-card-title" class="card__title">Device Profile Status</h2>
+            </header>
+            <div class="card__body">
+              <dl class="device-list">
+                <div class="device-list__row">
+                  <dt class="device-list__term">Analyzed Hardware Device</dt>
+                  <dd id="phone-model" class="device-list__value">—</dd>
+                </div>
+                <div class="device-list__row">
+                  <dt class="device-list__term">Macro Scripting Engine</dt>
+                  <dd class="device-list__value ready-text">ZEUS-V4 Active</dd>
+                </div>
+                <div class="device-list__row">
+                  <dt class="device-list__term">Bypass Layer</dt>
+                  <dd class="device-list__value safe-text">100% Safe (Anti-Ban)</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <!-- Sensitivity Results Card -->
+          <article id="sensitivity-results" class="card card--results" aria-labelledby="sensitivity-results-title">
+            <header class="card__header">
+              <h2 id="sensitivity-results-title" class="card__title">Sensitivity Results</h2>
+              <p class="card__lead">Apply these config numbers directly inside your Free Fire settings menu.</p>
+            </header>
+
+            <div class="card__body results-grid" id="results-grid" role="list">
+              <div class="sensi-card" id="sensi-general" role="listitem">
+                <h3 class="sensi-card__title">General</h3>
+                <div class="sensi-card__value" id="sensi-general-value">98</div>
+              </div>
+
+              <div class="sensi-card" id="sensi-red-dot" role="listitem">
+                <h3 class="sensi-card__title">Red Dot</h3>
+                <div class="sensi-card__value" id="sensi-red-dot-value">100</div>
+              </div>
+
+              <div class="sensi-card" id="sensi-2x" role="listitem">
+                <h3 class="sensi-card__title">2X Scope</h3>
+                <div class="sensi-card__value" id="sensi-2x-value">95</div>
+              </div>
+
+              <div class="sensi-card" id="sensi-4x" role="listitem">
+                <h3 class="sensi-card__title">4X Scope</h3>
+                <div class="sensi-card__value" id="sensi-4x-value">100</div>
+              </div>
+
+              <div class="sensi-card" id="sensi-sniper" role="listitem">
+                <h3 class="sensi-card__title">Sniper Scope</h3>
+                <div class="sensi-card__value" id="sensi-sniper-value">52</div>
+              </div>
+
+              <div class="sensi-card" id="sensi-free-look" role="listitem">
+                <h3 class="sensi-card__title">Recommended DPI</h3>
+                <div class="sensi-card__value" id="sensi-free-look-value">580</div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Action Buttons -->
+          <div id="action-buttons" class="card card--actions" role="region" aria-label="Actions">
+            <div class="card__body card__actions">
+              <button id="btn-copy" class="btn btn--primary" type="button">Copy & Sync to Game</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Column: AI Analysis, Performance -->
+        <aside id="right-column" class="right-column" role="complementary">
+          <!-- Performance Score Card -->
+          <article id="performance-score" class="card card--performance" aria-labelledby="performance-score-title">
+            <header class="card__header">
+              <h2 id="performance-score-title" class="card__title">Performance Calibration</h2>
+            </header>
+
+            <div class="card__body performance-list" id="performance-list">
+              <div class="performance-item">
+                <div class="performance-item__label">
+                  <span>Auto-Headshot Accuracy</span>
+                  <span class="performance-item__percent">99.2%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress__fill" style="width: 99.2%"></div>
+                </div>
+              </div>
+
+              <div class="performance-item">
+                <div class="performance-item__label">
+                  <span>Recoil Stabilization</span>
+                  <span class="performance-item__percent">96.5%</span>
+                </div>
+                <div class="progress">
+                  <div class="progress__fill" style="width: 96.5%"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </aside>
+      </div>
+    </main>
+  </div>
+
 </body>
 </html>
