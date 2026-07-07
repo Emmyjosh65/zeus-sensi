@@ -1,156 +1,352 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ZEUS MAINFRAME // Quantum AI Sensitivity Engine</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEUS SENSI AI — Premium Free Fire Precision Frame</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="script.js"></script>
 </head>
-<body class="cyber-grid">
+<body class="gaming-terminal">
 
-  <!-- Background Quantum Matrix Stream Matrix -->
-  <canvas id="matrix-bg"></canvas>
+  <!-- Background Particle Network & Audio Hooks -->
+  <div class="glow-backdrop"></div>
+  <canvas id="ambient-particles"></canvas>
 
-  <div class="global-wrapper container">
-    
-    <!-- PHASE 1: CRYPTOGRAPHIC PASSCODE GATE -->
-    <section id="key-gate" class="terminal-card animate-fade-in">
-      <div class="status-ribbon">SECURITY PROTOCOL 01</div>
-      <h1 class="terminal-title">ZEUS <span class="neon-glow">SYSTEMS</span></h1>
-      <p class="terminal-description">Establishing connection to database mainframe. Authorization token required from official updates network.</p>
+  <!-- FLOATING SUPPORT INTERFACE -->
+  <a href="https://wa.me/2349066760078" target="_blank" class="floating-operator" title="Contact System Operator">
+    <span class="operator-pulse"></span>
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 1.977 14.069.953 11.993.953c-5.437 0-9.863 4.371-9.868 9.802-.001 1.814.485 3.591 1.411 5.163l-.99 3.61 3.733-.974zm11.367-4.174c-.302-.151-1.791-.883-2.068-.984-.278-.101-.481-.151-.682.151-.201.303-.777 1.009-.953 1.21-.177.203-.354.228-.656.077-.302-.151-1.274-.469-2.427-1.496-.897-.801-1.503-1.792-1.68-2.094-.177-.302-.019-.465.133-.615.136-.135.302-.353.454-.529.152-.177.202-.278.303-.463.101-.185.051-.349-.026-.501-.076-.151-.682-1.644-.934-2.253-.247-.594-.499-.513-.682-.523-.176-.01-.379-.011-.582-.011-.202 0-.531.076-.81.379-.278.303-1.062 1.036-1.062 2.529 0 1.493 1.087 2.932 1.238 3.134.152.203 2.14 3.267 5.184 4.578.724.312 1.29.499 1.732.64.727.231 1.388.199 1.911.121.583-.087 1.791-.732 2.043-1.439.253-.707.253-1.314.177-1.44zm-.507-.267z"/></svg>
+  </a>
+
+  <!-- TOP FRAME NAVIGATION -->
+  <header class="terminal-nav">
+    <div class="nav-container">
+      <div class="brand-engine">
+        <span class="logo-text">ZEUS <span class="accent-orange">SENSI AI</span></span>
+        <span class="pulse-node"></span>
+        <span class="telemetry-counter" id="live-users">⚡ 1,420 UNITS ACTIVE</span>
+      </div>
+      <div class="nav-utilities">
+        <button id="lucky-spin-trigger" class="utility-btn">🎰 MATRIX SPIN</button>
+        <span class="badge-system">v4.02 // CORE</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- LANDING HUB & PRIMARY INTERFACE WRAPPER -->
+  <main class="viewport-container">
+
+    <!-- HERO PROFILE DISPLAY -->
+    <section id="hero-landing" class="panel-row hero-billboard">
+      <div class="billboard-glitch-layer">
+        <h1 class="hero-header-text">HYPER-DYNAMICS <br><span class="gradient-text">TARGET INTERFACE</span></h1>
+        <p class="hero-subheader">Calibrate predictive screen register sensitivities natively configured against standard component databases.</p>
+      </div>
+
+      <div class="action-dock">
+        <button id="btn-scroll-start" class="prime-btn orange-glow">INITIALIZE CALIBRATION SYSTEM</button>
+        <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" class="prime-btn cyan-outline">JOIN OPERATOR BROADCAST</a>
+      </div>
+
+      <!-- CORE STATISTICS TRACKER -->
+      <div class="stat-deck">
+        <div class="stat-node"><h5>99.4%</h5><p>HEADSHOT RATIO</p></div>
+        <div class="stat-node"><h5>0.02ms</h5><p>RESPONSE DELAY</p></div>
+        <div class="stat-node"><h5>424.9K</h5><p>COMPILED ARCHIVES</p></div>
+      </div>
+    </section>
+
+    <!-- MANDATORY CHANNEL DEPLOYMENT MATRIX -->
+    <section id="channel-verification" class="panel-card-base text-center">
+      <div class="panel-header-ribbon">AUTHENTICATION CHANNEL GATE</div>
+      <h3>REQUIRED ENGINE BROADCAST LINK</h3>
+      <p class="text-muted text-small mar-b-20">Synchronize client instance with the main broadcast frequency to preserve server validation tokens.</p>
       
-      <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" class="cyber-btn btn--cyan-glow">
-        <span class="btn-matrix-text">SECURE TELEGRAM OVERLAY FEED</span>
-      </a>
-
-      <div class="control-box">
-        <label for="access-key" class="control-label">CRYPTOGRAPHIC ACCESS PASSCODE</label>
-        <input type="password" id="access-key" placeholder="••••" class="cyber-input" autocomplete="off">
-        <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" class="sub-link">⚡ Decode security keys from broadcast channel</a>
+      <div class="channel-action-box">
+        <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" id="btn-join-channel" target="_blank" class="action-anchor-btn">
+          📢 LINK WHATSAPP NETWORK BROADCAST
+        </a>
+        <div id="channel-success-node" class="success-banner hidden">✓ Mainframe Validation Tokens Cached Successfully</div>
       </div>
 
-      <button id="btn-verify-key" class="cyber-btn btn--orange-glow">INITIALIZE MAINFRAME ACCESS</button>
-      <div id="key-error" class="terminal-alert hidden">⚡ STATUS_ACCESS_DENIED: PARSING INVALID TOKEN SIGNATURE</div>
+      <ul class="benefit-list text-left mar-t-20">
+        <li>⚡ Automated access key cycling parameters.</li>
+        <li>⚡ Daily diagnostic hotfixes and macro updates.</li>
+        <li>⚡ Live developer preset payloads.</li>
+      </ul>
     </section>
 
-    <!-- PHASE 2: ALGORITHMIC HARDWARE PROFILER & VIRAL LOCK -->
-    <section id="share-gate" class="terminal-card hidden animate-fade-in">
-      <div class="live-telemetry">
-        <span class="scanner-laser"></span> 
-        <span class="pulse-node"></span> SECURE MATRIX: <span class="counter-val">24,812</span> PARAMS SYNCED TODAY
-      </div>
-      <h1 class="terminal-title">HARDWARE <span class="neon-glow">CALIBRATION</span></h1>
-      <p class="terminal-description">Input device parameters to compile custom hardware registers and clear global validation buffers.</p>
+    <!-- SECURE HARDWARE ACCESS LOG LOCK -->
+    <section id="security-pass-lock" class="panel-card-base">
+      <div class="panel-header-ribbon bg-orange">SECURITY DEPLOYMENT GATEWAY</div>
+      <h3>MAINFRAME AUTHTOKEN REQUIREMENT</h3>
+      <p class="text-muted text-small mar-b-20">Provide the unencrypted security code received from the channel update feed.</p>
 
-      <div class="control-box">
-        <label for="device-input" class="control-label">TARGET SMARTPHONE SIGNATURE MODEL</label>
-        <input type="text" id="device-input" placeholder="e.g., INFINIX HOT 40 PRO, IPHONE 15" class="cyber-input">
+      <div class="input-terminal-group">
+        <label class="terminal-label">ENCRYPTED SECURITY PHRASE</label>
+        <input type="password" id="input-pass-key" placeholder="••••" class="terminal-field" maxlength="4">
+        <span id="pass-error-terminal" class="error-inline-msg hidden">❌ PARSING_ERROR: VALIDATION SIGNATURE MISMATCH</span>
       </div>
 
-      <button id="btn-share-whatsapp" class="cyber-btn btn--green-glow">
-        DISTRIBUTE SYNC STRINGS TO 5 WHATSAPP GROUPS
-      </button>
+      <button id="btn-submit-pass" class="prime-btn width-100 orange-glow">VERIFY TERMINAL IDENTITY</button>
+    </section>
 
-      <div class="progress-pod">
-        <div class="progress-metrics">
-          <span class="label-tech">BUFFER STABILIZATION PROGRESS</span>
-          <span id="share-count" class="metric-val">0 / 5 REGISTERS LINKED</span>
+    <!-- DYNAMIC CORE SENSITIVITY CALCULATOR FRAME -->
+    <section id="ai-generator-module" class="panel-card-base hidden">
+      <div class="panel-header-ribbon bg-gold">AI PREDICTIVE MATRIX INTERFACE</div>
+      <h3 class="mar-b-20">DEVICE REGISTER CALIBRATION</h3>
+
+      <form id="generator-form" class="telemetry-grid-form">
+        <div class="form-control-node">
+          <label>PHONE HARDWARE BRAND</label>
+          <select id="dev-brand" required class="terminal-field"></select>
         </div>
-        <div class="bar-track">
-          <div id="share-progress-fill" class="bar-fill"></div>
+        <div class="form-control-node">
+          <label>PHONE HARDWARE MODEL</label>
+          <select id="dev-model" required class="terminal-field" disabled><option value="">SELECT BRAND FIRST</option></select>
         </div>
-      </div>
+        <div class="form-control-node">
+          <label>INSTALLED VOLATILE RAM</label>
+          <select id="dev-ram" required class="terminal-field">
+            <option value="2">2 GB SYSTEM LAYER</option>
+            <option value="4">4 GB SYSTEM LAYER</option>
+            <option value="6">6 GB MIDPOINT ENGINE</option>
+            <option value="8" selected>8 GB PREMIUM ENGINE</option>
+            <option value="12">12 GB+ OVERCLOCK CAPACITY</option>
+          </select>
+        </div>
+        <div class="form-control-node">
+          <label>OPERATING SYSTEM ARCHITECTURE</label>
+          <select id="dev-os" required class="terminal-field">
+            <option value="11">ANDROID SYSTEM CORE 11</option>
+            <option value="12">ANDROID SYSTEM CORE 12</option>
+            <option value="13">ANDROID SYSTEM CORE 13</option>
+            <option value="14" selected>ANDROID SYSTEM CORE 14</option>
+            <option value="15">ANDROID SYSTEM CORE 15</option>
+            <option value="ios">APPLE IOS SUBSYSTEM EXECUTABLE</option>
+          </select>
+        </div>
+        <div class="form-control-node">
+          <label>HARDWARE DISPLAY REFRESH RATE</label>
+          <select id="dev-refresh" required class="terminal-field">
+            <option value="60">60 Hz STANDARD REGISTER</option>
+            <option value="90" selected>90 Hz FLUID DRIFT</option>
+            <option value="120">120 Hz HYPER IMPULSE</option>
+            <option value="144">144 Hz ULTRA TERMINAL</option>
+            <option value="165">165 Hz MAXIMUM HARDWARE SPEED</option>
+          </select>
+        </div>
+        <div class="form-control-node">
+          <label>COMBAT POSITIONING STYLE</label>
+          <select id="dev-style" required class="terminal-field">
+            <option value="rusher">CLOSE RANGE ASSAULT (RUSHER)</option>
+            <option value="one_tap" selected>ONE TAP HEADSHOT PRECISION</option>
+            <option value="sniper">LONG RANGE TELEMETRY (SNIPER)</option>
+            <option value="balanced">VERSATILE TACTICAL HYBRID</option>
+          </select>
+        </div>
+        <div class="form-control-node">
+          <label>GRAPHICS FRAMEBUFFER PREFERENCE</label>
+          <select id="dev-graphics" required class="terminal-field">
+            <option value="smooth">SMOOTH RENDERING LAYER</option>
+            <option value="standard">STANDARD BALANCED LAYER</option>
+            <option value="ultra" selected>ULTRA HIGH RENDERING BUFFER</option>
+            <option value="max">MAXIMUM TEXTURE ARCHITECTURE</option>
+          </select>
+        </div>
+        <div class="form-control-node">
+          <label>TARGET FRAME TARGETS (FPS)</label>
+          <select id="dev-fps" required class="terminal-field">
+            <option value="30">30 FPS RESTRICTED DECK</option>
+            <option value="60" selected>60 FPS STABLE OVERLAY</option>
+            <option value="90">90 FPS HIGH FRAME RATIO</option>
+            <option value="120">120 FPS FLUID HYPERFRAME</option>
+          </select>
+        </div>
+        <div class="form-control-node full-width-node">
+          <label>INTELLIGENT TOUCH SPEED INTERPOLATOR</label>
+          <select id="dev-touch" required class="terminal-field">
+            <option value="1.0">1.0x HARDWARE LINEAR INTERFACE</option>
+            <option value="1.5">1.5x ENHANCED TOUCH BUFFER</option>
+            <option value="2.0" selected>2.0x ZEUS SPEED CONFIG OVERLAY</option>
+            <option value="max">MAXIMUM ACCELERATION OVERRIDE</option>
+          </select>
+        </div>
 
-      <div class="terminal-footer-links">
-        <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" class="terminal-link-box">📡 MAIN FREQUENCY: ZEUS FAMILY CHANNEL</a>
-        <br>
-        <a href="https://wa.me/2349066760078" target="_blank" class="direct-contact-text">SECURE TERMINAL OPERATOR / ZEUS DIRECT</a>
+        <button type="button" id="btn-trigger-generation" class="prime-btn full-width-node gold-glow mar-t-10">
+          COMPILE CUSTOM HARDWARE COMPONENT MATRIX
+        </button>
+      </form>
+
+      <!-- SIMULATED AI COMPILATION TRACKER -->
+      <div id="ai-loading-panel" class="hidden mar-t-20 text-center">
+        <div class="ai-thinking-core"></div>
+        <div class="loading-bar-shell"><div id="loading-bar-fill-node" class="loading-bar-fill"></div></div>
+        <p id="loading-terminal-text" class="text-glow-cyan mar-t-10 text-small">SCANNING CURRENT BUS MATRIX CHANNELS...</p>
       </div>
     </section>
 
-    <!-- PHASE 3: THE HIGH-TIER TACTICAL SENSITIVITY INTERFACE -->
-    <div id="app-dashboard" class="hidden animate-fade-in">
-      <header class="tactical-header">
-        <div class="logo-cluster">
-          <span class="logo-main">ZEUS <span class="neon-glow">SENSI AI</span></span>
+    <!-- LIVE COMPILED OUTPUT DASHBOARD -->
+    <div id="results-display-dashboard" class="hidden animate-reveal-frame">
+      <section class="panel-card-base">
+        <div class="panel-header-ribbon bg-green">CALIBRATION REGISTER MATRIX PROFILES</div>
+        
+        <div class="summary-hero-box mar-b-20">
+          <h4 id="out-target-device">UNKNOWN HARDWARE LAYER</h4>
+          <p id="out-ai-rationale" class="text-muted text-small mar-t-5"></p>
         </div>
-        <span class="badge-status-vvip">QUANTUM VVIP SECURED</span>
-      </header>
 
-      <main class="dashboard-grid">
-        <section class="hero-billboard">
-          <h1 class="billboard-title">PROFILES COMPILED</h1>
-          <p class="billboard-subtitle">Memory arrays mapped seamlessly. Anti-ban bypass script injection initialized inside the global execution memory block.</p>
-          <div class="telemetry-pill">
-            <span class="check-mark">✓</span> <span>TARGET REGEDIT SUBSYSTEM RUNNING OPTIMAL</span>
-          </div>
-        </section>
-
-        <!-- TELEMETRY BLOCK 1: HARDWARE PROFILES -->
-        <article class="data-pod">
-          <h2 class="pod-title">HARDWARE CALIBRATION TELEMETRY</h2>
-          <div class="hardware-table">
-            <div class="table-row">
-              <span class="table-label">IDENTIFIED TELEMETRY LAYER</span>
-              <span id="phone-model" class="table-value text-glow-cyan">—</span>
-            </div>
-            <div class="table-row">
-              <span class="table-label">COMPILATION ARCHITECTURE</span>
-              <span class="table-value text-glow-orange">ZEUS-V4 REGEDIT CORE</span>
-            </div>
-            <div class="table-row">
-              <span class="table-label">ANTI-CHEAT DETECTION PROTECTION</span>
-              <span class="table-value text-glow-green">100% BYPASS INTEGRATED</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- TELEMETRY BLOCK 2: THE TARGET MATRICES -->
-        <article class="data-pod">
-          <h2 class="pod-title">TACTICAL AIM-ASSIST SENSITIVITY ARRAYS</h2>
-          <p class="pod-desc">Manually configure the following internal register configurations inside your Free Fire client UI settings panel.</p>
-
-          <div class="sensi-matrix-grid">
-            <div class="matrix-cell">
-              <span class="cell-label">GENERAL LAYER</span>
-              <div class="cell-value" id="sensi-general-value">—</div>
-            </div>
-            <div class="matrix-cell">
-              <span class="cell-label">RED DOT AIM</span>
-              <div class="cell-value" id="sensi-red-dot-value">—</div>
-            </div>
-            <div class="matrix-cell">
-              <span class="cell-label">2X RANGE OPTICAL</span>
-              <div class="cell-value" id="sensi-2x-value">—</div>
-            </div>
-            <div class="matrix-cell">
-              <span class="cell-label">4X RANGE OPTICAL</span>
-              <div class="cell-value" id="sensi-4x-value">—</div>
-            </div>
-            <div class="matrix-cell">
-              <span class="cell-label">SNIPER REGISTRY</span>
-              <div class="cell-value" id="sensi-sniper-value">—</div>
-            </div>
-            <div class="matrix-cell">
-              <span class="cell-label">RECOMMENDED DPI REGISTER</span>
-              <div class="cell-value" id="sensi-free-look-value">—</div>
-            </div>
-          </div>
-        </article>
-
-        <!-- SYSTEM ACTIONS -->
-        <div class="action-block">
-          <button id="btn-copy" class="cyber-btn btn--orange-glow">COMPILED PATCH CONFIG SYSTEM SYNC</button>
+        <!-- CORE CALIBRATION MATRIX VALUE MATRIX -->
+        <div class="sensi-output-grid mar-b-20">
+          <div class="sensi-data-node"><span class="node-label">GENERAL LAYER</span><div class="node-val" id="val-general">—</div></div>
+          <div class="sensi-data-node"><span class="node-label">RED DOT AIM</span><div class="node-val" id="val-red-dot">—</div></div>
+          <div class="sensi-data-node"><span class="node-label">2X RANGE OPTICAL</span><div class="node-val" id="val-2x">—</div></div>
+          <div class="sensi-data-node"><span class="node-label">4X RANGE OPTICAL</span><div class="node-val" id="val-4x">—</div></div>
+          <div class="sensi-data-node"><span class="node-label">AWM SNIPER CORE</span><div class="node-val" id="val-awm">—</div></div>
+          <div class="sensi-data-node"><span class="node-label">FREE LOOK REGISTER</span><div class="node-val" id="val-free-look">—</div></div>
+          <div class="sensi-data-node"><span class="node-label">RECOMMENDED DPI</span><div class="node-val" id="val-dpi">—</div></div>
+          <div class="sensi-data-node"><span class="node-label">FIRE BUTTON SIZE</span><div class="node-val" id="val-hud">—</div></div>
         </div>
-      </main>
 
-      <footer class="system-footer">
-        <p>SYSTEM REVISION: V4.02 // DISTRIBUTED SOLELY BY MASTER MODERATOR ZEUS</p>
-      </footer>
+        <!-- TELEMETRY PERFORMANCE BARS -->
+        <div class="telemetry-bars-group mar-b-20">
+          <div class="bar-row"><span class="bar-lbl">GRAPHICS LEVEL OVERLAY</span><span id="val-graphics" class="bar-metric">—</span></div>
+          <div class="bar-row"><span class="bar-lbl">AIM LOCK PRECISION METRIC</span><span id="val-precision" class="bar-metric">—</span></div>
+          <div class="bar-row"><span class="bar-lbl">EXPECTED HEADSHOT ACCURACY</span><span id="val-accuracy" class="bar-metric">—</span></div>
+          <div class="bar-row"><span class="bar-lbl">RECOIL COEFFICIENT DEFLECTION</span><span id="val-recoil" class="bar-metric">—</span></div>
+          <div class="bar-row"><span class="bar-lbl">REACTION LATENCY OFFSET</span><span id="val-reaction" class="bar-metric">—</span></div>
+          <div class="bar-row"><span class="bar-lbl">TOUCH COMPONENT RESPONSE SPEED</span><span id="val-touch" class="bar-metric">—</span></div>
+        </div>
+
+        <!-- METRIC SCORE BOX PILLS -->
+        <div class="pill-deck-metrics mar-b-20">
+          <div class="pill-metric-node"><p>PERFORMANCE RATIO</p><h4 id="val-perf-score">—</h4></div>
+          <div class="pill-metric-node"><p>GAMING RANKING</p><h4 id="val-gaming-rating">—</h4></div>
+          <div class="pill-metric-node"><p>AI CORE CONFIDENCE</p><h4 id="val-confidence">—</h4></div>
+          <div class="pill-metric-node"><p>OPTIMIZATION RATIO</p><h4 id="val-opt-score">—</h4></div>
+        </div>
+
+        <div class="dashboard-controls-dock">
+          <button id="btn-copy-sensi" class="prime-btn orange-glow">COPY ALL VALS</button>
+          <button id="btn-share-result" class="prime-btn cyan-outline">SHARE INTERFACE RESULT</button>
+          <button id="btn-bookmark-sensi" class="prime-btn text-small">🔖 BOOKMARK PRESYNC</button>
+          <button id="btn-generate-again" class="prime-btn width-100 mar-t-10">RECOMPILE BUFFER MODEL</button>
+        </div>
+      </section>
     </div>
 
+    <!-- UTILITY LOG BOOK RECENT TELEMETRY HUB -->
+    <section class="panel-card-base">
+      <div class="panel-header-ribbon">RECENT NETWORK REGISTRY ACTIVITY</div>
+      <div class="activity-scroll-shell" id="recent-activity-container"></div>
+    </section>
+
+    <!-- CONTENT DATA GRID MODULES -->
+    <section class="content-data-twin-grid">
+      <article class="panel-card-base">
+        <h4>TRENDING CALIBRATION SIGNATURES</h4>
+        <ul class="clean-bullet-deck" id="trending-devices-deck"></ul>
+      </article>
+
+      <article class="panel-card-base">
+        <h4>POPULAR CALIBRATION PROFILES</h4>
+        <ul class="clean-bullet-deck" id="popular-devices-deck"></ul>
+      </article>
+    </section>
+
+    <!-- ARCHIVE AND TIP SUBPANELS -->
+    <section class="panel-card-base">
+      <div class="panel-header-ribbon bg-orange">TACTICAL DECK INFRASTRUCTURE</div>
+      <h3 class="mar-b-20">COMBAT MANUALS & CORE REVISIONS</h3>
+      
+      <div class="tabs-control-bar">
+        <button class="tab-trigger active" data-tab="news">SYSTEM PATCH UPDATES</button>
+        <button class="tab-trigger" data-tab="tips">PRO HEADSHOT GUIDES</button>
+        <button class="tab-trigger" data-tab="opt">DEVICE OPTIMIZATION</button>
+      </div>
+
+      <div class="tab-content-viewport mar-t-20">
+        <div class="tab-viewactive" id="tab-news">
+          <h5>Free Fire OB Update Matrix Optimization</h5>
+          <p class="text-muted text-small mar-t-5">The weapon balance system directly alters target tracking velocities. This version uses tailored calibration maps to balance automatic weapon vertical bloom offsets.</p>
+        </div>
+        <div class="tab-viewpane hidden" id="tab-tips">
+          <h5>The Drag Shot Vector Formula</h5>
+          <p class="text-muted text-small mar-t-5">Match your weapon lift rate precisely to target distance layout profiles. Use light vertical adjustments for linear distance targets, and crisp acceleration snaps for short-range combat encounters.</p>
+        </div>
+        <div class="tab-viewpane hidden" id="tab-opt">
+          <h5>Clean Hardware Memory Frame Buffers</h5>
+          <p class="text-muted text-small mar-t-5">Force disable hardware rendering layers within your platform configuration settings. Keep your runtime memory limits strictly monitored to protect against pointer precision drops during high-intensity frame rendering operations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED SYSTEM PARAMS -->
+    <section class="panel-card-base">
+      <h3 class="mar-b-20 text-center">SYSTEM RECONCILIATION FAQ</h3>
+      <div class="faq-accordion-group">
+        <div class="faq-node">
+          <div class="faq-query">How long do system authorization tokens remain active?</div>
+          <div class="faq-response hidden">Security validation phrases reset every 24 hours to prevent scraping scripts. Check your synchronized community link to get updated values.</div>
+        </div>
+        <div class="faq-node mar-t-10">
+          <div class="faq-query">Will changing deep framework DPI settings void default device safety arrays?</div>
+          <div class="faq-response hidden">No. The internal profiles stay safely within the boundaries of consumer touch hardware to protect against screen register lockups.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEEDBACK VERIFICATION LAYERS -->
+    <section class="panel-card-base">
+      <h3 class="mar-b-20 text-center">VERIFIED OPERATOR INTERFACE REVIEWS</h3>
+      <div class="reviews-cluster-deck">
+        <div class="review-pill">
+          <div class="review-user">@Viper_FF_Xit <span class="badge-star">⭐⭐⭐⭐⭐</span></div>
+          <p class="text-small text-muted">"The Infinix calculation settings resolved my screen register tracking drops. Consistent red damage values across multiple matches."</p>
+        </div>
+        <div class="review-pill mar-t-15">
+          <div class="review-user">@Rogue_One <span class="badge-star">⭐⭐⭐⭐⭐</span></div>
+          <p class="text-small text-muted">"The iPhone 15 baseline option matches my exact panel target tracking model. Zero acceleration drift."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- USER LOCAL STORAGE BOOKMARKS DECK -->
+    <section class="panel-card-base">
+      <h4>SAVED FAVORITE CALIBRATION REGISTERS</h4>
+      <div id="favorites-storage-deck" class="mar-t-10 text-small text-muted">No custom profiles bookmarked in current session.</div>
+    </section>
+
+    <!-- SEARCH HISTORY -->
+    <section class="panel-card-base">
+      <h4>LOCAL SESSION SEARCH REGISTRY LOG</h4>
+      <div id="search-history-deck" class="mar-t-10 text-small text-muted">Session buffer clear.</div>
+    </section>
+
+  </main>
+
+  <!-- MATRIX SPIN MODAL INTERFACE overlay -->
+  <div id="lucky-spin-modal" class="modal-backdrop hidden">
+    <div class="modal-panel-card">
+      <h4>TACTICAL SUPPLY DROP WHEEL</h4>
+      <p class="text-small text-muted mar-b-20">Test configuration matrix values for special temporary runtime profiles.</p>
+      <div class="wheel-shell-box"><div id="wheel-turntable-core" class="wheel-core">🎰</div></div>
+      <button id="btn-spin-wheel" class="prime-btn orange-glow mar-t-20 width-100">RUN MATRIX SHUFFLE</button>
+      <button id="btn-close-wheel" class="prime-btn cyan-outline mar-t-10 width-100">DISCONNECT DECK</button>
+    </div>
   </div>
+
+  <!-- APPLICATION COMPONENT FOOTER STRUCTURE -->
+  <footer class="terminal-footer">
+    <div class="footer-container">
+      <h4>ZEUS SENSI AI</h4>
+      <p class="tech-sub-text">High-fidelity predictive target calculations engineered natively for Android and iOS devices.</p>
+      <p class="tech-sub-text mar-t-10"><strong>Owner Profile:</strong> Zeus // <strong>Mainframe Infrastructure Support:</strong> +2349066760078</p>
+      <p class="tech-sub-text"><strong>Broadcast Link Node:</strong> <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" class="accent-orange">ZEUS FAMILY Channel</a></p>
+      <div class="copyright-row">Copyright © 2026 ZEUS SENSI AI. Powered and Maintained by ZEUS AI Core Devs. All Rights Preserved.</div>
+    </div>
+  </footer>
 
 </body>
 </html>
