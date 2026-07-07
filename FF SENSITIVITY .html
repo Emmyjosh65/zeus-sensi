@@ -1,3 +1,672 @@
-<!DOCTYPE html><html><head><title>Result | ZEUS V5</title><link rel="stylesheet" href="style.css"></head>
-<body><div class="glass" style="margin:40px;padding:40px"><h1>Download Result</h1><div id="res"></div></div>
-<script>document.getElementById('res').innerHTML = localStorage.getItem('lastResult')</script></body></html>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ZEUS SENSI AI v6.0 - Generate your perfect Free Fire sensitivity settings in seconds." />
+  <title>ZEUS SENSI AI v6.0 — Sensitivity Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="generator-page">
+
+  <!-- Background -->
+  <div class="bg-system" aria-hidden="true">
+    <canvas id="particle-canvas"></canvas>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container" role="region" aria-live="polite" aria-label="Notifications"></div>
+
+  <!-- Top Navigation Bar -->
+  <nav class="nav glass generator-nav" role="navigation" aria-label="Generator navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="ZEUS SENSI AI Home">
+        <span class="logo-mark">Z</span>
+        <span class="logo-text">ZEUS</span>
+        <span class="logo-badge">v6.0</span>
+      </a>
+
+      <!-- Step Indicator -->
+      <div class="step-indicator" id="step-indicator" role="progressbar" aria-label="Wizard progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1">
+        <div class="step-dot active" data-step="1" aria-label="Step 1: Join">
+          <span class="step-dot-inner"></span>
+          <span class="step-label">Join</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="2" aria-label="Step 2: Unlock">
+          <span class="step-dot-inner"></span>
+          <span class="step-label">Unlock</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="3" aria-label="Step 3: Device">
+          <span class="step-dot-inner"></span>
+          <span class="step-label">Device</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="4" aria-label="Step 4: Style">
+          <span class="step-dot-inner"></span>
+          <span class="step-label">Style</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="5" aria-label="Step 5: AI">
+          <span class="step-dot-inner"></span>
+          <span class="step-label">AI</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="6" aria-label="Step 6: Results">
+          <span class="step-dot-inner"></span>
+          <span class="step-label">Results</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="sound-toggle" aria-label="Toggle sound" title="Toggle sound">
+          <svg class="icon-sound-on" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+          <svg class="icon-sound-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+            <line x1="23" y1="9" x2="17" y2="15"/>
+            <line x1="17" y1="9" x2="23" y2="15"/>
+          </svg>
+        </button>
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="history-btn" aria-label="View history">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="favorites-btn" aria-label="View favorites">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       WIZARD STEPS
+  ============================================================ -->
+  <main class="wizard-main" id="wizard-main">
+
+    <!-- ─── STEP 1: WhatsApp Gate ─── -->
+    <section class="wizard-step active" id="step-1" data-step="1" aria-label="Step 1: Join community">
+      <div class="step-center">
+        <div class="wa-card glass">
+          <div class="wa-icon-wrap" aria-hidden="true">
+            <div class="wa-icon-ring"></div>
+            <svg width="52" height="52" viewBox="0 0 24 24" fill="currentColor" class="wa-icon" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div class="wa-badge">Official Community</div>
+          <h2 class="wa-title">Join ZEUS Official Channel</h2>
+          <p class="wa-desc">Stay updated with the newest AI sensitivity profiles, patch updates, and exclusive tips from the ZEUS community.</p>
+          <div class="wa-features">
+            <div class="wa-feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Weekly profile updates
+            </div>
+            <div class="wa-feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Patch notes &amp; game tips
+            </div>
+            <div class="wa-feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Direct owner support
+            </div>
+          </div>
+          <a href="https://wa.me/channel/0LfVbHbicNh9Y893SG7pHE0T" class="btn btn-primary btn-xl ripple-btn wa-join-btn" target="_blank" rel="noopener noreferrer" id="wa-join-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Join Official Channel
+          </a>
+          <button class="btn btn-ghost btn-continue ripple-btn" id="wa-continue-btn">
+            Already Joined? Continue
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STEP 2: Access Code ─── -->
+    <section class="wizard-step" id="step-2" data-step="2" aria-label="Step 2: Enter access code">
+      <div class="step-center">
+        <div class="access-card glass">
+          <div class="access-lock-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <div class="lock-glow" aria-hidden="true"></div>
+          </div>
+          <h2 class="access-title">Enter Access Code</h2>
+          <p class="access-desc">Enter the 4-digit code provided by ZEUS to unlock the generator.</p>
+          <div class="pin-input-wrap" id="pin-input-wrap" role="group" aria-label="4-digit PIN entry">
+            <input type="tel" class="pin-box" maxlength="1" data-pin="0" aria-label="PIN digit 1" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+            <input type="tel" class="pin-box" maxlength="1" data-pin="1" aria-label="PIN digit 2" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+            <input type="tel" class="pin-box" maxlength="1" data-pin="2" aria-label="PIN digit 3" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+            <input type="tel" class="pin-box" maxlength="1" data-pin="3" aria-label="PIN digit 4" inputmode="numeric" pattern="[0-9]" autocomplete="off" />
+          </div>
+          <div class="pin-error" id="pin-error" role="alert" aria-live="assertive" aria-hidden="true">Wrong Access Code. Try again.</div>
+          <button class="btn btn-primary btn-xl ripple-btn" id="verify-code-btn" aria-label="Verify access code">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Unlock Generator
+          </button>
+          <p class="access-hint">Need the code? <a href="https://wa.me/2349125787958" target="_blank" rel="noopener noreferrer">Contact ZEUS on WhatsApp</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STEP 3: Device Search ─── -->
+    <section class="wizard-step" id="step-3" data-step="3" aria-label="Step 3: Select your device">
+      <div class="step-center step-center-wide">
+        <div class="device-card glass">
+          <div class="device-header">
+            <h2 class="device-title">Find Your Device</h2>
+            <p class="device-desc">Search your phone model to load its hardware profile</p>
+          </div>
+          <div class="search-wrap" role="search">
+            <div class="search-inner">
+              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+              <input
+                type="text"
+                class="search-input"
+                id="device-search"
+                placeholder="Search your phone... (e.g. Samsung S24, iPhone 15)"
+                autocomplete="off"
+                aria-label="Search for your device"
+                aria-autocomplete="list"
+                aria-controls="device-suggestions"
+                aria-expanded="false"
+                role="combobox"
+              />
+              <button class="search-clear" id="search-clear" aria-label="Clear search" style="display:none">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18"/>
+                  <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+              </button>
+            </div>
+            <ul class="device-suggestions" id="device-suggestions" role="listbox" aria-label="Device suggestions" aria-hidden="true"></ul>
+          </div>
+
+          <!-- Selected Device Profile Card -->
+          <div class="device-profile glass-strong" id="device-profile" aria-live="polite" aria-label="Selected device profile" style="display:none">
+            <div class="dp-header">
+              <div class="dp-icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                  <line x1="12" y1="18" x2="12" y2="18"/>
+                </svg>
+              </div>
+              <div class="dp-name-wrap">
+                <span class="dp-name" id="dp-name">Device Name</span>
+                <span class="dp-brand" id="dp-brand">Brand</span>
+              </div>
+              <div class="dp-score-wrap">
+                <span class="dp-score-label">Performance</span>
+                <span class="dp-score" id="dp-score">--</span>
+              </div>
+            </div>
+            <div class="dp-specs" id="dp-specs">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- No device selected hint -->
+          <div class="device-hint" id="device-hint">
+            <div class="hint-brands" aria-hidden="true">
+              <span class="hint-tag">Samsung</span>
+              <span class="hint-tag">iPhone</span>
+              <span class="hint-tag">Tecno</span>
+              <span class="hint-tag">Infinix</span>
+              <span class="hint-tag">Redmi</span>
+              <span class="hint-tag">Poco</span>
+              <span class="hint-tag">Realme</span>
+              <span class="hint-tag">ROG</span>
+            </div>
+            <p>Type to search from 100+ devices</p>
+          </div>
+
+          <button class="btn btn-primary btn-xl ripple-btn" id="device-continue-btn" disabled aria-label="Continue with selected device">
+            Continue with Device
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STEP 4: Player Settings ─── -->
+    <section class="wizard-step" id="step-4" data-step="4" aria-label="Step 4: Player settings">
+      <div class="step-center step-center-wide">
+        <div class="settings-card glass">
+          <h2 class="settings-title">Your Playstyle</h2>
+          <p class="settings-desc">Customize every parameter for a sensitivity profile built around you</p>
+
+          <!-- Playing Style -->
+          <div class="setting-group" role="group" aria-labelledby="style-label">
+            <label class="setting-label" id="style-label">Playing Style</label>
+            <div class="pill-group" id="style-pills" role="radiogroup" aria-label="Playing style selection">
+              <button class="style-pill active" data-style="headshot" role="radio" aria-checked="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                Headshot
+              </button>
+              <button class="style-pill" data-style="balanced" role="radio" aria-checked="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="12" y1="1" x2="12" y2="23"/>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                Balanced
+              </button>
+              <button class="style-pill" data-style="rush" role="radio" aria-checked="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+                Rush
+              </button>
+              <button class="style-pill" data-style="drag" role="radio" aria-checked="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 12s2.545-5 7-5c4.454 0 7 5 7 5s-2.546 5-7 5c-4.455 0-7-5-7-5z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                Drag
+              </button>
+              <button class="style-pill" data-style="sniper" role="radio" aria-checked="false">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <line x1="2" y1="12" x2="22" y2="12"/>
+                  <line x1="12" y1="2" x2="12" y2="22"/>
+                </svg>
+                Sniper
+              </button>
+            </div>
+          </div>
+
+          <!-- Finger Setup -->
+          <div class="setting-group" role="group" aria-labelledby="finger-label">
+            <label class="setting-label" id="finger-label">Finger Setup</label>
+            <div class="pill-group finger-pills" id="finger-pills" role="radiogroup" aria-label="Number of fingers">
+              <button class="style-pill active" data-fingers="2" role="radio" aria-checked="true">2 Fingers</button>
+              <button class="style-pill" data-fingers="3" role="radio" aria-checked="false">3 Fingers</button>
+              <button class="style-pill" data-fingers="4" role="radio" aria-checked="false">4 Fingers</button>
+              <button class="style-pill" data-fingers="5" role="radio" aria-checked="false">5 Fingers</button>
+            </div>
+          </div>
+
+          <!-- Gyroscope -->
+          <div class="setting-group" role="group" aria-labelledby="gyro-label">
+            <label class="setting-label" id="gyro-label">Gyroscope</label>
+            <div class="toggle-row">
+              <div class="gyro-toggle-wrap">
+                <button class="gyro-btn active" data-gyro="on" role="radio" aria-checked="true" aria-label="Gyroscope ON">
+                  ON
+                </button>
+                <button class="gyro-btn" data-gyro="off" role="radio" aria-checked="false" aria-label="Gyroscope OFF">
+                  OFF
+                </button>
+              </div>
+              <div class="gyro-desc" id="gyro-desc">Gyroscope enabled — AI will include gyro sensitivity values</div>
+            </div>
+          </div>
+
+          <!-- Selected Device Preview -->
+          <div class="settings-device-preview glass-strong" id="settings-device-preview">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <line x1="12" y1="18" x2="12" y2="18"/>
+            </svg>
+            <span id="preview-device-name">No device selected</span>
+            <button class="btn-text change-device-btn" id="change-device-btn" aria-label="Change device">Change</button>
+          </div>
+
+          <button class="btn btn-primary btn-xl ripple-btn" id="analyze-btn" aria-label="Start AI analysis">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+            Analyze with AI
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STEP 5: AI Analysis ─── -->
+    <section class="wizard-step" id="step-5" data-step="5" aria-label="Step 5: AI analysis in progress">
+      <div class="ai-fullscreen">
+        <!-- Scan Line -->
+        <div class="ai-scan-line" id="ai-scan-line" aria-hidden="true"></div>
+        <!-- Grid Overlay -->
+        <div class="ai-grid" aria-hidden="true"></div>
+
+        <div class="ai-content">
+          <div class="ai-header">
+            <div class="ai-logo-pulse" aria-hidden="true">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h2 class="ai-title">ZEUS AI is Processing</h2>
+            <p class="ai-subtitle" id="ai-current-step">Initializing...</p>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="ai-progress-wrap" role="progressbar" aria-label="Analysis progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="ai-progress-bar-wrap">
+            <div class="ai-progress-track">
+              <div class="ai-progress-fill" id="ai-progress-fill"></div>
+              <div class="ai-progress-glow" id="ai-progress-glow"></div>
+            </div>
+            <span class="ai-progress-pct" id="ai-progress-pct">0%</span>
+          </div>
+
+          <!-- Step List -->
+          <div class="ai-steps-list" id="ai-steps-list" aria-label="Analysis steps" role="list">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Terminal Log -->
+          <div class="ai-terminal glass-strong" id="ai-terminal" aria-label="Analysis log" role="log">
+            <div class="terminal-header">
+              <div class="terminal-dot red" aria-hidden="true"></div>
+              <div class="terminal-dot yellow" aria-hidden="true"></div>
+              <div class="terminal-dot green" aria-hidden="true"></div>
+              <span class="terminal-title">ZEUS AI v6.0 — Terminal</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+              <div class="terminal-line">
+                <span class="t-prompt">zeus@ai</span>
+                <span class="t-sep">:~$</span>
+                <span class="t-cmd"> initializing sensitivity_engine --v6.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STEP 6: Results ─── -->
+    <section class="wizard-step" id="step-6" data-step="6" aria-label="Step 6: Your sensitivity results">
+      <div class="step-center step-center-wide">
+        <div class="results-card glass" id="results-card">
+          <!-- Results Header -->
+          <div class="results-header">
+            <div class="results-title-row">
+              <div>
+                <span class="results-eyebrow">AI Generated Profile</span>
+                <h2 class="results-title">Your Sensitivity Report</h2>
+              </div>
+              <div class="results-rating" id="results-rating" aria-label="AI Rating">
+                <!-- Stars rendered by JS -->
+              </div>
+            </div>
+            <div class="results-device-row">
+              <span class="results-device-name" id="results-device-name">Device</span>
+              <span class="results-divider" aria-hidden="true">·</span>
+              <span class="results-style" id="results-style">Style</span>
+              <span class="results-divider" aria-hidden="true">·</span>
+              <span class="results-fps" id="results-fps">FPS</span>
+            </div>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="results-stats-row">
+            <div class="results-stat glass-strong">
+              <div class="circ-progress-wrap" aria-hidden="true">
+                <svg class="circ-svg" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle class="circ-track" cx="40" cy="40" r="32"/>
+                  <circle class="circ-fill" id="stat-perf-circ" cx="40" cy="40" r="32" data-percent="0"/>
+                </svg>
+                <span class="circ-label" id="stat-perf-val">0</span>
+              </div>
+              <span class="rstat-label">Performance</span>
+            </div>
+            <div class="results-stat glass-strong">
+              <div class="circ-progress-wrap" aria-hidden="true">
+                <svg class="circ-svg" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle class="circ-track" cx="40" cy="40" r="32"/>
+                  <circle class="circ-fill circ-orange" id="stat-hs-circ" cx="40" cy="40" r="32" data-percent="0"/>
+                </svg>
+                <span class="circ-label" id="stat-hs-val">0%</span>
+              </div>
+              <span class="rstat-label">Headshot</span>
+            </div>
+            <div class="results-stat glass-strong">
+              <div class="circ-progress-wrap" aria-hidden="true">
+                <svg class="circ-svg" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle class="circ-track" cx="40" cy="40" r="32"/>
+                  <circle class="circ-fill circ-blue" id="stat-acc-circ" cx="40" cy="40" r="32" data-percent="0"/>
+                </svg>
+                <span class="circ-label" id="stat-acc-val">0%</span>
+              </div>
+              <span class="rstat-label">Accuracy</span>
+            </div>
+          </div>
+
+          <!-- Sensitivity Values -->
+          <div class="sensitivity-grid" id="sensitivity-grid" aria-label="Sensitivity values">
+            <!-- Rows rendered by JS -->
+          </div>
+
+          <!-- Graphics Recommendation -->
+          <div class="graphics-rec glass-strong" id="graphics-rec">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+            <span>Recommended Graphics: </span>
+            <strong id="graphics-val">--</strong>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="results-actions">
+            <button class="btn btn-primary btn-xl ripple-btn" id="copy-sensitivity-btn" aria-label="Copy sensitivity settings to clipboard">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy Sensitivity
+            </button>
+            <button class="btn btn-ghost ripple-btn" id="download-png-btn" aria-label="Download sensitivity report as PNG">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download PNG
+            </button>
+            <button class="btn btn-ghost ripple-btn" id="save-favorites-btn" aria-label="Save to favorites">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+              Save to Favorites
+            </button>
+            <button class="btn btn-ghost ripple-btn" id="generate-again-btn" aria-label="Generate new sensitivity">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="1 4 1 10 7 10"/>
+                <path d="M3.51 15a9 9 0 1 0 .49-3.85"/>
+              </svg>
+              Generate Again
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       DRAWERS & MODALS
+  ============================================================ -->
+
+  <!-- History Drawer -->
+  <div class="drawer-overlay" id="history-overlay" aria-hidden="true"></div>
+  <aside class="drawer glass" id="history-drawer" aria-label="Generation history" aria-hidden="true" role="dialog">
+    <div class="drawer-header">
+      <h3>History</h3>
+      <div class="drawer-header-actions">
+        <button class="btn-text" id="compare-btn" aria-label="Compare two profiles">Compare</button>
+        <button class="icon-btn drawer-close" id="history-close" aria-label="Close history">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="drawer-body" id="history-list" role="list" aria-label="History items">
+      <div class="drawer-empty" id="history-empty">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <p>No history yet. Generate your first profile.</p>
+      </div>
+    </div>
+    <div class="drawer-footer">
+      <button class="btn btn-ghost ripple-btn" id="clear-history-btn" aria-label="Clear all history">Clear All History</button>
+    </div>
+  </aside>
+
+  <!-- Favorites Drawer -->
+  <div class="drawer-overlay" id="favorites-overlay" aria-hidden="true"></div>
+  <aside class="drawer glass" id="favorites-drawer" aria-label="Favorite profiles" aria-hidden="true" role="dialog">
+    <div class="drawer-header">
+      <h3>Favorites</h3>
+      <button class="icon-btn drawer-close" id="favorites-close" aria-label="Close favorites">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="favorites-list" role="list" aria-label="Favorites items">
+      <div class="drawer-empty" id="favorites-empty">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        <p>No favorites yet. Save a profile to see it here.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Compare Modal -->
+  <div class="modal-overlay" id="compare-overlay" aria-hidden="true">
+    <div class="compare-modal glass" role="dialog" aria-label="Compare profiles" aria-modal="true">
+      <div class="modal-header">
+        <h3>Compare Profiles</h3>
+        <button class="icon-btn" id="compare-close" aria-label="Close compare">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="compare-selects">
+        <select class="compare-select glass-strong" id="compare-a" aria-label="First profile to compare">
+          <option value="">Select Profile A</option>
+        </select>
+        <span class="compare-vs" aria-hidden="true">VS</span>
+        <select class="compare-select glass-strong" id="compare-b" aria-label="Second profile to compare">
+          <option value="">Select Profile B</option>
+        </select>
+      </div>
+      <div class="compare-result" id="compare-result" aria-live="polite">
+        <p class="compare-hint">Select two profiles above to compare them</p>
+      </div>
+      <button class="btn btn-primary ripple-btn" id="run-compare-btn" aria-label="Run comparison">Compare Now</button>
+    </div>
+  </div>
+
+  <!-- Support Popup -->
+  <button class="support-fab glass ripple-btn" id="support-fab" aria-label="Open support" aria-expanded="false">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="fab-label">Support</span>
+  </button>
+
+  <div class="support-popup glass-strong" id="support-popup" aria-hidden="true" role="dialog" aria-label="Support contact">
+    <div class="support-popup-header">
+      <div class="sp-avatar">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <div>
+        <strong>ZEUS</strong>
+        <span class="sp-status">
+          <span class="online-dot" aria-hidden="true"></span>
+          Creator &amp; Developer
+        </span>
+      </div>
+      <button class="icon-btn" id="support-close" aria-label="Close support popup">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <p class="sp-msg">Need an Access Code? Contact the owner directly or join the WhatsApp channel.</p>
+    <div class="sp-actions">
+      <a href="https://wa.me/2349125787958" class="btn btn-primary ripple-btn" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Chat on WhatsApp
+      </a>
+      <a href="https://wa.me/channel/0LfVbHbicNh9Y893SG7pHE0T" class="btn btn-ghost ripple-btn" target="_blank" rel="noopener noreferrer">Join Channel</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer generator-footer" role="contentinfo">
+    <div class="footer-bottom">
+      <span>ZEUS SENSI AI &middot; v6.0 &middot; Owner: ZEUS &middot; WA: +2349125787958</span>
+      <span>Copyright &copy; 2026 ZEUS. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
