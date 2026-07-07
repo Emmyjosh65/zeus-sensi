@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEUS SENSI AI | AI Powered Free Fire Sensitivity</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>ZEUS SENSI AI v6.0 | AI Powered Free Fire Sensitivity</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,21 +13,22 @@
 <div class="glow"></div>
 <div id="toast"></div>
 
+<!-- LANDING -->
 <section id="landing" class="page active">
   <div class="container center">
     <h1 class="logo reveal">ZEUS <span>SENSI AI</span></h1>
     <p class="subtitle reveal">AI Powered Free Fire Sensitivity Generator</p>
     <div class="features">
-      <div class="glass-card reveal"><h3>AI Device Detection</h3><p>Auto-detect specs for max headshots</p></div>
-      <div class="glass-card reveal"><h3>Personalized Sensitivity</h3><p>Built for your phone + playstyle</p></div>
-      <div class="glass-card reveal"><h3>Weekly AI Models</h3><p>Always updated for new FF patches</p></div>
+      <div class="glass-card reveal"><h3>AI Device Detection</h3><p>1000+ Phones in Database</p></div>
+      <div class="glass-card reveal"><h3>Personalized Sensitivity</h3><p>Built for your specs + playstyle</p></div>
+      <div class="glass-card reveal"><h3>Weekly AI Models</h3><p>Always updated for FF patches</p></div>
       <div class="glass-card reveal"><h3>Android & iPhone</h3><p>Perfect settings for every device</p></div>
     </div>
     <button class="cta-btn ripple reveal" onclick="showPage('gate')">Generate My Sensitivity</button>
-    <div class="scroll-indicator">↓</div>
   </div>
 </section>
 
+<!-- GATE -->
 <section id="gate" class="page">
   <div class="container center">
     <div class="glass-card unlock-card reveal">
@@ -39,15 +40,16 @@
   </div>
 </section>
 
+<!-- ACCESS CODE -->
 <section id="access" class="page">
   <div class="container center">
     <div class="glass-card unlock-card reveal">
       <h2>Enter Access Code</h2>
-      <div class="pin-inputs">
-        <input type="tel" maxlength="1" oninput="movePin(this,0)">
-        <input type="tel" maxlength="1" oninput="movePin(this,1)">
-        <input type="tel" maxlength="1" oninput="movePin(this,2)">
-        <input type="tel" maxlength="1" oninput="movePin(this,3)">
+      <div class="pin-inputs" id="pinBox">
+        <input type="tel" maxlength="1" inputmode="numeric">
+        <input type="tel" maxlength="1" inputmode="numeric">
+        <input type="tel" maxlength="1" inputmode="numeric">
+        <input type="tel" maxlength="1" inputmode="numeric">
       </div>
       <p id="pin-error"></p>
       <button class="cta-btn ripple" onclick="checkPin()">Unlock Generator</button>
@@ -55,31 +57,36 @@
   </div>
 </section>
 
+<!-- GENERATOR -->
 <section id="generator" class="page">
   <div class="container">
     <h2 class="reveal">AI Sensitivity Generator</h2>
     <div class="search-wrap reveal">
-      <input type="text" id="deviceSearch" placeholder="Search your phone..." onkeyup="showSuggestions(this.value)">
+      <input type="text" id="deviceSearch" placeholder="Search your phone... e.g. s24, iphone, tecno" autocomplete="off">
       <div id="suggestions" class="glass-card suggestions"></div>
     </div>
-    <div id="deviceSpecs" class="glass-card specs reveal"></div>
+    <div id="deviceSpecs" class="glass-card specs reveal" style="display:none"></div>
+    
     <div class="settings-grid">
       <div class="reveal"><h4>Playing Style</h4><div class="toggles" id="styleToggles"></div></div>
       <div class="reveal"><h4>Finger Setup</h4><div class="toggles" id="fingerToggles"></div></div>
       <div class="reveal"><h4>Gyroscope</h4><div class="toggles" id="gyroToggles"></div></div>
     </div>
-    <button class="cta-btn ripple reveal" onclick="startAI()">Generate With AI</button>
+    <button class="cta-btn ripple reveal" id="generateBtn" disabled>Generate With AI</button>
   </div>
 </section>
 
+<!-- AI ANALYSIS -->
 <section id="ai" class="page">
   <div class="container center">
     <div class="ai-scan"></div>
     <h2 id="ai-text">AI Detecting Device...</h2>
     <div class="progress-bar"><div id="progress"></div></div>
+    <p id="progress-percent">0%</p>
   </div>
 </section>
 
+<!-- RESULTS -->
 <section id="results" class="page">
   <div class="container">
     <div class="glass-card result-card reveal">
