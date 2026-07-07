@@ -3,26 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEUS SENSI AI V5 | AI Free Fire Sensitivity</title>
+<title>ZEUS SENSI AI V5.2 | AI Free Fire Sensitivity</title>
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#000">
 </head>
 <body>
 <canvas id="particles"></canvas>
 
+<!-- TOAST -->
+<div id="toast"></div>
+
 <!-- STICKY NAV -->
 <nav class="glass sticky">
-  <div class="logo">ZEUS<span class="neon">SENSI</span>AI<span class="v5">V5</span></div>
+  <div class="logo">ZEUS<span class="neon">SENSI</span>AI<span class="v5">V5.2</span></div>
   <div class="nav-links">
     <a href="#features">Features</a>
-    <a href="#devices">Devices</a>
+    <a href="#leaderboard">Top Players</a>
     <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
   </div>
   <div class="nav-right">
-    <button id="langBtn">🌐 EN</button>
-    <button id="themeBtn">🌙</button>
-    <div class="profile-mini">Lv.<span id="level">1</span></div>
+    <button id="themeBtn" onclick="toggleTheme()">🌙</button>
+    <div class="profile-mini">Lv.<span id="level">1</span> | <span id="xpNav">0 XP</span></div>
   </div>
 </nav>
 
@@ -60,7 +63,7 @@
     <div id="deviceResults" class="dropdown hidden"></div>
 
     <div class="form-grid">
-      <select id="brand"></select>
+      <select id="brand" onchange="loadModels()"></select>
       <select id="model"></select>
       <select id="ram"></select>
       <select id="processor"></select>
@@ -94,14 +97,37 @@
   <div class="action-bar">
     <button onclick="saveFav()">⭐ Save</button>
     <button onclick="copySettings()">📋 Copy</button>
-    <button onclick="shareSettings()">📤 Share</button>
+    <button onclick="shareCard()">📤 Share Card</button>
     <button onclick="downloadScreenshot()">⬇️ Download</button>
     <button onclick="compareDevice()">⚖️ Compare</button>
-    <button onclick="randomGen()">🎲 Random</button>
+    <button onclick="generateAI()">🔄 Generate Again</button>
   </div>
 </section>
 
-<!-- PREMIUM FEATURES -->
+<!-- XP + LEADERBOARD -->
+<section id="leaderboard" class="section">
+  <h2>Your Profile + Top Players</h2>
+  <div class="profile-box glass">
+    <p>XP: <span id="xpText">0</span></p>
+    <p>Level: <span id="levelText">1</span></p>
+    <p>Streak: <span id="streakText">0</span> 🔥</p>
+    <div id="badges"></div>
+    <button class="btn-3d" onclick="claimDaily()">🎁 Claim Daily Reward</button>
+  </div>
+  <div class="leaderboard glass">
+    <h3>Top 5 ZEUS Players</h3>
+    <p>1. ZeusKing 🇳🇬 - 2450 XP</p>
+    <p>2. HeadshotGod 🇬🇭 - 2100 XP</p>
+    <p>3. SniperX 🇰🇪 - 1850 XP</p>
+    <p>4. ClawMaster 🇿🇦 - 1600 XP</p>
+    <p>5. YOU - <span id="yourRankXP">0</span> XP</p>
+  </div>
+</section>
+
+<!-- SHARE CARD PREVIEW -->
+<canvas id="shareCard" class="hidden"></canvas>
+
+<!-- FEATURES -->
 <section id="features" class="section">
   <h2>Premium Features</h2>
   <div class="features-grid">
@@ -111,6 +137,8 @@
     <div class="feature-card glass">👑 Leaderboard</div>
     <div class="feature-card glass">🔥 Trending Phones</div>
     <div class="feature-card glass">📜 Version History</div>
+    <div class="feature-card glass">⚖️ Compare Devices</div>
+    <div class="feature-card glass">⭐ Save Favorites</div>
   </div>
 </section>
 
@@ -119,9 +147,9 @@
   <h2>Community Reviews</h2>
   <div class="reviews-slider">
     <div class="review glass">★★★★★<p>"Best sensitivity generator. My headshots improved 300%"</p><span>- ProGamer 🇳🇬</span></div>
-    <div class="review glass">★★★★★<p>"Finally works perfectly on my Infinix Hot 30"</p><span>- SniperKing 🇬🇭</span></div>
-    <div class="review glass">★★★<p>"Looks like premium software worth $200"</p><span>- ZeusYT 🇰🇪</span></div>
-    <div class="review glass">★★★<p>"AI settings are different for every phone. So real"</p><span>- ClawMaster 🇿🇦</span></div>
+    <div class="review glass">★★★<p>"Finally works perfectly on my Infinix Hot 30"</p><span>- SniperKing 🇬🇭</span></div>
+    <div class="review glass">★★★★★<p>"Looks like premium software worth $200"</p><span>- ZeusYT 🇰🇪</span></div>
+    <div class="review glass">★★★★★<p>"AI settings are different for every phone. So real"</p><span>- ClawMaster 🇿🇦</span></div>
   </div>
 </section>
 
@@ -132,7 +160,7 @@
   <details><summary>Does it work on iPhone 6?</summary><p>Yes. We support iPhone 6 to iPhone 15 Pro Max.</p></details>
   <details><summary>How accurate is the AI?</summary><p>99.7% accuracy based on 1.2M+ generated sensitivities.</p></details>
   <details><summary>How often are presets updated?</summary><p>Daily. Join WhatsApp channel for instant updates.</p></details>
-  <!-- Add 16 more FAQs here -->
+  <details><summary>Can I save my sensitivity?</summary><p>Yes. Click the ⭐ button to save to favorites.</p></details>
 </section>
 
 <!-- FOOTER -->
@@ -141,20 +169,22 @@
   <p>Owner: ZEUS</p>
   <p><a href="https://github.com/emmyjosh65/zeus-sensi">GitHub</a> | <a href="https://whatsapp.com/channel/0029VbAo1ToLI8YW9Q4p6W2J">WhatsApp Channel</a> | <a href="https://wa.me/2349066760078">Support</a></p>
   <p>Access Key: Distributed FREE only through WhatsApp Channel</p>
-  <p>Version: ZEUS SENSI AI V5</p>
+  <p>Version: ZEUS SENSI AI V5.2</p>
   <p>Copyright © 2026 ZEUS</p>
 </footer>
 
 <a href="https://wa.me/2349066760078" class="whatsapp-float">💬</a>
-<script src="script.js"></script><!-- SOUND EFFECTS -->
+
+<!-- SOUNDS -->
 <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_d1718f0a2c.mp3"></audio>
 <audio id="successSound" src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_d7e1b3a0d1.mp3"></audio>
 <audio id="errorSound" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3"></audio>
 <audio id="aiSound" src="https://cdn.pixabay.com/download/audio/2024/02/27/audio_4b2e1e3c3f.mp3" loop></audio>
 
-<!-- VOICE TOGGLE -->
 <div class="voice-toggle glass">
-  <label><input type="checkbox" id="voiceToggle" checked> 🔊 AI Voice On</label>
+  <label><input type="checkbox" id="voiceToggle" checked> 🔊 AI Voice</label>
 </div>
+
+<script src="script.js"></script>
 </body>
 </html>
