@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZEUS SENSI AI — Alternative Platform Gateway Engine</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+<meta charset="UTF-8">
+<title>Your Sensitivity Result | ZEUS SENSI AI</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="gaming-terminal secure-sub-deck">
-  <div class="glow-backdrop"></div>
-  <div class="global-wrapper container text-center" style="margin-top: 10vh;">
-    <div class="panel-card-base animate-reveal-frame">
-      <div class="panel-header-ribbon bg-orange">ALTERNATIVE INTERFACE PORTAL</div>
-      <h1 class="mar-b-10 text-glow-cyan">ZEUS SYSTEM DATA</h1>
-      <p class="text-muted mar-b-20">This secondary link provides a parallel route to the main optimization profile interface data structures.</p>
-      <a href="index.html" class="prime-btn orange-glow width-100" style="text-align:center; display:block; text-decoration:none;">
-        CONNECT TO PREDICTIVE AI MAINFRAME
-      </a>
-    </div>
-  </div>
+<body>
+<div class="result-page glass">
+  <h1>Your ZEUS Sensitivity</h1>
+  <div id="finalResult"></div>
+  <button class="btn-primary" onclick="window.print()">Download as Image/PDF</button>
+  <a href="index.html" class="btn-secondary">Generate Again</a>
+</div>
+<script>
+document.getElementById('finalResult').innerHTML = localStorage.getItem('zeusResult') || 'No result found';
+</script>
 </body>
 </html>
