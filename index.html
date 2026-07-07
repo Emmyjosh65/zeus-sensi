@@ -3,95 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEUS SENSI AI | Free Fire Sensitivity Generator</title>
+<title>ZEUS SENSI AI | Pro Free Fire Sensitivity Generator</title>
 <link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="particles"></div>
+<canvas id="particles"></canvas>
 
 <!-- NAV -->
-<nav class="glass">
-  <div class="logo">ZEUS<span class="gold"> SENSI AI</span></div>
-  <button id="themeToggle">🌙</button>
-</nav>
+<header class="glass">
+  <div class="logo">ZEUS<span class="gold">SENSI AI</span></div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#devices">Devices</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-actions">
+    <button id="streakBtn">🔥 0</button>
+    <button id="themeToggle">🌙</button>
+  </div>
+</header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1 class="typing">AI-Powered Free Fire Sensitivity</h1>
-  <p class="subtitle">Get pro-level sensitivity tailored to your device with ZEUS AI</p>
-  <div class="stats glass">
-    <div><span id="onlineUsers">1,247</span><p>Online Now</p></div>
-    <div><span>98.7%</span><p>Headshot Accuracy Boost</p></div>
-    <div><span>3.2M+</span><p>Sensitivities Generated</p></div>
+  <h1 class="gradient-text">AI-Powered Free Fire Sensitivity</h1>
+  <p>Pro-level settings tailored to YOUR device by ZEUS AI</p>
+  
+  <div class="live-stats glass">
+    <div><span class="dot green"></span> AI <b>Online</b></div>
+    <div>👥 <span id="usersOnline">3,241</span> Online</div>
+    <div>⚡ <span id="todayGen">12,847</span> Generated Today</div>
+    <div>📱 <span id="supportedDevices">247</span> Devices</div>
+    <div>🔥 Trending: <span id="trendingPhone">ROG Phone 7</span></div>
   </div>
-  <div class="hero-btns">
-    <button class="btn-primary" onclick="scrollToKey()">Start Now</button>
-    <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" class="btn-secondary">Join WhatsApp Channel</a>
-  </div>
-  <div class="ai-status"><span class="dot"></span> AI Status: <span class="gold">Online</span></div>
-</section>
 
-<!-- WHATSAPP GATE -->
-<section id="whatsappGate" class="section glass">
-  <h2>Join The ZEUS FAMILY First</h2>
-  <p>Get free access codes, daily updates & new presets</p>
-  <a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06" target="_blank" class="btn-primary" onclick="markJoined()">Join WhatsApp Channel</a>
-  <p id="joinedMsg" class="success hidden">✓ Joined Successfully</p>
-</section>
-
-<!-- ACCESS KEY -->
-<section id="keyGate" class="section glass hidden">
-  <h2>Enter Access Key</h2>
-  <input type="password" id="accessKey" placeholder="Enter Key: 2007">
-  <button class="btn-primary" onclick="checkKey()">Unlock AI Generator</button>
-  <p id="keyError" class="error hidden">Invalid Key. Please try again.</p>
-</section>
-
-<!-- AI GENERATOR -->
-<section id="generator" class="section hidden">
-  <h2>ZEUS AI SENSITIVITY GENERATOR</h2>
-  <div class="form-grid glass">
-    <select id="brand"><option>Phone Brand</option></select>
-    <select id="model"><option>Phone Model</option></select>
-    <select id="ram"><option>RAM</option><option>2GB</option><option>3GB</option><option>4GB</option><option>6GB</option><option>8GB</option><option>12GB</option><option>16GB</option></select>
-    <select id="android"><option>Android Version</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option></select>
-    <select id="refresh"><option>Refresh Rate</option><option>60Hz</option><option>90Hz</option><option>120Hz</option><option>144Hz</option></select>
-    <select id="style"><option>Playing Style</option><option>Claw 2 Finger</option><option>Claw 3 Finger</option><option>Claw 4 Finger</option><option>Thumb</option></select>
-    <select id="graphics"><option>Graphics</option><option>Smooth</option><option>Balanced</option><option>Ultra</option></select>
-    <select id="fps"><option>FPS</option><option>30</option><option>60</option><option>90</option></select>
-    <select id="touch"><option>Touch Speed</option><option>Slow</option><option>Normal</option><option>Fast</option></select>
-  </div>
-  <button class="btn-primary glow" onclick="generateAI()">Generate Sensitivity</button>
-  <div id="loading" class="hidden"><div class="loader"></div><p>AI Thinking...</p></div>
-  <div id="result" class="result-grid hidden"></div>
-</section>
-
-<!-- FEATURES -->
-<section class="section">
-  <h2>Premium Features</h2>
-  <div class="cards">
-    <div class="card glass">Live Updates</div>
-    <div class="card glass">Device Optimization</div>
-    <div class="card glass">Headshot Tips</div>
-    <div class="card glass">Trending Devices</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="glass">
-  <p>ZEUS SENSI AI</p>
-  <p>Powered by ZEUS AI</p>
-  <p>Owner: Zeus</p>
-  <p>WhatsApp Support: <a href="https://wa.me/2349066760078">+2349066760078</a></p>
-  <p><a href="https://whatsapp.com/channel/0029VbCsw0SGE56rCTPaXd06">Official WhatsApp Channel</a></p>
-  <p>Copyright © 2026 ZEUS SENSI AI</p>
-</footer>
-
-<!-- FLOATING WHATSAPP -->
-<a href="https://wa.me/2349066760078" class="whatsapp-float" target="_blank">💬</a>
-
-<script src="script.js"></script>
-</body>
-</html>
+  <div class
