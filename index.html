@@ -3,67 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEUS SENSI AI | Pro Free Fire Sensitivity Generator</title>
+<title>ZEUS SENSI AI V5 | AI Free Fire Sensitivity</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 <canvas id="particles"></canvas>
 
-<!-- NAV -->
-<header class="glass">
-  <div class="logo">ZEUS<span class="gold">SENSI AI</span></div>
-  <nav>
+<!-- STICKY NAV -->
+<nav class="glass sticky">
+  <div class="logo">ZEUS<span class="neon">SENSI</span>AI<span class="v5">V5</span></div>
+  <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#devices">Devices</a>
     <a href="#reviews">Reviews</a>
     <a href="#faq">FAQ</a>
-  </nav>
-  <div class="nav-actions">
-    <button id="streakBtn">🔥 0</button>
-    <button id="themeToggle">🌙</button>
   </div>
-</header>
+  <div class="nav-right">
+    <button id="langBtn">🌐 EN</button>
+    <button id="themeBtn">🌙</button>
+    <div class="profile-mini">Lv.<span id="level">1</span></div>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section class="hero">
-  <h1 class="gradient-text">AI-Powered Free Fire Sensitivity</h1>
-  <p>Pro-level settings tailored to YOUR device by ZEUS AI</p>
-  
-  <div class="live-stats glass">
-    <div><span class="dot green"></span> AI <b>Online</b></div>
-    <div>👥 <span id="usersOnline">3,241</span> Online</div>
-    <div>⚡ <span id="todayGen">12,847</span> Generated Today</div>
-    <div>📱 <span id="supportedDevices">247</span> Devices</div>
-    <div>🔥 Trending: <span id="trendingPhone">ROG Phone 7</span></div>
-  </div>
+  <div class="glow-orb"></div>
+  <h1 class="hero-title">ZEUS <span class="gradient">SENSI AI</span></h1>
+  <p class="hero-sub">AI Powered Free Fire Sensitivity Generator</p>
+  <p class="hero-desc">Generate professional sensitivity settings customized for your exact device, FPS, refresh rate and play style.</p>
 
-  <div class
-<!-- PROFILE + FUN -->
-<section class="section glass">
-  <h2>Your ZEUS Profile</h2>
-  <div class="profile-stats">
-    <div id="xpText">XP: 0</div>
-    <div id="streakText">🔥 0 Day Streak</div>
-    <div id="badgeArea"></div>
-  </div>
-  <button class="btn-primary" onclick="dailyReward()">🎁 Claim Daily Reward</button>
-</section>
-
-<!-- LUCKY SPIN -->
-<section class="section glass">
-  <h2>🎡 Lucky Spin</h2>
-  <div class="wheel"></div>
-  <button class="btn-primary glow" onclick="spinWheel()">Spin Now</button>
-  <p id="spinResult"></p>
-</section>
-
-<!-- LEADERBOARD -->
-<section class="section">
-  <h2>Top ZEUS Players</h2>
-  <div class="leaderboard glass">
-    <p>1. ZeusKing 🇳🇬 - 2450 XP</p>
-    <p>2. HeadshotGod 🇬🇭 - 2100 XP</p>
-    <p>3. You - <span id="yourXP">0</span> XP</p>
+  <div class="stats-grid">
+    <div class="stat-card glass"><span class="counter" data-target="1230000">0</span>+<p>Sensitivity Generated</p></div>
+    <div class="stat-card glass"><span class="counter" data-target="99.7">0</span>%<p>Accuracy</p></div>
+    <div class="stat-card glass"><span class="counter" data-target="750">0</span>+<p>Supported Devices</p></div>
+    <div class="stat-card glass"><span class="dot"></span> AI <b>Online</b></div>
+    <div class="stat-card glass">👥 <span id="liveUsers">2841</span><p>Live Users</p></div>
   </div>
 </section>
+
+<!-- STEP 1 -->
+<section id="step1" class="section">
+  <div class="step-card glass glow-border">
+    <h2>Step 1: Join Community</h2>
+    <p>Get FREE access codes + daily updates</p>
+    <a href="https://whatsapp.com/channel/0029VbAo1ToLI8YW9Q4p6W2J" target="_blank" class="btn-3d" onclick="step1Done()">Join Official WhatsApp Channel</a>
+    <div id="step1Loader" class="loader hidden"></div>
+  </div>
+</section>
+
+<!-- STEP 2 -->
+<section id="step2" class="section hidden">
+  <div class="step-card glass glow-border">
+    <h2>Step 2: Device Configuration</h2>
+    <input type="text" id="searchDevice" placeholder="🔍 Search Device: iPhone 15, Samsung S24..." onkeyup="searchDevice()">
+    <div id="deviceResults" class="dropdown hidden"></div>
+
+    <div class="form-grid">
+      <select id="brand"></select>
+      <select id="model"></select>
+      <select id="ram"></select>
+      <select id="processor"></select>
+      <select id="refresh"></select>
+      <select id="android"></select>
+      <select id="gameplay"></select>
+      <select id="fingers"></select>
+    </div>
+
+    <input type="password" id="accessCode" placeholder="Enter Access Code: 2007">
+    <button class="btn-3d" onclick="generateAI()">Generate AI Sensitivity</button>
+    <p id="keyError" class="popup-error hidden">Invalid Access Key</p>
+  </div>
+</section>
+
+<!-- AI LOADING -->
+<section id="aiLoading" class="section hidden">
+  <div class="ai-container glass">
+    <div class="ai-icon"></div>
+    <h2>ZEUS AI Generating...</h2>
+    <div class="progress-bar"><div id="progress"></div></div>
+    <p id="aiStep">Scanning Device...</p>
+    <p id="percent">0%</p>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section id="resultSection" class="section hidden">
+  <h2>Your Premium Sensitivity Profile</h2>
+  <div id="resultGrid" class="result-grid"></div>
+  <div class="action-bar">
+    <button onclick="saveFav()">⭐ Save</button>
+    <button onclick="copySettings()">📋 Copy</button>
+    <button onclick="shareSettings()">📤 Share</button>
+    <button onclick="downloadScreenshot()">⬇️ Download</button>
+    <button onclick="compareDevice()">⚖️ Compare</button>
+    <button onclick="randomGen()">🎲 Random</button>
+  </div>
+</section>
+
+<!-- PREMIUM FEATURES -->
+<section id="features" class="section">
+  <h2>Premium Features</h2>
+  <div class="features-grid">
+    <div class="feature-card glass">🎁 Daily Reward</div>
+    <div class="feature-card glass">📈 XP + Level System</div>
+    <div class="feature-card glass">🏆 Achievements</div>
+    <div class="feature-card glass">👑 Leaderboard</div>
+    <div class="feature-card glass">🔥 Trending Phones</div>
+    <div class="feature-card glass">📜 Version History</div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="section">
+  <h2>Community Reviews</h2>
+  <div class="reviews-slider">
+    <div class="review glass">★★★★★<p>"Best sensitivity generator. My headshots improved 300%"</p><span>- ProGamer 🇳🇬</span></div>
+    <div class="review glass">★★★★★<p>"Finally works perfectly on my Infinix Hot 30"</p><span>- SniperKing 🇬🇭</span></div>
+    <div class="review glass">★★★<p>"Looks like premium software worth $200"</p><span>- ZeusYT 🇰🇪</span></div>
+    <div class="review glass">★★★<p>"AI settings are different for every phone. So real"</p><span>- ClawMaster 🇿🇦</span></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section glass">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Is ZEUS SENSI AI free?</summary><p>Yes. Access codes are distributed free on our WhatsApp channel.</p></details>
+  <details><summary>Does it work on iPhone 6?</summary><p>Yes. We support iPhone 6 to iPhone 15 Pro Max.</p></details>
+  <details><summary>How accurate is the AI?</summary><p>99.7% accuracy based on 1.2M+ generated sensitivities.</p></details>
+  <details><summary>How often are presets updated?</summary><p>Daily. Join WhatsApp channel for instant updates.</p></details>
+  <!-- Add 16 more FAQs here -->
+</section>
+
+<!-- FOOTER -->
+<footer class="glass">
+  <p><b>ZEUS SENSI AI</b></p>
+  <p>Owner: ZEUS</p>
+  <p><a href="https://github.com/emmyjosh65/zeus-sensi">GitHub</a> | <a href="https://whatsapp.com/channel/0029VbAo1ToLI8YW9Q4p6W2J">WhatsApp Channel</a> | <a href="https://wa.me/2349066760078">Support</a></p>
+  <p>Access Key: Distributed FREE only through WhatsApp Channel</p>
+  <p>Version: ZEUS SENSI AI V5</p>
+  <p>Copyright © 2026 ZEUS</p>
+</footer>
+
+<a href="https://wa.me/2349066760078" class="whatsapp-float">💬</a>
+<script src="script.js"></script>
+</body>
+</html>
