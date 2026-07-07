@@ -1,190 +1,1298 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZEUS SENSI AI V5.2 | AI Free Fire Sensitivity</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>ZEUS SENSI AI</title>
+
+<meta name="theme-color" content="#ff8800">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#000">
+
 </head>
+
 <body>
-<canvas id="particles"></canvas>
 
-<!-- TOAST -->
-<div id="toast"></div>
+<div id="particles"></div>
 
-<!-- STICKY NAV -->
-<nav class="glass sticky">
-  <div class="logo">ZEUS<span class="neon">SENSI</span>AI<span class="v5">V5.2</span></div>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#leaderboard">Top Players</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#faq">FAQ</a>
-  </div>
-  <div class="nav-right">
-    <button id="themeBtn" onclick="toggleTheme()">🌙</button>
-    <div class="profile-mini">Lv.<span id="level">1</span> | <span id="xpNav">0 XP</span></div>
-  </div>
+<div class="bg-glow glow1"></div>
+<div class="bg-glow glow2"></div>
+<div class="bg-glow glow3"></div>
+
+<div class="moving-light"></div>
+
+<header class="navbar glass">
+
+<div class="logo">
+
+<div class="logo-icon">
+
+⚡
+
+</div>
+
+<div>
+
+<h2>ZEUS SENSI AI</h2>
+
+<p>Version 6.0</p>
+
+</div>
+
+</div>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Features</a>
+
+<a href="#">AI</a>
+
+<a href="#">Support</a>
+
 </nav>
 
-<!-- HERO -->
+</header>
+
 <section class="hero">
-  <div class="glow-orb"></div>
-  <h1 class="hero-title">ZEUS <span class="gradient">SENSI AI</span></h1>
-  <p class="hero-sub">AI Powered Free Fire Sensitivity Generator</p>
-  <p class="hero-desc">Generate professional sensitivity settings customized for your exact device, FPS, refresh rate and play style.</p>
 
-  <div class="stats-grid">
-    <div class="stat-card glass"><span class="counter" data-target="1230000">0</span>+<p>Sensitivity Generated</p></div>
-    <div class="stat-card glass"><span class="counter" data-target="99.7">0</span>%<p>Accuracy</p></div>
-    <div class="stat-card glass"><span class="counter" data-target="750">0</span>+<p>Supported Devices</p></div>
-    <div class="stat-card glass"><span class="dot"></span> AI <b>Online</b></div>
-    <div class="stat-card glass">👥 <span id="liveUsers">2841</span><p>Live Users</p></div>
-  </div>
+<div class="hero-content">
+
+<span class="badge">
+
+AI POWERED
+
+</span>
+
+<h1>
+
+ZEUS
+
+<span>
+
+SENSI AI
+
+</span>
+
+</h1>
+
+<p>
+
+Generate professional Free Fire sensitivity using artificial intelligence and real device optimization.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#join" class="btn primary">
+
+Generate My Sensitivity
+
+</a>
+
+<a href="#features" class="btn secondary">
+
+Explore Features
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-device">
+
+<div class="phone glass">
+
+<div class="screen">
+
+<div class="scan-line"></div>
+
+<div class="device-ui">
+
+<div class="device-score">
+
+98%
+
+</div>
+
+<div class="device-name">
+
+Galaxy S24 Ultra
+
+</div>
+
+<div class="mini-bars">
+
+<div></div>
+
+<div></div>
+
+<div></div>
+
+<div></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="scroll-indicator">
+
+<span></span>
+
+</div>
+
 </section>
 
-<!-- STEP 1 -->
-<section id="step1" class="section">
-  <div class="step-card glass glow-border">
-    <h2>Step 1: Join Community</h2>
-    <p>Get FREE access codes + daily updates</p>
-    <a href="https://whatsapp.com/channel/0029VbAo1ToLI8YW9Q4p6W2J" target="_blank" class="btn-3d" onclick="step1Done()">Join Official WhatsApp Channel</a>
-    <div id="step1Loader" class="loader hidden"></div>
-  </div>
-</section>
+<section id="features" class="features">
 
-<!-- STEP 2 -->
-<section id="step2" class="section hidden">
-  <div class="step-card glass glow-border">
-    <h2>Step 2: Device Configuration</h2>
-    <input type="text" id="searchDevice" placeholder="🔍 Search Device: iPhone 15, Samsung S24..." onkeyup="searchDevice()">
-    <div id="deviceResults" class="dropdown hidden"></div>
+<h2>
 
-    <div class="form-grid">
-      <select id="brand" onchange="loadModels()"></select>
-      <select id="model"></select>
-      <select id="ram"></select>
-      <select id="processor"></select>
-      <select id="refresh"></select>
-      <select id="android"></select>
-      <select id="gameplay"></select>
-      <select id="fingers"></select>
+Why Choose ZEUS AI?
+
+</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card glass">
+
+<div class="icon">
+
+✔
+
+</div>
+
+<h3>
+
+AI Device Detection
+
+</h3>
+
+<p>
+
+Automatically recognizes your smartphone specifications.
+
+</p>
+
+</div>
+
+<div class="feature-card glass">
+
+<div class="icon">
+
+🎯
+
+</div>
+
+<h3>
+
+Personalized Sensitivity
+
+</h3>
+
+<p>
+
+Every sensitivity is generated uniquely for your gameplay.
+
+</p>
+
+</div>
+
+<div class="feature-card glass">
+
+<div class="icon">
+
+🚀
+
+</div>
+
+<h3>
+
+Weekly Updated
+
+</h3>
+
+<p>
+
+New AI engine updates improve accuracy every week.
+
+</p>
+
+</div>
+
+<div class="feature-card glass">
+
+<div class="icon">
+
+📱
+
+</div>
+
+<h3>
+
+Android & iPhone
+
+</h3>
+
+<p>
+
+Supports almost every modern mobile device.
+
+</p>
+
+</div>
+
+</div>
+
+</section><!-- =========================
+STEP 1 - JOIN WHATSAPP CHANNEL
+========================== -->
+
+<section id="join" class="join-section">
+
+    <div class="glass join-card">
+
+        <span class="step-number">
+            STEP 1
+        </span>
+
+        <h2>
+            Join Our Official WhatsApp Channel
+        </h2>
+
+        <p>
+            Join our official community to receive the latest AI updates,
+            premium sensitivity profiles and future releases.
+        </p>
+
+        <a
+            href="https://whatsapp.com/channel/"
+            target="_blank"
+            class="btn primary large"
+            id="joinChannel">
+
+            JOIN OFFICIAL CHANNEL
+
+        </a>
+
+        <button
+            class="btn secondary"
+            id="continueBtn">
+
+            Already Joined?
+            Continue →
+
+        </button>
+
     </div>
 
-    <input type="password" id="accessCode" placeholder="Enter Access Code: 2007">
-    <button class="btn-3d" onclick="generateAI()">Generate AI Sensitivity</button>
-    <p id="keyError" class="popup-error hidden">Invalid Access Key</p>
-  </div>
 </section>
 
-<!-- AI LOADING -->
-<section id="aiLoading" class="section hidden">
-  <div class="ai-container glass">
-    <div class="ai-icon"></div>
-    <h2>ZEUS AI Generating...</h2>
-    <div class="progress-bar"><div id="progress"></div></div>
-    <p id="aiStep">Scanning Device...</p>
-    <p id="percent">0%</p>
-  </div>
+<!-- =========================
+STEP 2 - ACCESS CODE
+========================== -->
+
+<section
+class="access-section hidden"
+id="accessSection">
+
+<div class="glass access-card">
+
+<span class="step-number">
+
+STEP 2
+
+</span>
+
+<h2>
+
+Enter Access Code
+
+</h2>
+
+<p>
+
+Enter the premium access PIN to unlock the AI generator.
+
+</p>
+
+<div class="pin-box">
+
+<input
+type="password"
+maxlength="4"
+id="accessCode"
+placeholder="••••">
+
+</div>
+
+<button
+class="btn primary large"
+id="unlockBtn">
+
+Unlock Generator
+
+</button>
+
+<p
+id="codeMessage"
+class="message">
+
+</p>
+
+</div>
+
 </section>
 
-<!-- RESULT -->
-<section id="resultSection" class="section hidden">
-  <h2>Your Premium Sensitivity Profile</h2>
-  <div id="resultGrid" class="result-grid"></div>
-  <div class="action-bar">
-    <button onclick="saveFav()">⭐ Save</button>
-    <button onclick="copySettings()">📋 Copy</button>
-    <button onclick="shareCard()">📤 Share Card</button>
-    <button onclick="downloadScreenshot()">⬇️ Download</button>
-    <button onclick="compareDevice()">⚖️ Compare</button>
-    <button onclick="generateAI()">🔄 Generate Again</button>
-  </div>
+<!-- =========================
+DEVICE SEARCH
+========================== -->
+
+<section
+class="device-section hidden"
+id="deviceSection">
+
+<div class="glass device-card">
+
+<h2>
+
+Search Your Device
+
+</h2>
+
+<p>
+
+Our AI will automatically detect your specifications.
+
+</p>
+
+<div class="search-wrapper">
+
+<input
+
+type="text"
+
+id="deviceSearch"
+
+placeholder="Search your phone...">
+
+<div
+
+id="suggestions"
+
+class="suggestions">
+
+</div>
+
+</div>
+
+<div class="device-preview">
+
+<div class="spec">
+
+<span>
+
+RAM
+
+</span>
+
+<strong id="ram">
+
+--
+
+</strong>
+
+</div>
+
+<div class="spec">
+
+<span>
+
+Processor
+
+</span>
+
+<strong id="cpu">
+
+--
+
+</strong>
+
+</div>
+
+<div class="spec">
+
+<span>
+
+Refresh Rate
+
+</span>
+
+<strong id="refresh">
+
+--
+
+</strong>
+
+</div>
+
+<div class="spec">
+
+<span>
+
+Android Version
+
+</span>
+
+<strong id="android">
+
+--
+
+</strong>
+
+</div>
+
+<div class="spec">
+
+<span>
+
+Recommended FPS
+
+</span>
+
+<strong id="fps">
+
+--
+
+</strong>
+
+</div>
+
+<div class="spec">
+
+<span>
+
+Gyroscope
+
+</span>
+
+<strong id="gyro">
+
+--
+
+</strong>
+
+</div>
+
+<div class="spec">
+
+<span>
+
+Touch Sampling
+
+</span>
+
+<strong id="touch">
+
+--
+
+</strong>
+
+</div>
+
+<div class="spec">
+
+<span>
+
+Resolution
+
+</span>
+
+<strong id="resolution">
+
+--
+
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- XP + LEADERBOARD -->
-<section id="leaderboard" class="section">
-  <h2>Your Profile + Top Players</h2>
-  <div class="profile-box glass">
-    <p>XP: <span id="xpText">0</span></p>
-    <p>Level: <span id="levelText">1</span></p>
-    <p>Streak: <span id="streakText">0</span> 🔥</p>
-    <div id="badges"></div>
-    <button class="btn-3d" onclick="claimDaily()">🎁 Claim Daily Reward</button>
-  </div>
-  <div class="leaderboard glass">
-    <h3>Top 5 ZEUS Players</h3>
-    <p>1. ZeusKing 🇳🇬 - 2450 XP</p>
-    <p>2. HeadshotGod 🇬🇭 - 2100 XP</p>
-    <p>3. SniperX 🇰🇪 - 1850 XP</p>
-    <p>4. ClawMaster 🇿🇦 - 1600 XP</p>
-    <p>5. YOU - <span id="yourRankXP">0</span> XP</p>
-  </div>
+<!-- =========================
+PLAYER SETTINGS
+========================== -->
+
+<section
+class="settings-section hidden"
+id="settingsSection">
+
+<div class="glass settings-card">
+
+<h2>
+
+Player Settings
+
+</h2>
+
+<label>
+
+Playing Style
+
+</label>
+
+<select id="playStyle">
+
+<option>
+
+Headshot
+
+</option>
+
+<option>
+
+Balanced
+
+</option>
+
+<option>
+
+Rush
+
+</option>
+
+<option>
+
+Drag
+
+</option>
+
+<option>
+
+Sniper
+
+</option>
+
+</select>
+
+<label>
+
+Finger Setup
+
+</label>
+
+<select id="fingerSetup">
+
+<option>
+
+2 Finger
+
+</option>
+
+<option>
+
+3 Finger
+
+</option>
+
+<option>
+
+4 Finger
+
+</option>
+
+<option>
+
+5 Finger
+
+</option>
+
+</select>
+
+<label>
+
+Gyroscope
+
+</label>
+
+<select id="gyroSetting">
+
+<option>
+
+ON
+
+</option>
+
+<option>
+
+OFF
+
+</option>
+
+</select>
+
+<button
+id="generateBtn"
+class="btn primary large">
+
+Generate AI Sensitivity
+
+</button>
+
+</div>
+
+</section><!-- =========================
+AI ANALYSIS
+========================= -->
+
+<section
+class="analysis-section hidden"
+id="analysisSection">
+
+<div class="glass analysis-card">
+
+<h2>
+
+ZEUS AI Analysis
+
+</h2>
+
+<p>
+
+Please wait while our AI optimizes your sensitivity...
+
+</p>
+
+<div class="analysis-list">
+
+<div class="analysis-item">
+<span class="dot"></span>
+<span id="statusText">
+AI Detecting Device...
+</span>
+</div>
+
+<div class="progress-container">
+
+<div
+id="progressBar"
+class="progress-bar">
+
+</div>
+
+</div>
+
+<div
+id="progressValue"
+class="progress-value">
+
+0%
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- SHARE CARD PREVIEW -->
-<canvas id="shareCard" class="hidden"></canvas>
+<!-- =========================
+RESULTS
+========================= -->
 
-<!-- FEATURES -->
-<section id="features" class="section">
-  <h2>Premium Features</h2>
-  <div class="features-grid">
-    <div class="feature-card glass">🎁 Daily Reward</div>
-    <div class="feature-card glass">📈 XP + Level System</div>
-    <div class="feature-card glass">🏆 Achievements</div>
-    <div class="feature-card glass">👑 Leaderboard</div>
-    <div class="feature-card glass">🔥 Trending Phones</div>
-    <div class="feature-card glass">📜 Version History</div>
-    <div class="feature-card glass">⚖️ Compare Devices</div>
-    <div class="feature-card glass">⭐ Save Favorites</div>
-  </div>
+<section
+class="result-section hidden"
+id="resultSection">
+
+<div class="glass result-card">
+
+<div class="result-header">
+
+<h2>
+
+AI Generated Profile
+
+</h2>
+
+<span class="premium-tag">
+
+PREMIUM
+
+</span>
+
+</div>
+
+<div class="score-grid">
+
+<div class="score-box">
+
+<h4>
+
+Performance
+
+</h4>
+
+<strong id="performanceScore">
+
+98%
+
+</strong>
+
+</div>
+
+<div class="score-box">
+
+<h4>
+
+Headshot Accuracy
+
+</h4>
+
+<strong id="headshotScore">
+
+99%
+
+</strong>
+
+</div>
+
+<div class="score-box">
+
+<h4>
+
+AI Rating
+
+</h4>
+
+<strong>
+
+A+
+
+</strong>
+
+</div>
+
+<div class="score-box">
+
+<h4>
+
+Recommended FPS
+
+</h4>
+
+<strong id="resultFPS">
+
+90 FPS
+
+</strong>
+
+</div>
+
+</div>
+
+<div class="device-summary">
+
+<h3>
+
+Detected Device
+
+</h3>
+
+<p id="resultDevice">
+
+Samsung Galaxy S24 Ultra
+
+</p>
+
+</div>
+
+<div class="graphics-box">
+
+<h3>
+
+Recommended Graphics
+
+</h3>
+
+<p id="graphicsResult">
+
+Ultra + Smooth
+
+</p>
+
+</div>
+
+<div class="sensitivity-table">
+
+<div class="row">
+
+<span>
+
+General
+
+</span>
+
+<strong id="general">
+
+198
+
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>
+
+Red Dot
+
+</span>
+
+<strong id="reddot">
+
+188
+
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>
+
+2X Scope
+
+</span>
+
+<strong id="scope2x">
+
+181
+
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>
+
+4X Scope
+
+</span>
+
+<strong id="scope4x">
+
+169
+
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>
+
+Sniper Scope
+
+</span>
+
+<strong id="sniper">
+
+108
+
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>
+
+Free Look
+
+</span>
+
+<strong id="freelook">
+
+75
+
+</strong>
+
+</div>
+
+<div class="row">
+
+<span>
+
+Gyroscope
+
+</span>
+
+<strong id="gyroResult">
+
+200
+
+</strong>
+
+</div>
+
+</div>
+
+<div class="result-buttons">
+
+<button
+id="copySensitivity"
+class="btn primary">
+
+Copy Sensitivity
+
+</button>
+
+<button
+id="saveFavorite"
+class="btn secondary">
+
+Save Favorite
+
+</button>
+
+<button
+id="exportImage"
+class="btn secondary">
+
+Export Image
+
+</button>
+
+</div>
+
+</div>
+
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews" class="section">
-  <h2>Community Reviews</h2>
-  <div class="reviews-slider">
-    <div class="review glass">★★★★★<p>"Best sensitivity generator. My headshots improved 300%"</p><span>- ProGamer 🇳🇬</span></div>
-    <div class="review glass">★★★<p>"Finally works perfectly on my Infinix Hot 30"</p><span>- SniperKing 🇬🇭</span></div>
-    <div class="review glass">★★★★★<p>"Looks like premium software worth $200"</p><span>- ZeusYT 🇰🇪</span></div>
-    <div class="review glass">★★★★★<p>"AI settings are different for every phone. So real"</p><span>- ClawMaster 🇿🇦</span></div>
-  </div>
+<!-- =========================
+HISTORY
+========================= -->
+
+<section
+class="history-section">
+
+<div class="glass history-card">
+
+<h2>
+
+History
+
+</h2>
+
+<div
+id="historyList">
+
+No history yet.
+
+</div>
+
+</div>
+
 </section>
 
-<!-- FAQ -->
-<section id="faq" class="section glass">
-  <h2>Frequently Asked Questions</h2>
-  <details><summary>Is ZEUS SENSI AI free?</summary><p>Yes. Access codes are distributed free on our WhatsApp channel.</p></details>
-  <details><summary>Does it work on iPhone 6?</summary><p>Yes. We support iPhone 6 to iPhone 15 Pro Max.</p></details>
-  <details><summary>How accurate is the AI?</summary><p>99.7% accuracy based on 1.2M+ generated sensitivities.</p></details>
-  <details><summary>How often are presets updated?</summary><p>Daily. Join WhatsApp channel for instant updates.</p></details>
-  <details><summary>Can I save my sensitivity?</summary><p>Yes. Click the ⭐ button to save to favorites.</p></details>
+<!-- =========================
+FAVORITES
+========================= -->
+
+<section
+class="favorite-section">
+
+<div class="glass favorite-card">
+
+<h2>
+
+Favorites
+
+</h2>
+
+<div
+id="favoriteList">
+
+No favorites yet.
+
+</div>
+
+</div>
+
+</section><!-- =========================
+COMPARE DEVICES
+========================= -->
+
+<section class="compare-section">
+
+    <div class="glass compare-card">
+
+        <h2>Compare Devices</h2>
+
+        <p>
+            Compare two generated AI sensitivity profiles.
+        </p>
+
+        <div class="compare-grid">
+
+            <div class="compare-box">
+
+                <h3>Device A</h3>
+
+                <div id="compareA">
+                    No profile selected.
+                </div>
+
+            </div>
+
+            <div class="compare-box">
+
+                <h3>Device B</h3>
+
+                <div id="compareB">
+                    No profile selected.
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
 
-<!-- FOOTER -->
-<footer class="glass">
-  <p><b>ZEUS SENSI AI</b></p>
-  <p>Owner: ZEUS</p>
-  <p><a href="https://github.com/emmyjosh65/zeus-sensi">GitHub</a> | <a href="https://whatsapp.com/channel/0029VbAo1ToLI8YW9Q4p6W2J">WhatsApp Channel</a> | <a href="https://wa.me/2349066760078">Support</a></p>
-  <p>Access Key: Distributed FREE only through WhatsApp Channel</p>
-  <p>Version: ZEUS SENSI AI V5.2</p>
-  <p>Copyright © 2026 ZEUS</p>
+<!-- =========================
+THEME SWITCHER
+========================= -->
+
+<section class="theme-section">
+
+    <div class="glass theme-card">
+
+        <h2>Appearance</h2>
+
+        <p>
+            Personalize your experience.
+        </p>
+
+        <div class="theme-buttons">
+
+            <button
+                id="darkTheme"
+                class="btn secondary">
+
+                Dark Mode
+
+            </button>
+
+            <button
+                id="orangeTheme"
+                class="btn primary">
+
+                Orange Theme
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+FLOATING SUPPORT
+========================= -->
+
+<a
+href="https://wa.me/2349125787958"
+target="_blank"
+class="floating-support">
+
+<div class="support-icon">
+
+💬
+
+</div>
+
+<div>
+
+<strong>
+
+Need an Access Code?
+
+</strong>
+
+<p>
+
+Contact ZEUS
+
+</p>
+
+</div>
+
+</a>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
+
+<div class="footer-container">
+
+<div>
+
+<h2>
+
+ZEUS SENSI AI
+
+</h2>
+
+<p>
+
+Version 6.0
+
+</p>
+
+</div>
+
+<div>
+
+<h3>
+
+Owner
+
+</h3>
+
+<p>
+
+ZEUS
+
+</p>
+
+</div>
+
+<div>
+
+<h3>
+
+WhatsApp
+
+</h3>
+
+<a
+href="https://wa.me/2349125787958"
+target="_blank">
+
++234 912 578 7958
+
+</a>
+
+</div>
+
+<div>
+
+<h3>
+
+GitHub
+
+</h3>
+
+<a
+href="https://github.com/emmyjosh65/zeus-sensi"
+target="_blank">
+
+github.com/emmyjosh65/zeus-sensi
+
+</a>
+
+</div>
+
+<div>
+
+<h3>
+
+Website
+
+</h3>
+
+<a
+href="https://emmyjosh65.github.io/zeus-sensi/"
+target="_blank">
+
+emmyjosh65.github.io/zeus-sensi
+
+</a>
+
+</div>
+
+</div>
+
+<div class="copyright">
+
+© 2026 ZEUS. All Rights Reserved.
+
+</div>
+
 </footer>
 
-<a href="https://wa.me/2349066760078" class="whatsapp-float">💬</a>
+<!-- =========================
+TOAST
+========================= -->
 
-<!-- SOUNDS -->
-<audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_d1718f0a2c.mp3"></audio>
-<audio id="successSound" src="https://cdn.pixabay.com/download/audio/2022/03/24/audio_d7e1b3a0d1.mp3"></audio>
-<audio id="errorSound" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3"></audio>
-<audio id="aiSound" src="https://cdn.pixabay.com/download/audio/2024/02/27/audio_4b2e1e3c3f.mp3" loop></audio>
+<div
+id="toast"
+class="toast">
 
-<div class="voice-toggle glass">
-  <label><input type="checkbox" id="voiceToggle" checked> 🔊 AI Voice</label>
+Copied Successfully
+
+</div>
+
+<!-- =========================
+CONFETTI
+========================= -->
+
+<canvas id="confettiCanvas"></canvas>
+
+<!-- =========================
+LOADING OVERLAY
+========================= -->
+
+<div
+id="loadingOverlay"
+class="loading-overlay hidden">
+
+<div class="loader-circle"></div>
+
+<h2>
+
+Preparing AI...
+
+</h2>
+
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
