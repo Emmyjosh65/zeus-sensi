@@ -27,102 +27,85 @@
   </section>
 
   <section class="wizard-wrap">
-    <div class="wizard" id="wizard">
+    <div class="wizard" id="hudWizard">
 
       <!-- STEP 1: PIN -->
-      <div class="step active" data-step="1">
+      <div class="wiz-step active" data-step="1">
         <div class="step-num">STEP 01</div>
         <h2>Enter Your Premium PIN</h2>
         <p class="step-desc">Same PIN as Premium Sensi.</p>
         <div class="pin-box">
-          <input type="password" maxlength="4" id="pinInput" placeholder="• • • •" inputmode="numeric" />
+          <input type="password" maxlength="4" id="hudPin" placeholder="• • • •" inputmode="numeric" />
         </div>
-        <button class="btn btn-gold" id="pinSubmit">UNLOCK ⚡</button>
-        <a class="contact-link" id="contactOwner" target="_blank" rel="noopener">
-          💬 Contact owner for PIN
-        </a>
-        <p class="err" id="pinErr"></p>
+        <button class="btn btn-gold" onclick="checkHudPin()">UNLOCK ⚡</button>
+        <a class="contact-owner" href="#" target="_blank" rel="noopener">💬 Contact owner for PIN</a>
+        <p class="err" id="hudPinErr"></p>
       </div>
 
       <!-- STEP 2: PLATFORM -->
-      <div class="step" data-step="2">
+      <div class="wiz-step" data-step="2">
         <div class="step-num">STEP 02</div>
         <h2>Select Platform</h2>
         <p class="step-desc">HUD button sizes differ between iOS and Android.</p>
         <div class="choice-grid two">
-          <div class="choice" data-value="ios">
-            <div class="choice-icon">🍎</div><h3>iOS</h3>
-          </div>
-          <div class="choice" data-value="android">
-            <div class="choice-icon">🤖</div><h3>Android</h3>
-          </div>
+          <div class="choice" onclick="pickHudPlatform('ios')"><div class="choice-icon">🍎</div><h3>iOS</h3></div>
+          <div class="choice" onclick="pickHudPlatform('android')"><div class="choice-icon">🤖</div><h3>Android</h3></div>
         </div>
       </div>
 
       <!-- STEP 3: STYLE -->
-      <div class="step" data-step="3">
+      <div class="wiz-step" data-step="3">
         <div class="step-num">STEP 03</div>
         <h2>Playstyle</h2>
         <p class="step-desc">HUD layout changes with the role you play.</p>
         <div class="choice-grid three">
-          <div class="choice" data-value="headshot">
-            <div class="choice-icon">🎯</div><h3>Headshot</h3><p>Fire button high</p>
-          </div>
-          <div class="choice" data-value="spam">
-            <div class="choice-icon">🔥</div><h3>Spam</h3><p>Big fire, quick switch</p>
-          </div>
-          <div class="choice" data-value="esports">
-            <div class="choice-icon">🏆</div><h3>Esports</h3><p>Balanced pro HUD</p>
-          </div>
+          <div class="choice" onclick="pickHudStyle('headshot')"><div class="choice-icon">🎯</div><h3>Headshot</h3><p>Fire button high</p></div>
+          <div class="choice" onclick="pickHudStyle('spam')"><div class="choice-icon">🔥</div><h3>Spam</h3><p>Big fire, quick switch</p></div>
+          <div class="choice" onclick="pickHudStyle('esports')"><div class="choice-icon">🏆</div><h3>Esports</h3><p>Balanced pro HUD</p></div>
         </div>
       </div>
 
       <!-- STEP 4: FINGERS -->
-      <div class="step" data-step="4">
+      <div class="wiz-step" data-step="4">
         <div class="step-num">STEP 04</div>
         <h2>Grip / Fingers</h2>
         <p class="step-desc">We map the right number of action buttons.</p>
         <div class="choice-grid four">
-          <div class="choice" data-value="2"><div class="choice-icon">✌️</div><h3>2</h3></div>
-          <div class="choice" data-value="3"><div class="choice-icon">🤟</div><h3>3</h3></div>
-          <div class="choice" data-value="4"><div class="choice-icon">🖐️</div><h3>4</h3></div>
-          <div class="choice" data-value="5"><div class="choice-icon">⚡</div><h3>5</h3></div>
+          <div class="choice" onclick="pickHudFingers('2')"><div class="choice-icon">✌️</div><h3>2</h3></div>
+          <div class="choice" onclick="pickHudFingers('3')"><div class="choice-icon">🤟</div><h3>3</h3></div>
+          <div class="choice" onclick="pickHudFingers('4')"><div class="choice-icon">🖐️</div><h3>4</h3></div>
+          <div class="choice" onclick="pickHudFingers('5')"><div class="choice-icon">⚡</div><h3>5</h3></div>
         </div>
       </div>
 
       <!-- STEP 5: RESULT -->
-      <div class="step" data-step="5">
+      <div class="wiz-step" data-step="5">
         <div class="step-num">YOUR HUD</div>
         <h2>⚡ Custom HUD Layout</h2>
         <p class="step-desc" id="hudSummary"></p>
-
         <div class="hud-preview">
           <div class="hud-phone">
-            <div class="hud-screen" id="hudScreen">
-              <!-- buttons injected by JS -->
-            </div>
+            <div class="hud-screen" id="hudScreen"></div>
           </div>
         </div>
-
         <div class="hud-actions">
           <h3>Button Map</h3>
-          <ul id="hudMap" class="hud-map"></ul>
+          <ul class="hud-map" id="hudMap"></ul>
         </div>
-
         <div class="result-cta">
-          <button class="btn btn-gold" id="copyBtn">📋 COPY HUD</button>
-          <button class="btn btn-ghost" id="restartBtn">🔄 NEW SETUP</button>
+          <button class="btn btn-gold" onclick="copyHud()">📋 COPY HUD</button>
+          <button class="btn btn-ghost" onclick="restartHud()">🔄 NEW SETUP</button>
         </div>
       </div>
 
       <div class="wizard-nav">
-        <button class="btn btn-ghost" id="backBtn">← Back</button>
-        <button class="btn btn-gold" id="nextBtn">Next →</button>
+        <button class="btn btn-ghost wiz-back">← Back</button>
+        <button class="btn btn-gold wiz-next">Next →</button>
       </div>
     </div>
 
     <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
+      <div class="wiz-bar" style="width:0%"></div>
     </div>
   </section>
 
@@ -131,6 +114,84 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="hud.js"></script>
+  <script>
+    // ---- STATE ----
+    const hudState = { platform: null, style: null, fingers: null, pinOk: false };
+    let hudWiz = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      hudWiz = initWizard('hudWizard', 5, (cur, advance) => {
+        if (cur === 1 && !hudState.pinOk) { document.getElementById('hudPinErr').textContent = '❌ Invalid PIN.'; return false; }
+        if (cur === 4 && !hudState.fingers) { alert('Select your grip'); return false; }
+        if (cur === 4) buildHud();
+        advance();
+      });
+    });
+
+    function checkHudPin() {
+      const v = document.getElementById('hudPin').value;
+      const err = document.getElementById('hudPinErr');
+      if (v === PREMIUM_PIN) { hudState.pinOk = true; err.textContent = ''; hudWiz.go(2); }
+      else { err.textContent = '❌ Invalid PIN.'; }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('hudPin')?.addEventListener('keypress', e => { if (e.key === 'Enter') checkHudPin(); });
+    });
+
+    function pickHudPlatform(v) { hudState.platform = v; document.querySelectorAll('#hudWizard [data-step="2"] .choice').forEach(x => x.classList.remove('selected')); event.target.closest('.choice').classList.add('selected'); setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 250); }
+    function pickHudStyle(v) { hudState.style = v; document.querySelectorAll('#hudWizard [data-step="3"] .choice').forEach(x => x.classList.remove('selected')); event.target.closest('.choice').classList.add('selected'); setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 250); }
+    function pickHudFingers(v) { hudState.fingers = v; document.querySelectorAll('#hudWizard [data-step="4"] .choice').forEach(x => x.classList.remove('selected')); event.target.closest('.choice').classList.add('selected'); setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 250); }
+
+    function buildHud() {
+      const { platform, style, fingers } = hudState;
+      const screen = document.getElementById('hudScreen');
+      screen.innerHTML = '';
+
+      const layouts = {
+        2: ['fire','jump','crouch','scope','look'],
+        3: ['fire','jump','crouch','scope','look','reload'],
+        4: ['fire','jump','crouch','scope','look','reload','medkit','grenade'],
+        5: ['fire','jump','crouch','scope','look','reload','medkit','grenade','gloo','skill']
+      };
+      const buttons = layouts[fingers] || layouts[2];
+
+      const pos = {
+        headshot: { fire:{l:78,t:50,s:14}, jump:{l:78,t:30,s:10}, crouch:{l:78,t:70,s:10}, scope:{l:60,t:75,s:10}, look:{l:88,t:88,s:9}, reload:{l:60,t:60,s:9}, medkit:{l:22,t:78,s:9}, grenade:{l:12,t:70,s:9}, gloo:{l:22,t:60,s:9}, skill:{l:12,t:85,s:9} },
+        spam: { fire:{l:80,t:55,s:16}, jump:{l:80,t:30,s:10}, crouch:{l:80,t:78,s:10}, scope:{l:65,t:80,s:10}, look:{l:88,t:88,s:9}, reload:{l:55,t:60,s:10}, medkit:{l:18,t:80,s:9}, grenade:{l:10,t:70,s:9}, gloo:{l:18,t:60,s:9}, skill:{l:10,t:88,s:9} },
+        esports: { fire:{l:78,t:52,s:13}, jump:{l:78,t:32,s:10}, crouch:{l:78,t:72,s:10}, scope:{l:62,t:78,s:10}, look:{l:88,t:88,s:9}, reload:{l:58,t:60,s:9}, medkit:{l:20,t:80,s:9}, grenade:{l:12,t:72,s:9}, gloo:{l:20,t:60,s:9}, skill:{l:12,t:88,s:9} }
+      };
+      const cfg = pos[style] || pos.esports;
+      const labels = { fire:'FIRE', jump:'JUMP', crouch:'CROUCH', scope:'SCOPE', look:'LOOK', reload:'RELOAD', medkit:'MED', grenade:'BOOM', gloo:'GLOO', skill:'SKILL' };
+
+      buttons.forEach(b => {
+        const p = cfg[b] || { l: 50, t: 50, s: 8 };
+        const el = document.createElement('div');
+        el.className = 'hud-btn' + (b === 'fire' ? ' fire' : '');
+        el.style.cssText = `left:${p.l}%;top:${p.t}%;width:${p.s}%;height:${p.s}%;transform:translate(-50%,-50%)`;
+        el.textContent = labels[b] || b.toUpperCase();
+        screen.appendChild(el);
+      });
+
+      const map = document.getElementById('hudMap');
+      map.innerHTML = buttons.map(b => `<li><strong>${labels[b]}</strong>${b.toUpperCase()} action button</li>`).join('');
+      document.getElementById('hudSummary').textContent = `${platform.toUpperCase()} · ${style} · ${fingers}-finger claw layout`;
+    }
+
+    function copyHud() {
+      const txt = `ZEUS SENSI — Custom HUD\nPlatform: ${hudState.platform}\nStyle: ${hudState.style}\nFingers: ${hudState.fingers}\n\nButtons mapped on preview.`;
+      navigator.clipboard.writeText(txt);
+      const btn = event.target;
+      btn.textContent = '✅ COPIED!';
+      setTimeout(() => btn.textContent = '📋 COPY HUD', 2000);
+    }
+    function restartHud() {
+      hudState.platform = hudState.style = hudState.fingers = null;
+      hudState.pinOk = false;
+      document.getElementById('hudPin').value = '';
+      document.getElementById('hudPinErr').textContent = '';
+      document.querySelectorAll('.choice').forEach(x => x.classList.remove('selected'));
+      if (hudWiz) hudWiz.restart();
+    }
+  </script>
 </body>
 </html>
