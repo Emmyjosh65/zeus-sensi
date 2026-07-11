@@ -1,20 +1,76 @@
 /* ========================================
    ZEUS SENSI — Core Engine v2.0
-   PIN gate + Sensi calculation + HUD builder
    ======================================== */
 
-// ---- HIDDEN PIN (obfuscated: 2007) ----
+// ---- PIN (obfuscated: 2007) ----
 const _p = [0x32, 0x30, 0x30, 0x37];
 const PREMIUM_PIN = String.fromCharCode(..._p);
 
-// ---- Contact (WhatsApp) ----
+// ---- Contact ----
 const OWNER_CONTACT = "https://wa.me/09066760078?text=Hello%2C%20I%20want%20to%20buy%20premium%20pin";
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.contact-owner').forEach(a => {
-    a.href = OWNER_CONTACT;
-  });
+  document.querySelectorAll('.contact-owner').forEach(a => { a.href = OWNER_CONTACT; });
+  initParticles();
 });
+
+/* ============================================
+   PARTICLES
+   ============================================ */
+function initParticles() {
+  const c = document.getElementById('particles');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  let w, h;
+  function resize() { w = c.width = innerWidth; h = c.height = innerHeight; }
+  resize();
+  addEventListener('resize', resize);
+
+  const stars = Array.from({ length: 180 }, () => ({
+    x: Math.random() * w, y: Math.random() * h,
+    r: Math.random() * 1.5 + 0.3,
+    dx: (Math.random() - 0.5) * 0.15,
+    dy: (Math.random() - 0.5) * 0.15,
+    a: Math.random() * 0.6 + 0.2
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    stars.forEach(s => {
+      s.x += s.dx;
+      s.y += s.dy;
+      if (s.x < 0) s.x = w;
+      if (s.x > w) s.x = 0;
+      if (s.y < 0) s.y = h;
+      if (s.y > h) s.y = 0;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 215, 0, ${s.a})`;
+      ctx.shadowColor = '#FFD700';
+      ctx.shadowBlur = 4;
+      ctx.fill();
+    });
+    ctx.shadowBlur = 0;
+    // Draw faint lines between close stars
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 80) {
+          ctx.beginPath();
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.strokeStyle = `rgba(255, 215, 0, ${0.08 * (1 - dist / 80)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
 
 /* ============================================
    SENSI GENERATOR
@@ -75,45 +131,6 @@ function initWizard(wrapperId, totalSteps, onComplete) {
     if (typeof onComplete === 'function' && onComplete(current, () => { current++; show(); }) === false) return;
     if (current < totalSteps) { current++; show(); }
   };
-
   show();
-
-  return {
-    go: (s) => { current = s; show(); },
-    restart: () => { current = 1; show(); }
-  };
+  return { go: (s) => { current = s; show(); }, restart: () => { current = 1; show(); } };
 }
-
-/* ============================================
-   LIGHTNING CANVAS (for all pages)
-   ============================================ */
-function initLightning() {
-  const canvas = document.querySelector('.lightning');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h;
-  function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
-  resize();
-  addEventListener('resize', resize);
-  function bolt() {
-    ctx.clearRect(0, 0, w, h);
-    ctx.strokeStyle = 'rgba(255,215,0,0.4)';
-    ctx.lineWidth = 1;
-    ctx.shadowColor = '#FFD700';
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
-    let x = Math.random() * w, y = 0;
-    ctx.moveTo(x, y);
-    while (y < h) {
-      x += (Math.random() - 0.5) * 30;
-      y += 10 + Math.random() * 20;
-      ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    setTimeout(bolt, 1500 + Math.random() * 2000);
-  }
-  bolt();
-}
-
-// Run on load
-initLightning();
