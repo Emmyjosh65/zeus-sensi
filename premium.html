@@ -1,1 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Sensi — ZEUS SENSI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas class="lightning"></canvas>
 
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <span class="bolt">⚡</span> ZEUS<span>SENSI</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="premium.html" class="active">Premium Sensi</a>
+      <a href="hud.html">HUD Config</a>
+    </div>
+  </nav>
+
+  <!-- HERO STRIP -->
+  <section class="page-strip">
+    <h1 class="strip-title">⚡ PREMIUM <span class="gold">SENSI</span></h1>
+    <p>Locked behind a private 4-digit PIN. Contact the owner to unlock.</p>
+  </section>
+
+  <!-- WIZARD -->
+  <section class="wizard-wrap">
+    <div class="wizard" id="wizard">
+
+      <!-- STEP 1: PIN -->
+      <div class="step active" data-step="1">
+        <div class="step-num">STEP 01</div>
+        <h2>Enter Your Premium PIN</h2>
+        <p class="step-desc">Don't have one? Contact the owner to receive your 4-digit PIN.</p>
+        <div class="pin-box">
+          <input type="password" maxlength="4" id="pinInput" placeholder="• • • •" inputmode="numeric" />
+        </div>
+        <button class="btn btn-gold" id="pinSubmit">UNLOCK ⚡</button>
+        <a class="contact-link" id="contactOwner" target="_blank" rel="noopener">
+          💬 Contact owner for PIN
+        </a>
+        <p class="err" id="pinErr"></p>
+      </div>
+
+      <!-- STEP 2: PLATFORM -->
+      <div class="step" data-step="2">
+        <div class="step-num">STEP 02</div>
+        <h2>Select Your Platform</h2>
+        <p class="step-desc">iOS or Android — we tune the engine differently for each.</p>
+        <div class="choice-grid two">
+          <div class="choice" data-value="ios">
+            <div class="choice-icon">🍎</div>
+            <h3>iOS</h3>
+            <p>iPhone / iPad</p>
+          </div>
+          <div class="choice" data-value="android">
+            <div class="choice-icon">🤖</div>
+            <h3>Android</h3>
+            <p>Samsung, Xiaomi, ROG, Tecno, etc.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: DEVICE -->
+      <div class="step" data-step="3">
+        <div class="step-num">STEP 03</div>
+        <h2>Find Your Device</h2>
+        <p class="step-desc">Type your phone model — we'll auto-detect it.</p>
+        <div class="search-box">
+          <input type="text" id="deviceSearch" placeholder="Search e.g. iPhone 13, Samsung A52, ROG 8..." />
+        </div>
+        <div class="device-list" id="deviceList"></div>
+        <p class="hint" id="deviceHint">No result? Pick "Generic" below.</p>
+        <div class="choice-grid two small">
+          <div class="choice mini" data-value="generic">
+            <div class="choice-icon">📱</div>
+            <h3>Generic</h3>
+          </div>
+          <div class="choice mini" data-value="low-end">
+            <div class="choice-icon">🐢</div>
+            <h3>Low-End</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: DPI -->
+      <div class="step" data-step="4">
+        <div class="step-num">STEP 04</div>
+        <h2>Set Your DPI</h2>
+        <p class="step-desc">Higher DPI = lower sensitivity needed.</p>
+        <div class="dpi-box">
+          <input type="range" id="dpi" min="200" max="1200" value="450" step="10" />
+          <div class="dpi-value"><span id="dpiVal">450</span> DPI</div>
+        </div>
+        <div class="dpi-presets">
+          <button data-dpi="300">300</button>
+          <button data-dpi="450">450</button>
+          <button data-dpi="600">600</button>
+          <button data-dpi="800">800</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: PLAY STYLE -->
+      <div class="step" data-step="5">
+        <div class="step-num">STEP 05</div>
+        <h2>Choose Your Playstyle</h2>
+        <p class="step-desc">Pick what you're trying to master right now.</p>
+        <div class="choice-grid three">
+          <div class="choice" data-value="headshot">
+            <div class="choice-icon">🎯</div>
+            <h3>Headshot</h3>
+            <p>High vertical control, instant crosshair-to-head</p>
+          </div>
+          <div class="choice" data-value="spam">
+            <div class="choice-icon">🔥</div>
+            <h3>Spam</h3>
+            <p>Stable spray control for M1887 / MP40</p>
+          </div>
+          <div class="choice" data-value="esports">
+            <div class="choice-icon">🏆</div>
+            <h3>Esports</h3>
+            <p>Balanced pro preset used in tournaments</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 6: FINGERS -->
+      <div class="step" data-step="6">
+        <div class="step-num">STEP 06</div>
+        <h2>How Many Fingers?</h2>
+        <p class="step-desc">We tune the engine to match your claw setup.</p>
+        <div class="choice-grid four">
+          <div class="choice" data-value="2">
+            <div class="choice-icon">✌️</div>
+            <h3>2 Fingers</h3>
+            <p>Thumbs only</p>
+          </div>
+          <div class="choice" data-value="3">
+            <div class="choice-icon">🤟</div>
+            <h3>3 Fingers</h3>
+            <p>2 thumbs + 1 index</p>
+          </div>
+          <div class="choice" data-value="4">
+            <div class="choice-icon">🖐️</div>
+            <h3>4 Fingers</h3>
+            <p>Pro claw</p>
+          </div>
+          <div class="choice" data-value="5">
+            <div class="choice-icon">⚡</div>
+            <h3>5 Fingers</h3>
+            <p>Full claw / pro</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 7: RESULT -->
+      <div class="step" data-step="7">
+        <div class="step-num">RESULT</div>
+        <h2>⚡ Your Premium Sensi</h2>
+        <p class="step-desc" id="resultSummary"></p>
+
+        <div class="result-card">
+          <div class="result-row"><span>General</span><strong id="r-general">--</strong></div>
+          <div class="result-row"><span>Red Dot</span><strong id="r-reddot">--</strong></div>
+          <div class="result-row"><span>2x Scope</span><strong id="r-2x">--</strong></div>
+          <div class="result-row"><span>4x Scope</span><strong id="r-4x">--</strong></div>
+          <div class="result-row"><span>Sniper</span><strong id="r-sniper">--</strong></div>
+          <div class="result-row"><span>Free Look</span><strong id="r-freelook">--</strong></div>
+        </div>
+
+        <div class="result-cta">
+          <button class="btn btn-gold" id="copyBtn">📋 COPY ALL</button>
+          <button class="btn btn-ghost" id="restartBtn">🔄 NEW SETUP</button>
+        </div>
+
+        <a class="contact-link" id="contactOwner2" target="_blank" rel="noopener">
+          💬 Need help? Contact owner
+        </a>
+      </div>
+
+      <!-- NAV BUTTONS -->
+      <div class="wizard-nav">
+        <button class="btn btn-ghost" id="backBtn">← Back</button>
+        <button class="btn btn-gold" id="nextBtn">Next →</button>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 ZEUS SENSI — Premium Sensi Engine</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="premium.js"></script>
+</body>
+</html>
