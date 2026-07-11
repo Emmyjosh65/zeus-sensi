@@ -1,81 +1,104 @@
-const DEVICE_DB = [
-{"name":"iPhone 18 Pro Max","brand":"Apple","ram":"12GB","cpu":"A20 Bionic","score":100,"fps":"120"},
-{"name":"iPhone 15 Pro Max","brand":"Apple","ram":"8GB","cpu":"A17 Pro","score":97,"fps":"90"},
-{"name":"iPhone 13","brand":"Apple","ram":"4GB","cpu":"A15 Bionic","score":88,"fps":"60"},
-{"name":"iPhone 6","brand":"Apple","ram":"1GB","cpu":"A8","score":53,"fps":"60"},
-{"name":"Samsung Galaxy S24 Ultra","brand":"Samsung","ram":"12GB","cpu":"Snapdragon 8 Gen 3","score":98,"fps":"90"},
-{"name":"Tecno Spark 20 Pro","brand":"Tecno","ram":"8GB","cpu":"Helio G99","score":75,"fps":"60"},
-{"name":"Infinix Note 40 Pro","brand":"Infinix","ram":"12GB","cpu":"Dimensity 7020","score":82,"fps":"90"},
-{"name":"Poco X6 Pro","brand":"Poco","ram":"12GB","cpu":"Dimensity 8300","score":90,"fps":"90"}
-];
+/* ========================================
+   ZEUS SENSI — Core Engine
+   PIN gate + Sensi calculation + UI helpers
+   ======================================== */
 
-let currentDevice = null;
-let currentSensi = {};
-const CORRECT_PIN = "2007";
+// ---- HIDDEN PIN (obfuscated, both gates use same PIN: 2007) ----
+// Don't put 2007 plainly in code; contact owner only.
+const _p = [0x32, 0x30, 0x30, 0x37];
+const PREMIUM_PIN = String.fromCharCode(..._p);
 
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo(0,0)
-}
+// ---- Contact link (WhatsApp) ----
+const OWNER_CONTACT = "https://wa.me/09066760078?text=Hello%2C%20I%20want%20to%20buy%20premium%20pin";
 
-document.querySelectorAll('.pin-inputs input').forEach((inp,i,arr)=>{
-  inp.addEventListener('input',()=>{if(inp.value.length==1 && i<3) arr[i+1].focus(); if(i==3) checkPin()})
+// ---- Set contact link on every page ----
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#contactOwner, #contactOwner2').forEach(a => {
+    a.href = OWNER_CONTACT;
+  });
 });
 
-function checkPin(){
-  const pin = [...document.querySelectorAll('.pin-inputs input')].map(i=>i.value).join('');
-  const box = document.getElementById('pinBox');
-  if(pin === CORRECT_PIN){
-    box.classList.add('green-glow');
-    toast('Access Granted ✅');
-    setTimeout(()=>showPage('generator'),600);
-  }else{
-    box.classList.add('shake','red-glow');
-    toast('Wrong Access Code ❌');
-    setTimeout(()=>{box.classList.remove('shake','red-glow');document.querySelectorAll('.pin-inputs input').forEach(i=>i.value='')},500);
+/* ============================================
+   SENSI GENERATOR
+   Inputs: platform, device, dpi, style, fingers
+   ============================================ */
+
+function generateSensi({ platform, device, dpi, style, fingers }) {
+  // Base values (balanced esports baseline)
+  const base = { general: 100, redDot: 90, scope2x: 80, scope4x: 70, sniper: 50, freeLook: 65 };
+
+  // Style modifier
+  const styleMod = {
+    headshot: { general: 1.12, redDot: 1.18, scope2x: 1.05, scope4x: 0.95, sniper: 0.90, freeLook: 1.08 },
+    spam:     { general: 0.82, redDot: 0.88, scope2x: 0.85, scope4x: 0.80, sniper: 0.85, freeLook: 0.88 },
+    esports:  { general: 1.00, redDot: 1.00, scope2x: 1.00, scope4x: 1.00, sniper: 1.00, freeLook: 1.00 }
+  }[style] || {};
+
+  // Finger modifier (more fingers = more control = can run lower sens)
+  const fingerMod = { 2: 1.18, 3: 1.06, 4: 1.00, 5: 0.90 }[fingers] || 1.0;
+
+  // DPI modifier (normalize to 450 DPI)
+  const dpiMod = 450 / Math.max(200, Math.min(1200, dpi));
+
+  // Platform modifier
+  const platMod = platform === 'ios' ? 0.97 : 1.0;
+
+  // Device tier modifier (low-end phones need slightly higher sens for responsiveness)
+  const tierMod = device === 'low-end' ? 1.08 : 1.0;
+
+  // Build result
+  const out = {};
+  for (const k in base) {
+    let v = base[k] * (styleMod[k] || 1) * fingerMod * dpiMod * platMod * tierMod;
+    v = Math.round(Math.max(10, Math.min(200, v)));
+    out[k] = v;
   }
+  return out;
 }
 
-document.getElementById('deviceSearch').addEventListener('input',e=>{
-  const q = e.target.value.toLowerCase();
-  const box = document.getElementById('suggestions');
-  if(!q){box.style.display='none';return}
-  const res = DEVICE_DB.filter(d=>d.name.toLowerCase().includes(q)).slice(0,8);
-  box.innerHTML = res.map(d=>`<div onclick='selectDevice("${d.name}")'>${d.name} - ${d.brand}</div>`).join('');
-  box.style.display = res.length ? 'block' : 'none';
-});
+function formatSensiText(s) {
+  return `ZEUS SENSI — Premium Config
+General  : ${s.general}
+Red Dot  : ${s.redDot}
+2x Scope : ${s.scope2x}
+4x Scope : ${s.scope4x}
+Sniper   : ${s.sniper}
+Free Look: ${s.freeLook}
 
-function selectDevice(name){
-  currentDevice = DEVICE_DB.find(d=>d.name === name);
-  document.getElementById('deviceSearch').value = name;
-  document.getElementById('suggestions').style.display = 'none';
-  document.getElementById('deviceSpecs').style.display = 'block';
-  document.getElementById('deviceSpecs').innerHTML = `<h3>${currentDevice.name}</h3><p>RAM: ${currentDevice.ram} | CPU: ${currentDevice.cpu}</p>`;
-  document.getElementById('generateBtn').disabled = false;
+— Powered by Zeus Sensi ⚡`;
 }
 
-document.getElementById('generateBtn').onclick = ()=>{
-  showPage('ai');
-  let i=0;
-  const int = setInterval(()=>{
-    document.getElementById('progress').style.width = ((i+1)*20)+'%';
-    i++;
-    if(i>=5){clearInterval(int);generateResult()}
-  },500);
-}
+/* ============================================
+   WIZARD SHARED LOGIC
+   ============================================ */
 
-function generateResult(){
-  const base = currentDevice.score > 90 ? 100 : 95;
-  currentSensi = {General:base,RedDot:base-5,Scope2X:base-10,Scope4X:base-15,Sniper:base-30};
-  document.getElementById('resultSpecs').innerHTML = `<p><b>Device:</b> ${currentDevice.name}</p>`;
-  document.getElementById('resultSensi').innerHTML = Object.entries(currentSensi).map(([k,v])=>`<div class="glass-card"><b>${k}</b><p>${v}</p></div>`).join('');
-  showPage('results');
-}
+function initWizard(totalSteps, onComplete) {
+  let current = 1;
+  const wizard = document.getElementById('wizard');
+  const back = document.getElementById('backBtn');
+  const next = document.getElementById('nextBtn');
+  const bar = document.getElementById('progressBar');
 
-function copySensi(){
-  navigator.clipboard.writeText(Object.entries(currentSensi).map(([k,v])=>`${k}: ${v}`).join('\n'));
-  toast('Copied ✅')
-}
+  function show() {
+    wizard.querySelectorAll('.step').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.step) === current);
+    });
+    back.disabled = current === 1;
+    next.style.display = current === totalSteps ? 'none' : '';
+    bar.style.width = (current / totalSteps * 100) + '%';
+  }
 
-function toast(m){const t=document.getElementById('toast');t.innerText=m;t.style.display='block';setTimeout(()=>t.style.display='none',2000)}
+  back.onclick = () => { if (current > 1) { current--; show(); } };
+  next.onclick = () => {
+    if (typeof onComplete === 'function' && onComplete(current, () => { current++; show(); }) === false) return;
+    if (current < totalSteps) { current++; show(); }
+  };
+
+  show();
+
+  return {
+    go: (step) => { current = step; show(); },
+    current: () => current,
+    restart: () => { current = 1; show(); }
+  };
+}
