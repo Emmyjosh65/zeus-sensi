@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZEUS SENSI — Premium Free Fire Configs</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -35,27 +33,20 @@
         Personalized to your device, DPI, playstyle and grip. 
         One setup. Zero recoil. Perfect headshots.
       </p>
-
       <div class="hero-cta">
-        <a href="premium.html" class="btn btn-gold">
-          ⚡ GET PREMIUM SENSI
-        </a>
-        <a href="hud.html" class="btn btn-ghost">
-          🎮 CONFIGURE MY HUD
-        </a>
+        <a href="premium.html" class="btn btn-gold">⚡ GET PREMIUM SENSI</a>
+        <a href="hud.html" class="btn btn-ghost">🎮 CONFIGURE MY HUD</a>
       </div>
-
       <div class="hero-stats">
         <div class="stat"><strong>50K+</strong><span>Configs Delivered</span></div>
         <div class="stat"><strong>4.9★</strong><span>User Rating</span></div>
         <div class="stat"><strong>300+</strong><span>Devices Supported</span></div>
       </div>
     </div>
-
     <div class="hero-visual">
       <div class="phone-frame">
         <div class="phone-screen">
-          <div class="corsshair"></div>
+          <div class="crosshair"></div>
           <div class="scope-ring"></div>
         </div>
       </div>
@@ -128,32 +119,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-    // Lightning canvas
-    const canvas = document.querySelector('.lightning');
-    const ctx = canvas.getContext('2d');
-    let w, h;
-    function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
-    resize(); addEventListener('resize', resize);
-    function bolt() {
-      ctx.clearRect(0,0,w,h);
-      ctx.strokeStyle = 'rgba(255,215,0,0.5)';
-      ctx.lineWidth = 1.2;
-      ctx.shadowColor = '#FFD700';
-      ctx.shadowBlur = 12;
-      ctx.beginPath();
-      let x = Math.random()*w, y = 0;
-      ctx.moveTo(x,y);
-      while (y < h) {
-        x += (Math.random()-0.5)*30;
-        y += 10 + Math.random()*20;
-        ctx.lineTo(x,y);
-      }
-      ctx.stroke();
-      if (Math.random() > 0.6) setTimeout(bolt, 80);
-      else setTimeout(bolt, 1500 + Math.random()*2000);
-    }
-    bolt();
-  </script>
 </body>
 </html>
