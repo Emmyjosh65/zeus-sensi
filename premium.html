@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas class="lightning"></canvas>
+  <canvas id="particles"></canvas>
 
   <nav class="nav">
     <a href="index.html" class="nav-logo">
@@ -139,8 +139,8 @@
           <div class="result-row"><span>Free Look</span><strong id="r-freelook">--</strong></div>
         </div>
         <div class="result-cta">
-          <button class="btn btn-gold" onclick="copySensi()">📋 COPY ALL</button>
-          <button class="btn btn-ghost" onclick="restartSensi()">🔄 NEW SETUP</button>
+          <button class="btn btn-gold" id="copyBtn">📋 COPY ALL</button>
+          <button class="btn btn-ghost" id="restartBtn">🔄 NEW SETUP</button>
         </div>
         <a class="contact-owner" href="#" target="_blank" rel="noopener">💬 Need help? Contact owner</a>
       </div>
@@ -162,14 +162,13 @@
 
   <script src="script.js"></script>
   <script>
-    // ---- STATE ----
+    // STATE
     const state = { platform: null, device: null, dpi: 450, style: null, fingers: null, pinOk: false };
     let devices = [];
     let wiz = null;
 
     fetch('devices.json').then(r => r.json()).then(d => { devices = d; });
 
-    // Init wizard
     document.addEventListener('DOMContentLoaded', () => {
       wiz = initWizard('sensiWizard', 7, (cur, advance) => {
         if (cur === 1 && !state.pinOk) { document.getElementById('sensiPinErr').textContent = '❌ Invalid PIN. Contact the owner.'; return false; }
@@ -179,28 +178,25 @@
         advance();
       });
       searchDevices();
+      document.getElementById('copyBtn').onclick = copySensi;
+      document.getElementById('restartBtn').onclick = restartSensi;
+      document.getElementById('sensiPin').addEventListener('keypress', e => { if (e.key === 'Enter') checkSensiPin(); });
     });
 
-    // ---- PIN ----
     function checkSensiPin() {
       const v = document.getElementById('sensiPin').value;
       const err = document.getElementById('sensiPinErr');
       if (v === PREMIUM_PIN) { state.pinOk = true; err.textContent = ''; wiz.go(2); }
       else { err.textContent = '❌ Invalid PIN. Contact the owner.'; }
     }
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('sensiPin').addEventListener('keypress', e => { if (e.key === 'Enter') checkSensiPin(); });
-    });
 
-    // ---- PLATFORM ----
     function pickPlatform(v) {
       state.platform = v;
       document.querySelectorAll('#sensiWizard [data-step="2"] .choice').forEach(x => x.classList.remove('selected'));
       event.target.closest('.choice').classList.add('selected');
-      setTimeout(() => document.querySelector('.wiz-next').click(), 250);
+      setTimeout(() => document.querySelector('.wiz-next').click(), 300);
     }
 
-    // ---- DEVICE ----
     function searchDevices() {
       const q = (document.getElementById('deviceSearch').value || '').toLowerCase();
       const list = document.getElementById('deviceList');
@@ -210,40 +206,37 @@
           <span>${d.name}</span>
           <span class="chip">${d.os}</span>
         </div>`
-      ).join('') || '<p class="hint">No devices found.</p>';
+      ).join('') || '<p class="hint" style="color:var(--txt3)">No devices found.</p>';
     }
+
     function pickDevice(name) {
       state.device = name;
       document.querySelectorAll('#sensiWizard [data-step="3"] .choice').forEach(x => x.classList.remove('selected'));
       document.querySelectorAll('#sensiWizard .device-item').forEach(x => x.classList.remove('selected'));
-      if (event && event.target.closest) event.target.closest('.device-item, .choice')?.classList.add('selected');
     }
 
-    // ---- DPI ----
     function updateDpi() {
       const s = document.getElementById('dpiSlider');
       state.dpi = parseInt(s.value);
       document.getElementById('dpiVal').textContent = state.dpi;
+      s.style.setProperty('--p', ((state.dpi - 200) / 10) + '%');
     }
     function setDpi(v) { document.getElementById('dpiSlider').value = v; updateDpi(); }
 
-    // ---- STYLE ----
     function pickStyle(v) {
       state.style = v;
       document.querySelectorAll('#sensiWizard [data-step="5"] .choice').forEach(x => x.classList.remove('selected'));
       event.target.closest('.choice').classList.add('selected');
-      setTimeout(() => document.querySelector('.wiz-next').click(), 250);
+      setTimeout(() => document.querySelector('.wiz-next').click(), 300);
     }
 
-    // ---- FINGERS ----
     function pickFingers(v) {
       state.fingers = v;
       document.querySelectorAll('#sensiWizard [data-step="6"] .choice').forEach(x => x.classList.remove('selected'));
       event.target.closest('.choice').classList.add('selected');
-      setTimeout(() => document.querySelector('.wiz-next').click(), 250);
+      setTimeout(() => document.querySelector('.wiz-next').click(), 300);
     }
 
-    // ---- RESULT ----
     function showResult() {
       const sensi = generateSensi(state);
       document.getElementById('r-general').textContent = sensi.general;
@@ -255,13 +248,15 @@
       document.getElementById('resultSummary').textContent =
         `${state.platform.toUpperCase()} · ${state.device} · ${state.dpi} DPI · ${state.style} · ${state.fingers}-finger`;
     }
+
     function copySensi() {
       const sensi = generateSensi(state);
       navigator.clipboard.writeText(formatSensiText(sensi));
-      const b = event.target;
+      const b = document.getElementById('copyBtn');
       b.textContent = '✅ COPIED!';
       setTimeout(() => b.textContent = '📋 COPY ALL', 2000);
     }
+
     function restartSensi() {
       state.platform = state.device = state.style = state.fingers = null;
       state.pinOk = false;
