@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas class="lightning"></canvas>
+  <canvas id="particles"></canvas>
 
   <nav class="nav">
     <a href="index.html" class="nav-logo">
@@ -93,8 +93,8 @@
           <ul class="hud-map" id="hudMap"></ul>
         </div>
         <div class="result-cta">
-          <button class="btn btn-gold" onclick="copyHud()">📋 COPY HUD</button>
-          <button class="btn btn-ghost" onclick="restartHud()">🔄 NEW SETUP</button>
+          <button class="btn btn-gold" id="hudCopyBtn">📋 COPY HUD</button>
+          <button class="btn btn-ghost" id="hudRestartBtn">🔄 NEW SETUP</button>
         </div>
       </div>
 
@@ -115,7 +115,6 @@
 
   <script src="script.js"></script>
   <script>
-    // ---- STATE ----
     const hudState = { platform: null, style: null, fingers: null, pinOk: false };
     let hudWiz = null;
 
@@ -126,6 +125,9 @@
         if (cur === 4) buildHud();
         advance();
       });
+      document.getElementById('hudPin').addEventListener('keypress', e => { if (e.key === 'Enter') checkHudPin(); });
+      document.getElementById('hudCopyBtn').onclick = copyHud;
+      document.getElementById('hudRestartBtn').onclick = restartHud;
     });
 
     function checkHudPin() {
@@ -134,13 +136,27 @@
       if (v === PREMIUM_PIN) { hudState.pinOk = true; err.textContent = ''; hudWiz.go(2); }
       else { err.textContent = '❌ Invalid PIN.'; }
     }
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('hudPin')?.addEventListener('keypress', e => { if (e.key === 'Enter') checkHudPin(); });
-    });
 
-    function pickHudPlatform(v) { hudState.platform = v; document.querySelectorAll('#hudWizard [data-step="2"] .choice').forEach(x => x.classList.remove('selected')); event.target.closest('.choice').classList.add('selected'); setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 250); }
-    function pickHudStyle(v) { hudState.style = v; document.querySelectorAll('#hudWizard [data-step="3"] .choice').forEach(x => x.classList.remove('selected')); event.target.closest('.choice').classList.add('selected'); setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 250); }
-    function pickHudFingers(v) { hudState.fingers = v; document.querySelectorAll('#hudWizard [data-step="4"] .choice').forEach(x => x.classList.remove('selected')); event.target.closest('.choice').classList.add('selected'); setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 250); }
+    function pickHudPlatform(v) {
+      hudState.platform = v;
+      document.querySelectorAll('#hudWizard [data-step="2"] .choice').forEach(x => x.classList.remove('selected'));
+      event.target.closest('.choice').classList.add('selected');
+      setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 300);
+    }
+
+    function pickHudStyle(v) {
+      hudState.style = v;
+      document.querySelectorAll('#hudWizard [data-step="3"] .choice').forEach(x => x.classList.remove('selected'));
+      event.target.closest('.choice').classList.add('selected');
+      setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 300);
+    }
+
+    function pickHudFingers(v) {
+      hudState.fingers = v;
+      document.querySelectorAll('#hudWizard [data-step="4"] .choice').forEach(x => x.classList.remove('selected'));
+      event.target.closest('.choice').classList.add('selected');
+      setTimeout(() => document.querySelector('#hudWizard .wiz-next').click(), 300);
+    }
 
     function buildHud() {
       const { platform, style, fingers } = hudState;
@@ -178,12 +194,13 @@
     }
 
     function copyHud() {
-      const txt = `ZEUS SENSI — Custom HUD\nPlatform: ${hudState.platform}\nStyle: ${hudState.style}\nFingers: ${hudState.fingers}\n\nButtons mapped on preview.`;
+      const txt = `ZEUS SENSI — Custom HUD\nPlatform: ${hudState.platform}\nStyle: ${hudState.style}\nFingers: ${hudState.fingers}\n\nButtons: FIRE, JUMP, CROUCH, SCOPE, LOOK, RELOAD, MED, BOOM, GLOO, SKILL\n\n— Powered by Zeus Sensi ⚡`;
       navigator.clipboard.writeText(txt);
-      const btn = event.target;
+      const btn = document.getElementById('hudCopyBtn');
       btn.textContent = '✅ COPIED!';
       setTimeout(() => btn.textContent = '📋 COPY HUD', 2000);
     }
+
     function restartHud() {
       hudState.platform = hudState.style = hudState.fingers = null;
       hudState.pinOk = false;
