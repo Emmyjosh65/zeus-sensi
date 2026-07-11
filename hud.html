@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUD Config — ZEUS SENSI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas class="lightning"></canvas>
 
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <span class="bolt">⚡</span> ZEUS<span>SENSI</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="premium.html">Premium Sensi</a>
+      <a href="hud.html" class="active">HUD Config</a>
+    </div>
+  </nav>
+
+  <section class="page-strip">
+    <h1 class="strip-title">🎮 CUSTOM <span class="gold">HUD</span></h1>
+    <p>A HUD layout designed around your grip & playstyle. PIN-protected.</p>
+  </section>
+
+  <section class="wizard-wrap">
+    <div class="wizard" id="wizard">
+
+      <!-- STEP 1: PIN -->
+      <div class="step active" data-step="1">
+        <div class="step-num">STEP 01</div>
+        <h2>Enter Your Premium PIN</h2>
+        <p class="step-desc">Same PIN as Premium Sensi.</p>
+        <div class="pin-box">
+          <input type="password" maxlength="4" id="pinInput" placeholder="• • • •" inputmode="numeric" />
+        </div>
+        <button class="btn btn-gold" id="pinSubmit">UNLOCK ⚡</button>
+        <a class="contact-link" id="contactOwner" target="_blank" rel="noopener">
+          💬 Contact owner for PIN
+        </a>
+        <p class="err" id="pinErr"></p>
+      </div>
+
+      <!-- STEP 2: PLATFORM -->
+      <div class="step" data-step="2">
+        <div class="step-num">STEP 02</div>
+        <h2>Select Platform</h2>
+        <p class="step-desc">HUD button sizes differ between iOS and Android.</p>
+        <div class="choice-grid two">
+          <div class="choice" data-value="ios">
+            <div class="choice-icon">🍎</div><h3>iOS</h3>
+          </div>
+          <div class="choice" data-value="android">
+            <div class="choice-icon">🤖</div><h3>Android</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: STYLE -->
+      <div class="step" data-step="3">
+        <div class="step-num">STEP 03</div>
+        <h2>Playstyle</h2>
+        <p class="step-desc">HUD layout changes with the role you play.</p>
+        <div class="choice-grid three">
+          <div class="choice" data-value="headshot">
+            <div class="choice-icon">🎯</div><h3>Headshot</h3><p>Fire button high</p>
+          </div>
+          <div class="choice" data-value="spam">
+            <div class="choice-icon">🔥</div><h3>Spam</h3><p>Big fire, quick switch</p>
+          </div>
+          <div class="choice" data-value="esports">
+            <div class="choice-icon">🏆</div><h3>Esports</h3><p>Balanced pro HUD</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: FINGERS -->
+      <div class="step" data-step="4">
+        <div class="step-num">STEP 04</div>
+        <h2>Grip / Fingers</h2>
+        <p class="step-desc">We map the right number of action buttons.</p>
+        <div class="choice-grid four">
+          <div class="choice" data-value="2"><div class="choice-icon">✌️</div><h3>2</h3></div>
+          <div class="choice" data-value="3"><div class="choice-icon">🤟</div><h3>3</h3></div>
+          <div class="choice" data-value="4"><div class="choice-icon">🖐️</div><h3>4</h3></div>
+          <div class="choice" data-value="5"><div class="choice-icon">⚡</div><h3>5</h3></div>
+        </div>
+      </div>
+
+      <!-- STEP 5: RESULT -->
+      <div class="step" data-step="5">
+        <div class="step-num">YOUR HUD</div>
+        <h2>⚡ Custom HUD Layout</h2>
+        <p class="step-desc" id="hudSummary"></p>
+
+        <div class="hud-preview">
+          <div class="hud-phone">
+            <div class="hud-screen" id="hudScreen">
+              <!-- buttons injected by JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-actions">
+          <h3>Button Map</h3>
+          <ul id="hudMap" class="hud-map"></ul>
+        </div>
+
+        <div class="result-cta">
+          <button class="btn btn-gold" id="copyBtn">📋 COPY HUD</button>
+          <button class="btn btn-ghost" id="restartBtn">🔄 NEW SETUP</button>
+        </div>
+      </div>
+
+      <div class="wizard-nav">
+        <button class="btn btn-ghost" id="backBtn">← Back</button>
+        <button class="btn btn-gold" id="nextBtn">Next →</button>
+      </div>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 ZEUS SENSI — HUD Config Engine</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="hud.js"></script>
+</body>
+</html>
